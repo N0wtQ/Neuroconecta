@@ -2,160 +2,573 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <title>Necesito ayuda — Neuroconecta</title>
-<meta name="description" content="Apoyo inmediato durante crisis sensoriales, ansiedad o sobrecarga." />
+<meta name="description" content="Apoyo inmediato durante crisis sensoriales, ansiedad o sobrecarga. Herramientas paso a paso para regular." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
-  :root{--bg:#0A0C1A;--surface:#11132A;--border:rgba(129,106,183,.06);--text:#E5E7EB;--muted:#9CA3AF;--faint:#6B7280;--calm:#48B0A1;--calm-g:rgba(72,176,161,.08);--calm-b:rgba(72,176,161,.18);--warm:#FBB027;--warm-g:rgba(251,176,39,.08);--coral:#E57B86;--font:'Inter',system-ui,sans-serif}
-  *{animation:none!important;transition:none!important}
-  .breath-active .bc{animation:breathe 8s ease-in-out infinite!important}
-  @media(prefers-reduced-motion:reduce){.breath-active .bc{animation:none!important}}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100dvh;line-height:1.6;font-size:15px}
-  :focus-visible{outline:2px solid var(--calm);outline-offset:2px}
-  button,a,.ci{touch-action:manipulation}
-  .exit-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-  .exit-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;min-height:44px}
-  .exit-btn i{font-size:12px}
-  .page-label{font-size:13px;color:var(--muted)}
-  main{max-width:500px;margin:0 auto;padding:80px 20px 60px}
-  .hero{text-align:center;padding:32px 0 40px}
-  .hero h1{font-size:24px;font-weight:400;line-height:1.35;margin-bottom:12px}
-  .hero p{font-size:16px;color:var(--muted);line-height:1.5}
-  .section{margin-bottom:32px}
-  .st{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
-  .st i{font-size:10px;color:var(--calm)}
-  .steps{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-  .step{display:none;padding:32px 24px;text-align:center;min-height:200px;flex-direction:column;align-items:center;justify-content:center}
-  .step.active{display:flex}
-  .step-ico{width:64px;height:64px;border-radius:16px;background:var(--calm-g);color:var(--calm);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 20px}
-  .step-txt{font-size:20px;font-weight:400;line-height:1.4;margin-bottom:8px}
-  .step-det{font-size:14px;color:var(--muted);line-height:1.5;max-width:320px}
-  .step-c{font-size:12px;color:var(--muted);margin-top:16px}
-  .snav{display:flex;border-top:1px solid var(--border)}
-  .snav button{flex:1;padding:16px;border:none;background:transparent;color:var(--calm);font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:52px}
-  .snav button:disabled{color:var(--muted);opacity:.3;cursor:default}
-  .snav button+button{border-left:1px solid var(--border)}
-  .bb{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px 24px;text-align:center}
-  .bv{width:120px;height:120px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
-  .bc{width:60px;height:60px;border-radius:50%;background:var(--calm-g);border:2px solid var(--calm);opacity:.7}
-  @keyframes breathe{0%,100%{transform:scale(1);opacity:.5}25%{transform:scale(1.8);opacity:.8}50%{transform:scale(1.8);opacity:.8}75%{transform:scale(1);opacity:.5}}
-  .bl{font-size:18px;margin-bottom:6px}
-  .bs{font-size:13px;color:var(--muted)}
-  .bbtn{margin-top:20px;padding:12px 28px;border-radius:10px;border:1px solid var(--calm-b);background:var(--calm-g);color:var(--calm);font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:48px}
-  .gb{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px}
-  .gi{display:flex;align-items:flex-start;gap:12px;padding:14px 0}
-  .gi+.gi{border-top:1px solid var(--border)}
-  .gn{width:36px;height:36px;border-radius:10px;background:var(--calm-g);color:var(--calm);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;flex-shrink:0}
-  .gt{font-size:15px;padding-top:6px}.gt em{color:var(--muted);font-style:normal;font-size:13px;display:block;margin-top:2px}
-  .cl{list-style:none}
-  .ci{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:var(--surface);border:1px solid var(--border);margin-bottom:8px;cursor:pointer;min-height:52px}
-  .ci.done{opacity:.35}
-  .cb{width:24px;height:24px;border-radius:6px;border:2px solid var(--muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent}
-  .ci.done .cb{border-color:var(--calm);color:var(--calm)}
-  .ql{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:14px;background:var(--surface);border:1px solid var(--border);text-decoration:none;color:var(--text);margin-bottom:10px;min-height:60px}
-  .qi{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-  .qi.m{background:var(--calm-g);color:var(--calm)}.qi.t{background:var(--warm-g);color:var(--warm)}
-  .qt{font-size:15px;font-weight:500}.qsb{font-size:12px;color:var(--muted);margin-top:2px}
-  .cf{text-align:center;padding:32px 0;border-top:1px solid var(--border);margin-top:16px}
-  .cf p{font-size:13px;color:var(--muted)}
-  .cf a{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:12px 24px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:15px;min-height:48px}
-  @media(max-width:768px){
-    .exit-bar{padding:8px 14px}
-    .exit-btn{padding:7px 12px;font-size:13px;min-height:38px;border-radius:8px}
-    .exit-btn i{font-size:11px}
-    .page-label img{height:28px !important}
-    main{padding:64px 16px 40px}
-    .hero{padding:20px 0 28px}
-    .hero h1{font-size:22px}
-    .hero p{font-size:14px}
-    .steps{border-radius:12px}
-    .step{padding:24px 16px;min-height:170px}
-    .step-ico{width:52px;height:52px;font-size:20px}
-    .step-txt{font-size:18px}
-    .snav button{padding:12px;font-size:13px;min-height:44px}
-    .bb{padding:24px 16px;border-radius:12px}
-    .gb{padding:16px;border-radius:12px}
-    .gi{padding:10px 0}
-    .ql{padding:14px 16px;border-radius:10px}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  @media(max-width:400px){
-    .exit-bar{padding:6px 10px}
-    .exit-btn{padding:6px 10px;font-size:12px;min-height:36px}
-    .page-label img{height:24px !important}
-    main{padding:56px 12px 32px}
-    .hero h1{font-size:20px}
-    .step-txt{font-size:16px}
-    .step-det{font-size:13px}
-    .snav button{font-size:12px;padding:10px}
-    .bl{font-size:16px}
-    .gt{font-size:13px}
-    .ci{padding:10px 12px;min-height:44px;font-size:13px}
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+    min-height: 100dvh;
+    padding: 0;
+    margin: 0;
+  }
+  /* Temas claro/oscuro */
+  body.light {
+    --bg: #F8F9FC;
+    --surface: #FFFFFF;
+    --border: #E2E8F0;
+    --text: #1E293B;
+    --muted: #475569;
+    --faint: #94A3B8;
+    --calm: #2C7A6E;
+    --calm-g: #E6F6F4;
+    --calm-b: #B8DFD8;
+    --warm: #D97706;
+    --warm-g: #FEF3C7;
+    --coral: #E57B86;
+  }
+  body.dark {
+    --bg: #0A0C1A;
+    --surface: #11132A;
+    --border: rgba(129,106,183,0.08);
+    --text: #E5E7EB;
+    --muted: #9CA3AF;
+    --faint: #6B7280;
+    --calm: #48B0A1;
+    --calm-g: rgba(72,176,161,0.1);
+    --calm-b: rgba(72,176,161,0.2);
+    --warm: #FBB027;
+    --warm-g: rgba(251,176,39,0.08);
+    --coral: #E57B86;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+  }
+  :focus-visible {
+    outline: 2px solid var(--calm);
+    outline-offset: 2px;
+  }
+  button, a, .ci, .ground-item {
+    touch-action: manipulation;
+  }
+  /* Barra superior */
+  .exit-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(8px);
+  }
+  .exit-btn, .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    min-height: 40px;
+  }
+  .page-label img {
+    height: 32px;
+    width: auto;
+    vertical-align: middle;
+  }
+  main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+  }
+  .hero {
+    text-align: center;
+    padding: 20px 0 24px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--muted);
+  }
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  /* Pasos rápidos (versión simplificada, sin next/prev) */
+  .steps-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+  .step-card:hover {
+    border-color: var(--calm);
+    background: var(--calm-g);
+  }
+  .step-number {
+    width: 44px;
+    height: 44px;
+    background: var(--calm-g);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--calm);
+    flex-shrink: 0;
+  }
+  .step-content {
+    flex: 1;
+  }
+  .step-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .step-card.done {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+  /* Respiración mejorada */
+  .breath-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 24px;
+    text-align: center;
+  }
+  .breath-circle-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .breath-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--calm-g);
+    border: 3px solid var(--calm);
+    transition: all 0.1s linear;
+    will-change: transform;
+  }
+  .breath-circle.breathing {
+    animation: smoothBreath 16s ease-in-out infinite;
+  }
+  @keyframes smoothBreath {
+    0% { transform: scale(0.6); opacity: 0.7; }
+    25% { transform: scale(1.4); opacity: 0.95; }
+    50% { transform: scale(1.4); opacity: 0.95; }
+    75% { transform: scale(0.6); opacity: 0.7; }
+    100% { transform: scale(0.6); opacity: 0.7; }
+  }
+  .breath-label {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .breath-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .breath-btn {
+    padding: 10px 24px;
+    border-radius: 40px;
+    background: var(--calm);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  /* Grounding interactivo */
+  .grounding-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .ground-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+  .ground-item .num {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--calm);
+  }
+  .ground-item .sense {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 8px 0 4px;
+  }
+  .ground-item .action {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .ground-item.completed {
+    background: var(--calm-g);
+    border-color: var(--calm);
+    opacity: 0.7;
+  }
+  /* Checklist */
+  .checklist {
+    list-style: none;
+  }
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .checklist li.done {
+    opacity: 0.6;
+  }
+  .checklist .cb {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    border: 2px solid var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 14px;
+  }
+  .checklist li.done .cb {
+    border-color: var(--calm);
+    color: var(--calm);
+  }
+  /* Acceso rápido y apoyo */
+  .quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .quick-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .quick-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--calm-g);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--calm);
+  }
+  .support-line {
+    background: var(--coral);
+    color: white;
+    border: none;
+  }
+  .support-line .quick-icon {
+    background: rgba(255,255,255,0.2);
+    color: white;
+  }
+  .support-line .quick-title {
+    color: white;
+  }
+  .support-line .quick-desc {
+    color: rgba(255,255,255,0.8);
+  }
+  footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--faint);
+  }
+  @media (max-width: 560px) {
+    main { padding: 70px 16px 40px; }
+    .step-card { padding: 12px 16px; }
+    .step-number { width: 36px; height: 36px; font-size: 16px; }
+    .step-title { font-size: 15px; }
+    .breath-circle { width: 60px; height: 60px; }
+    .breath-label { font-size: 18px; }
+    .ground-item { padding: 12px 8px; }
+    .ground-item .num { font-size: 26px; }
   }
 </style>
 </head>
-<body>
+<body class="dark">
 <div class="exit-bar">
   <a href="index.html" class="exit-btn"><i class="fa-solid fa-arrow-left"></i> Salir</a>
-  <a href="index.html" class="page-label"><img src="logo-icon.png" alt="Neuroconecta" style="height:36px;width:auto;vertical-align:middle"></a>
+  <div style="display: flex; gap: 8px;">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro"><i class="fa-solid fa-sun"></i> Claro</button>
+    <a href="index.html" class="page-label"><img src="logo-icon.png" alt="Neuroconecta"></a>
+  </div>
 </div>
+
 <main>
-  <div class="hero"><h1>Estás a salvo.<br>Esto va a pasar.</h1><p>Vamos paso a paso. Sin prisa.</p></div>
+  <div class="hero">
+    <h1>Estás a salvo.<br>Esto va a pasar.</h1>
+    <p>Sin prisa, paso a paso. Elige lo que necesites ahora.</p>
+  </div>
+
+  <!-- 1. Pasos rápidos (todo visible) -->
   <div class="section">
-    <div class="st"><i class="fa-solid fa-shoe-prints"></i> Guía paso a paso</div>
-    <div class="steps">
-      <div class="step active" data-step="0"><div class="step-ico"><i class="fa-solid fa-hand"></i></div><div class="step-txt">Detente un momento</div><div class="step-det">No tienes que hacer nada ahora mismo. Solo para.</div><div class="step-c">1 de 7</div></div>
-      <div class="step" data-step="1"><div class="step-ico"><i class="fa-solid fa-wind"></i></div><div class="step-txt">Respira lentamente</div><div class="step-det">Inspira 4 segundos. Mantén 4 segundos. Suelta 4 segundos.</div><div class="step-c">2 de 7</div></div>
-      <div class="step" data-step="2"><div class="step-ico"><i class="fa-solid fa-volume-xmark"></i></div><div class="step-txt">Reduce ruido y luz</div><div class="step-det">Baja el brillo de la pantalla. Si puedes, apaga luces fuertes o aléjate del ruido.</div><div class="step-c">3 de 7</div></div>
-      <div class="step" data-step="3"><div class="step-ico"><i class="fa-solid fa-droplet"></i></div><div class="step-txt">Bebe agua</div><div class="step-det">Un trago pequeño. Nota cómo se siente el agua.</div><div class="step-c">4 de 7</div></div>
-      <div class="step" data-step="4"><div class="step-ico"><i class="fa-solid fa-house-chimney"></i></div><div class="step-txt">Busca un lugar tranquilo</div><div class="step-det">Un rincón, una habitación, tu coche. Un espacio donde te sientas seguro.</div><div class="step-c">5 de 7</div></div>
-      <div class="step" data-step="5"><div class="step-ico"><i class="fa-solid fa-headphones"></i></div><div class="step-txt">Usa protección sensorial</div><div class="step-det">Auriculares, tapones, capucha, gafas de sol. Lo que tengas a mano.</div><div class="step-c">6 de 7</div></div>
-      <div class="step" data-step="6"><div class="step-ico"><i class="fa-solid fa-phone"></i></div><div class="step-txt">Contacta con alguien seguro</div><div class="step-det">Si lo necesitas, escribe o llama a alguien de confianza. No tienes que explicar mucho.</div><div class="step-c">7 de 7</div></div>
-      <div class="snav"><button id="prev-btn" disabled onclick="stepNav(-1)"><i class="fa-solid fa-chevron-left"></i> Anterior</button><button id="next-btn" onclick="stepNav(1)">Siguiente <i class="fa-solid fa-chevron-right"></i></button></div>
+    <div class="section-title"><i class="fa-regular fa-hand-peace"></i> Pasos que ayudan</div>
+    <div class="steps-grid" id="stepsContainer">
+      <div class="step-card" data-step="0"><div class="step-number">1</div><div class="step-content"><div class="step-title">Detente un momento</div><div class="step-desc">No tienes que hacer nada ahora mismo. Solo para.</div></div></div>
+      <div class="step-card" data-step="1"><div class="step-number">2</div><div class="step-content"><div class="step-title">Respira lentamente</div><div class="step-desc">Inspira 4s, mantén 4s, suelta 4s, pausa 4s.</div></div></div>
+      <div class="step-card" data-step="2"><div class="step-number">3</div><div class="step-content"><div class="step-title">Reduce ruido y luz</div><div class="step-desc">Baja brillo, aléjate del ruido o usa tapones.</div></div></div>
+      <div class="step-card" data-step="3"><div class="step-number">4</div><div class="step-content"><div class="step-title">Busca un lugar tranquilo</div><div class="step-desc">Un rincón, tu coche, una habitación donde te sientas seguro.</div></div></div>
     </div>
   </div>
+
+  <!-- 2. Respiración mejorada -->
   <div class="section">
-    <div class="st"><i class="fa-solid fa-lungs"></i> Respiración guiada</div>
-    <div class="bb" id="breath-box"><div class="bv"><div class="bc" id="breath-circle"></div></div><div class="bl" id="breath-label">Respira con el círculo</div><div class="bs">4 segundos inspira · 4 mantén · 4 suelta</div><button class="bbtn" id="breath-btn" onclick="toggleBreath()"><i class="fa-solid fa-play"></i> Empezar</button></div>
-  </div>
-  <div class="section">
-    <div class="st"><i class="fa-solid fa-anchor"></i> Grounding · 5-4-3-2-1</div>
-    <div class="gb">
-      <div class="gi"><div class="gn">5</div><div class="gt">Cosas que puedes <strong>ver</strong><em>Mira a tu alrededor despacio</em></div></div>
-      <div class="gi"><div class="gn">4</div><div class="gt">Cosas que puedes <strong>tocar</strong><em>Nota la textura con tus manos</em></div></div>
-      <div class="gi"><div class="gn">3</div><div class="gt">Cosas que puedes <strong>oír</strong><em>Escucha los sonidos más suaves</em></div></div>
-      <div class="gi"><div class="gn">2</div><div class="gt">Cosas que puedes <strong>oler</strong><em>Tu ropa, el aire, algo cercano</em></div></div>
-      <div class="gi"><div class="gn">1</div><div class="gt">Cosa que puedes <strong>saborear</strong><em>Un trago de agua, el sabor en tu boca</em></div></div>
+    <div class="section-title"><i class="fa-solid fa-lungs"></i> Respiración guiada</div>
+    <div class="breath-card">
+      <div class="breath-circle-container">
+        <div class="breath-circle" id="breathCircle"></div>
+      </div>
+      <div class="breath-label" id="breathLabel">Inspira</div>
+      <div class="breath-hint">4″ inspire · 4″ retén · 4″ expire · 4″ pausa</div>
+      <button class="breath-btn" id="breathBtn">▶️ Empezar</button>
     </div>
   </div>
+
+  <!-- 3. Grounding 5-4-3-2-1 interactivo -->
   <div class="section">
-    <div class="st"><i class="fa-solid fa-list-check"></i> Checklist rápido</div>
-    <ul class="cl">
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He parado lo que estaba haciendo</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He respirado varias veces despacio</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He reducido estímulos (luz, sonido)</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He bebido agua</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>Estoy en un lugar seguro</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He avisado a alguien si lo necesitaba</span></li>
+    <div class="section-title"><i class="fa-solid fa-anchor"></i> Grounding · 5-4-3-2-1</div>
+    <div class="grounding-grid" id="groundingGrid">
+      <div class="ground-item" data-sense="ver"><div class="num">5</div><div class="sense">Ver</div><div class="action">Cosas que ves</div></div>
+      <div class="ground-item" data-sense="tocar"><div class="num">4</div><div class="sense">Tocar</div><div class="action">Texturas que sientes</div></div>
+      <div class="ground-item" data-sense="oir"><div class="num">3</div><div class="sense">Oír</div><div class="action">Sonidos suaves</div></div>
+      <div class="ground-item" data-sense="oler"><div class="num">2</div><div class="sense">Oler</div><div class="action">Olores cercanos</div></div>
+      <div class="ground-item" data-sense="saborear"><div class="num">1</div><div class="sense">Saborear</div><div class="action">Un sorbo de agua o sabor</div></div>
+    </div>
+  </div>
+
+  <!-- 4. Checklist rápido (con localStorage) -->
+  <div class="section">
+    <div class="section-title"><i class="fa-solid fa-list-check"></i> Checklist de bienestar</div>
+    <ul class="checklist" id="checklist">
+      <li data-check="stop"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He parado lo que estaba haciendo</span></li>
+      <li data-check="breathe"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He respirado varias veces despacio</span></li>
+      <li data-check="stimuli"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He reducido estímulos (luz, sonido)</span></li>
+      <li data-check="water"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He bebido agua</span></li>
+      <li data-check="safe"><div class="cb"><i class="fa-solid fa-check"></i></div><span>Estoy en un lugar seguro</span></li>
     </ul>
   </div>
+
+  <!-- 5. Acceso rápido + línea de apoyo -->
   <div class="section">
-    <div class="st"><i class="fa-solid fa-bolt"></i> Acceso rápido</div>
-    <a href="mapa-app.html" class="ql"><div class="qi m"><i class="fa-solid fa-location-dot"></i></div><div><div class="qt">Espacios silenciosos cerca</div><div class="qsb">Mapa de lugares tranquilos en España</div></div></a>
-    <a href="herramientas.html" class="ql"><div class="qi t"><i class="fa-solid fa-toolbox"></i></div><div><div class="qt">Herramientas de regulación</div><div class="qsb">Apps y recursos para el día a día</div></div></a>
+    <div class="section-title"><i class="fa-solid fa-bolt"></i> Acción inmediata</div>
+    <div class="quick-links">
+      <a href="mapa-app.html" class="quick-link"><div class="quick-icon"><i class="fa-solid fa-map"></i></div><div><div class="quick-title">Espacios silenciosos cerca</div><div class="quick-desc">Mapa de lugares tranquilos en España</div></div></a>
+      <a href="herramientas.html" class="quick-link"><div class="quick-icon"><i class="fa-solid fa-toolbox"></i></div><div><div class="quick-title">Herramientas de regulación</div><div class="quick-desc">Apps y recursos para el día a día</div></div></a>
+      <a href="tel:024" class="quick-link support-line"><div class="quick-icon"><i class="fa-solid fa-phone"></i></div><div><div class="quick-title">Línea de apoyo psicológico</div><div class="quick-desc">024 (España, gratuito 24/7)</div></div></a>
+    </div>
   </div>
-  <div class="cf"><p>Lo estás haciendo bien. Esto va a pasar.</p><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a></div>
+
+  <footer>
+    <p>Lo estás haciendo bien. Esto va a pasar.<br>Puedes repetir estas herramientas las veces que necesites.</p>
+  </footer>
 </main>
+
 <script>
-let currentStep=0;const steps=document.querySelectorAll('.step'),prevBtn=document.getElementById('prev-btn'),nextBtn=document.getElementById('next-btn');
-function stepNav(d){steps[currentStep].classList.remove('active');currentStep+=d;steps[currentStep].classList.add('active');prevBtn.disabled=currentStep===0;nextBtn.disabled=currentStep===steps.length-1;nextBtn.innerHTML=currentStep===steps.length-1?'Último paso':'Siguiente <i class="fa-solid fa-chevron-right"></i>'}
-let breathing=false,breathInterval=null;const breathPhases=['Inspira…','Mantén…','Suelta…','Mantén…'];let breathPhase=0;
-function toggleBreath(){const box=document.getElementById('breath-box'),btn=document.getElementById('breath-btn'),label=document.getElementById('breath-label');if(breathing){breathing=false;box.classList.remove('breath-active');clearInterval(breathInterval);btn.innerHTML='<i class="fa-solid fa-play"></i> Empezar';label.textContent='Respira con el círculo'}else{breathing=true;box.classList.add('breath-active');breathPhase=0;label.textContent=breathPhases[0];btn.innerHTML='<i class="fa-solid fa-pause"></i> Parar';breathInterval=setInterval(function(){breathPhase=(breathPhase+1)%4;label.textContent=breathPhases[breathPhase]},2000)}}
-function toggleCheck(el){el.classList.toggle('done')}
+  // ----- TEMA CLARO/OSCURO -----
+  const themeToggle = document.getElementById('themeToggle');
+  const setTheme = (theme) => {
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+    localStorage.setItem('neuro_theme', theme);
+    themeToggle.innerHTML = theme === 'light' ? '<i class="fa-solid fa-moon"></i> Oscuro' : '<i class="fa-solid fa-sun"></i> Claro';
+  };
+  const savedTheme = localStorage.getItem('neuro_theme');
+  if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) setTheme(savedTheme);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) setTheme('light');
+  else setTheme('dark');
+  themeToggle.addEventListener('click', () => {
+    const newTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+
+  // ----- PASOS (marcar como completados, guardar en localStorage) -----
+  let stepsDone = JSON.parse(localStorage.getItem('neuro_steps')) || [false, false, false, false];
+  const stepCards = document.querySelectorAll('.step-card');
+  function updateStepsUI() {
+    stepCards.forEach((card, idx) => {
+      if (stepsDone[idx]) card.classList.add('done');
+      else card.classList.remove('done');
+    });
+    localStorage.setItem('neuro_steps', JSON.stringify(stepsDone));
+  }
+  stepCards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      stepsDone[idx] = !stepsDone[idx];
+      updateStepsUI();
+    });
+  });
+  updateStepsUI();
+
+  // ----- RESPIRACIÓN MEJORADA (ciclo 16s: 4s inspira, 4s mantén, 4s espira, 4s pausa) -----
+  const breathCircle = document.getElementById('breathCircle');
+  const breathLabel = document.getElementById('breathLabel');
+  const breathBtn = document.getElementById('breathBtn');
+  let breathInterval = null;
+  let breathingActive = false;
+  let breathPhase = 0; // 0:inspira,1:reten,2:espira,3:pausa
+  const phaseTexts = ['Inspira 🌬️', 'Mantén 🧘', 'Espira 🌿', 'Pausa 🍃'];
+  const phaseDurations = [4000, 4000, 4000, 4000]; // 4s cada fase
+
+  function startBreathing() {
+    if (breathInterval) clearInterval(breathInterval);
+    breathingActive = true;
+    breathCircle.classList.add('breathing');
+    breathPhase = 0;
+    breathLabel.textContent = phaseTexts[0];
+    let startTime = Date.now();
+    const runPhase = () => {
+      if (!breathingActive) return;
+      const now = Date.now();
+      const elapsed = now - startTime;
+      if (elapsed >= phaseDurations[breathPhase]) {
+        breathPhase = (breathPhase + 1) % 4;
+        breathLabel.textContent = phaseTexts[breathPhase];
+        startTime = now;
+      }
+      requestAnimationFrame(runPhase);
+    };
+    requestAnimationFrame(runPhase);
+    breathBtn.innerHTML = '⏸️ Parar';
+  }
+  function stopBreathing() {
+    breathingActive = false;
+    breathCircle.classList.remove('breathing');
+    breathLabel.textContent = 'Inspira';
+    if (breathInterval) clearInterval(breathInterval);
+    breathBtn.innerHTML = '▶️ Empezar';
+  }
+  breathBtn.addEventListener('click', () => {
+    if (breathingActive) stopBreathing();
+    else startBreathing();
+  });
+
+  // ----- GROUNDING INTERACTIVO (marcar completado) -----
+  const groundItems = document.querySelectorAll('.ground-item');
+  let groundingDone = JSON.parse(localStorage.getItem('neuro_grounding')) || {};
+  function updateGroundingUI() {
+    groundItems.forEach(item => {
+      const sense = item.dataset.sense;
+      if (groundingDone[sense]) item.classList.add('completed');
+      else item.classList.remove('completed');
+    });
+    localStorage.setItem('neuro_grounding', JSON.stringify(groundingDone));
+  }
+  groundItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const sense = item.dataset.sense;
+      groundingDone[sense] = !groundingDone[sense];
+      updateGroundingUI();
+    });
+  });
+  updateGroundingUI();
+
+  // ----- CHECKLIST CON LOCALSTORAGE -----
+  let checklistState = JSON.parse(localStorage.getItem('neuro_checklist')) || {};
+  const checklistItems = document.querySelectorAll('#checklist li');
+  function updateChecklistUI() {
+    checklistItems.forEach(li => {
+      const key = li.dataset.check;
+      if (checklistState[key]) li.classList.add('done');
+      else li.classList.remove('done');
+    });
+    localStorage.setItem('neuro_checklist', JSON.stringify(checklistState));
+  }
+  checklistItems.forEach(li => {
+    li.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = li.dataset.check;
+      checklistState[key] = !checklistState[key];
+      updateChecklistUI();
+    });
+  });
+  updateChecklistUI();
+
+  // Pequeño detalle: si el usuario hace clic en el círculo de respiración, no interfiere
+  breathCircle.addEventListener('click', (e) => e.stopPropagation());
 </script>
 </body>
 </html>
