@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Herramientas para personas neurodivergentes — Neuroconecta</title>
+<meta name="description" content="Catálogo de apps, webs y recursos digitales para personas neurodivergentes: gestión ejecutiva, regulación sensorial, comunicación y más." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/papaparse@5.5.3/papaparse.min.js"></script>
+<style>
+  :root {
+    --bg:       #0f1117;
+    --surface:  #1a1c25;
+    --border:   rgba(255,255,255,0.08);
+    --ink:      #e8eaed;
+    --soft:     #9aa0ac;
+    --primary:  #52c9b9;
+    --primary-d:#0d3d38;
+    --accent:   #f0c46b;
+    --accent-d: #3d3522;
+    --green-bg: rgba(74,222,128,0.12);
+    --green-fg: #4ade80;
+    --blue-bg:  rgba(96,165,250,0.12);
+    --blue-fg:  #60a5fa;
+    --orange-bg:rgba(251,191,36,0.12);
+    --orange-fg:#fbbf24;
+    --shadow:   0 2px 12px rgba(0,0,0,0.4);
+    --r:        12px;
+    --font-head:'DM Serif Display', Georgia, serif;
+    --font-body:'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100dvh;
+  }
+
+  /* HEADER */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .header-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    height: 60px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .logo-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--primary); color: #0f1117;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+  }
+  .logo-text { font-family: var(--font-head); font-size: 20px; letter-spacing: -0.02em; }
+  .logo-sub { font-size: 9px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--soft); }
+  nav { display: flex; gap: 4px; }
+  nav a {
+    padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 500;
+    color: var(--soft); text-decoration: none; transition: all 150ms ease;
+  }
+  nav a:hover, nav a.active { background: rgba(255,255,255,0.07); color: var(--ink); }
+
+  /* MAIN */
+  main { max-width: 960px; margin: 0 auto; padding: 40px 24px 48px; }
+  .page-header h1 { font-family: var(--font-head); font-size: 32px; font-weight: 400; }
+  .page-header p { margin-top: 8px; font-size: 15px; color: var(--soft); }
+
+  /* FILTERS */
+  .filters {
+    margin-top: 24px; padding: 16px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;
+  }
+  .filters label { display: flex; flex-direction: column; gap: 4px; }
+  .filters label span {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--soft);
+  }
+  .filters input, .filters select {
+    padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg);
+    color: var(--ink); font-family: var(--font-body); font-size: 13px;
+    outline: none; transition: border-color 150ms ease;
+  }
+  .filters input:focus, .filters select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(82,201,185,0.15);
+  }
+  .filters select option { background: var(--bg); color: var(--ink); }
+
+  /* GRID */
+  .grid {
+    margin-top: 24px;
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* CARD */
+  .res-card {
+    display: flex; flex-direction: column;
+    padding: 20px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    box-shadow: var(--shadow); transition: box-shadow 200ms ease;
+  }
+  .res-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.5); }
+  .res-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+  .res-name { font-family: var(--font-head); font-size: 17px; font-weight: 400; }
+  .badge-val {
+    flex-shrink: 0; padding: 2px 8px; border-radius: 6px;
+    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .val-Excelente  { background: var(--primary-d); color: var(--primary); }
+  .val-Muy-bueno { background: rgba(255,255,255,0.07); color: var(--ink); }
+  .val-Bueno      { background: rgba(255,255,255,0.04); color: var(--soft); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .tag {
+    padding: 2px 8px; border-radius: 5px;
+    font-size: 10px; font-weight: 600;
+  }
+  .tag-cat  { background: rgba(82,201,185,0.12); color: var(--primary); }
+  .tag-sub  { background: rgba(255,255,255,0.05); color: var(--soft); }
+  .tag-gratis   { background: var(--green-bg); color: var(--green-fg); }
+  .tag-freemium { background: var(--blue-bg);  color: var(--blue-fg); }
+  .tag-pago     { background: var(--orange-bg); color: var(--orange-fg); }
+
+  .res-desc { font-size: 13px; line-height: 1.5; color: var(--soft); margin-bottom: 10px; }
+  .res-notes { font-size: 12px; font-style: italic; color: rgba(154,160,172,0.7); margin-bottom: 10px; }
+
+  .res-footer { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 4px; }
+  .badge-perfil {
+    padding: 2px 7px; border-radius: 5px;
+    font-size: 10px; font-weight: 600;
+    background: rgba(82,201,185,0.1); color: var(--primary);
+  }
+  .badge-plat {
+    padding: 2px 7px; border-radius: 5px;
+    font-size: 10px;
+    background: rgba(255,255,255,0.06); color: var(--soft);
+  }
+  .res-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 10px; font-size: 13px; font-weight: 600;
+    color: var(--primary); text-decoration: none;
+  }
+  .res-link:hover { text-decoration: underline; }
+
+  .empty { text-align: center; padding: 60px 20px; color: var(--soft); font-size: 15px; }
+
+  @media (max-width: 600px) {
+    main { padding: 24px 16px 32px; }
+    .grid { grid-template-columns: 1fr; }
+    .filters { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">N</div>
+      <div>
+        <div class="logo-text">Neuroconecta</div>
+        <div class="logo-sub">Recursos · Mapa · Comunidad</div>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="mapa-app.html">Mapa</a>
+      <a href="herramientas.html" class="active">Herramientas</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h1>Herramientas</h1>
+    <p id="count-label">Cargando recursos…</p>
+  </div>
+
+  <section class="filters">
+    <label>
+      <span>Buscar</span>
+      <input type="search" id="f-search" placeholder="Buscar herramienta…" autocomplete="off" />
+    </label>
+    <label>
+      <span>Categoría</span>
+      <select id="f-cat"><option value="Todas">Todas</option></select>
+    </label>
+    <label>
+      <span>Perfil ND</span>
+      <select id="f-perfil"><option value="Todos">Todos</option></select>
+    </label>
+    <label>
+      <span>Precio</span>
+      <select id="f-precio"><option value="Todos">Todos</option></select>
+    </label>
+  </section>
+
+  <div class="grid" id="grid"></div>
+</main>
+
+<script>
+const EXCLUIR = new Set(["PAS", "ANS"]);
+let allData = [];
+
+function precioClass(p) {
+  if (p === "Gratis")   return "tag-gratis";
+  if (p === "Freemium") return "tag-freemium";
+  if (p === "Pago")     return "tag-pago";
+  return "tag-sub";
+}
+function valClass(v) {
+  if (v === "Excelente")  return "val-Excelente";
+  if (v === "Muy bueno") return "val-Muy-bueno";
+  return "val-Bueno";
+}
+
+function renderCard(r) {
+  const perfiles = (r["Perfiles ND"] || "").split(",").map(s => s.trim()).filter(s => s && !EXCLUIR.has(s));
+  const plats = (r.Plataforma || "").split(",").map(s => s.trim()).filter(Boolean);
+  const valBadge = r.Valoración
+    ? `<span class="badge-val ${valClass(r.Valoración)}">${r.Valoración}</span>` : "";
+  const subTag = r.Subcategoría ? `<span class="tag tag-sub">${r.Subcategoría}</span>` : "";
+  const precioTag = r.Precio ? `<span class="tag ${precioClass(r.Precio)}">${r.Precio}</span>` : "";
+  const notes = r.Notas ? `<p class="res-notes">${r.Notas}</p>` : "";
+  const link = r.Enlace
+    ? `<a class="res-link" href="${r.Enlace}" target="_blank" rel="noopener noreferrer">Visitar →</a>` : "";
+
+  return `<article class="res-card">
+    <div class="res-top"><h3 class="res-name">${r.Recurso}</h3>${valBadge}</div>
+    <div class="tags">
+      <span class="tag tag-cat">${r.Categoría}</span>${subTag}${precioTag}
+    </div>
+    <p class="res-desc">${r["Por qué funciona"] || ""}</p>
+    ${notes}
+    <div class="res-footer">
+      ${perfiles.map(p => `<span class="badge-perfil">${p}</span>`).join("")}
+      ${plats.map(p => `<span class="badge-plat">${p}</span>`).join("")}
+    </div>
+    ${link}
+  </article>`;
+}
+
+function getFiltered() {
+  const q = document.getElementById("f-search").value.trim().toLowerCase();
+  const cat = document.getElementById("f-cat").value;
+  const perfil = document.getElementById("f-perfil").value;
+  const precio = document.getElementById("f-precio").value;
+
+  return allData.filter(d => {
+    if (cat !== "Todas" && d.Categoría !== cat) return false;
+    if (precio !== "Todos" && d.Precio !== precio) return false;
+    if (perfil !== "Todos") {
+      const perfiles = (d["Perfiles ND"] || "").split(",").map(s => s.trim()).filter(s => !EXCLUIR.has(s));
+      if (!perfiles.includes(perfil)) return false;
+    }
+    if (q) {
+      const hay = `${d.Recurso} ${d["Por qué funciona"]} ${d.Subcategoría} ${d.Notas}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function render() {
+  const filtered = getFiltered();
+  const grid = document.getElementById("grid");
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p class="empty">No hay recursos con esos filtros.</p>';
+  } else {
+    grid.innerHTML = filtered.map(renderCard).join("");
+  }
+  document.getElementById("count-label").textContent =
+    `${allData.length} recursos digitales para personas neurodivergentes. Filtra por categoría, perfil o precio.`;
+}
+
+function populateSelects() {
+  const cats = new Set(), perfiles = new Set(), precios = new Set();
+  allData.forEach(d => {
+    if (d.Categoría) cats.add(d.Categoría);
+    if (d.Precio) precios.add(d.Precio);
+    (d["Perfiles ND"] || "").split(",").forEach(p => {
+      const t = p.trim();
+      if (t && !EXCLUIR.has(t)) perfiles.add(t);
+    });
+  });
+
+  const fill = (id, set, all) => {
+    const sel = document.getElementById(id);
+    [...set].sort().forEach(v => {
+      const o = document.createElement("option");
+      o.value = v; o.textContent = v;
+      sel.appendChild(o);
+    });
+  };
+  fill("f-cat", cats, "Todas");
+  fill("f-perfil", perfiles, "Todos");
+  fill("f-precio", precios, "Todos");
+}
+
+// Load CSV
+fetch("data/herramientas.csv")
+  .then(r => r.text())
+  .then(text => {
+    const result = Papa.parse(text, { header: true, skipEmptyLines: true });
+    allData = result.data.filter(d => d.Recurso);
+    populateSelects();
+    render();
+  })
+  .catch(() => {
+    document.getElementById("grid").innerHTML = '<p class="empty">Error al cargar los recursos.</p>';
+  });
+
+// Event listeners
+document.getElementById("f-search").addEventListener("input", render);
+document.getElementById("f-cat").addEventListener("change", render);
+document.getElementById("f-perfil").addEventListener("change", render);
+document.getElementById("f-precio").addEventListener("change", render);
+</script>
+
+</body>
+</html>
