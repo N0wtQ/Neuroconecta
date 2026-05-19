@@ -271,19 +271,20 @@
   #count-badge b { color: var(--ink); font-weight: 700; }
 
   @media (max-width: 768px) {
-    #header { gap: 8px; padding: 8px 12px; }
-    #header h1 { font-size: 14px; }
+    #header { gap: 8px; padding: 6px 12px; min-height: 44px; }
+    #header img { height: 30px !important; }
+    #header h1 { font-size: 13px; }
     #header p.subtitle { display: none; }
     .header-nav { gap: 2px; }
-    .header-nav a { padding: 4px 8px; font-size: 11px; }
-    #toolbar { padding: 6px 10px; gap: 3px; }
+    .header-nav a { padding: 4px 8px; font-size: 10px; }
+    #toolbar { padding: 5px 8px; gap: 3px; }
     .chip { padding: 4px 8px; font-size: 10px; }
     .tb-label { display: none; }
     .tb-sep { display: none; }
-    .search-wrap { min-width: 100px; padding: 3px 7px; }
+    .search-wrap { min-width: 90px; padding: 3px 7px; }
     #search-input { font-size: 10px; }
     #btn-suggest { font-size: 10px; padding: 4px 8px; }
-    #count-badge { padding: 5px 10px; font-size: 11px; top: 8px; right: 8px; }
+    #count-badge { padding: 4px 8px; font-size: 11px; top: 8px; right: 8px; }
     #legend { display: none; }
     .leaflet-popup-content-wrapper { min-width: 220px; max-width: 280px; }
     .pop-header { padding: 10px 12px 8px; }
@@ -292,11 +293,15 @@
     .pop-row { font-size: 11.5px; }
   }
   @media (max-width: 480px) {
-    #header h1 { font-size: 12px; }
-    .header-nav { display: none; }
+    #header { gap: 6px; padding: 4px 10px; }
+    #header img { height: 26px !important; }
+    #header h1 { font-size: 11px; }
+    #header > div { min-width: 0; }
+    .header-nav a { padding: 3px 6px; font-size: 9px; }
+    #toolbar { padding: 4px 6px; gap: 2px; }
     .chip { padding: 3px 6px; font-size: 9px; gap: 2px; }
     .chip i { font-size: 9px; }
-    .search-wrap { min-width: 80px; }
+    .search-wrap { min-width: 70px; }
     #btn-suggest { display: none; }
     .leaflet-popup-content-wrapper { min-width: 200px; max-width: 260px; }
   }
