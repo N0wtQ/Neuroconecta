@@ -64,19 +64,37 @@
   .cf{text-align:center;padding:32px 0;border-top:1px solid var(--border);margin-top:16px}
   .cf p{font-size:13px;color:var(--muted)}
   .cf a{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:12px 24px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:15px;min-height:48px}
-  @media(max-width:480px){
-    main{padding:68px 16px 40px}
-    .exit-bar{padding:10px 16px}
-    .exit-btn{padding:8px 14px;font-size:13px;min-height:40px}
-    .hero h1{font-size:20px}
+  @media(max-width:768px){
+    .exit-bar{padding:8px 14px}
+    .exit-btn{padding:7px 12px;font-size:13px;min-height:38px;border-radius:8px}
+    .exit-btn i{font-size:11px}
+    .page-label img{height:28px !important}
+    main{padding:64px 16px 40px}
+    .hero{padding:20px 0 28px}
+    .hero h1{font-size:22px}
+    .hero p{font-size:14px}
+    .steps{border-radius:12px}
     .step{padding:24px 16px;min-height:170px}
     .step-ico{width:52px;height:52px;font-size:20px}
     .step-txt{font-size:18px}
     .snav button{padding:12px;font-size:13px;min-height:44px}
-    .bb{padding:24px 16px}
-    .gb{padding:16px}
+    .bb{padding:24px 16px;border-radius:12px}
+    .gb{padding:16px;border-radius:12px}
     .gi{padding:10px 0}
-    .ql{padding:14px 16px}
+    .ql{padding:14px 16px;border-radius:10px}
+  }
+  @media(max-width:400px){
+    .exit-bar{padding:6px 10px}
+    .exit-btn{padding:6px 10px;font-size:12px;min-height:36px}
+    .page-label img{height:24px !important}
+    main{padding:56px 12px 32px}
+    .hero h1{font-size:20px}
+    .step-txt{font-size:16px}
+    .step-det{font-size:13px}
+    .snav button{font-size:12px;padding:10px}
+    .bl{font-size:16px}
+    .gt{font-size:13px}
+    .ci{padding:10px 12px;min-height:44px;font-size:13px}
   }
 </style>
 </head>
