@@ -358,13 +358,22 @@ function renderCard(r) {
     plHtml += '<span class="bp-overflow" title="' + overflowPl.join(", ") + '">+' + overflowPl.length + '</span>';
   }
 
+  var valoracion = r.Valoración || "";
+  var tipo = r.Tipo || "";
+  var valIcon = {"Excelente":"fa-star","Muy bueno":"fa-star-half-stroke","Bueno":"fa-thumbs-up"}[valoracion] || "fa-circle";
+  var valColor = {"Excelente":"var(--warm)","Muy bueno":"var(--acc)","Bueno":"var(--muted)"}[valoracion] || "var(--faint)";
+
   var notas = r.Notas || "";
   var notasHtml = notas ? '<p class="rc-notes">' + notas + '</p>' : '';
 
   var href = r.Enlace || "#";
   return '<a class="rc" href="' + href + '" target="_blank" rel="noopener noreferrer">' +
-    '<div class="rc-top"><h3 class="rc-name">' + r.Recurso + '</h3></div>' +
-    '<div class="badges-row"><span class="badge badge-cat"><i class="fa-solid ' + catIcon + '" aria-hidden="true"></i> ' + r.Categoría + '</span>' + precio + '</div>' +
+    '<div class="rc-top"><h3 class="rc-name">' + r.Recurso + '</h3>' +
+    (valoracion ? '<span style="font-size:12px;color:' + valColor + ';white-space:nowrap;flex-shrink:0"><i class="fa-solid ' + valIcon + '"></i> ' + valoracion + '</span>' : '') +
+    '</div>' +
+    '<div class="badges-row"><span class="badge badge-cat"><i class="fa-solid ' + catIcon + '" aria-hidden="true"></i> ' + r.Categoría + '</span>' + precio +
+    (tipo ? '<span class="badge" style="background:rgba(255,255,255,.06);color:var(--faint)">' + tipo + '</span>' : '') +
+    '</div>' +
     notasHtml +
     '<div class="rc-ft">' + pfHtml + plHtml + '</div></a>';
 }
@@ -451,7 +460,7 @@ function populateSelects() {
 fetch("data/herramientas.csv")
   .then(function(r) { return r.text(); })
   .then(function(text) {
-    var res = Papa.parse(text, { header: true, skipEmptyLines: true, trimHeaders: true });
+    var res = Papa.parse(text, { header: true, skipEmptyLines: true, trimHeaders: true, delimiter: ";" });
     window.toolsData = res.data.filter(function(d) { return d.Recurso && d.Recurso.trim(); });
     populateSelects();
     render();
