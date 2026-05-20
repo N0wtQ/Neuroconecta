@@ -23,7 +23,7 @@
   .exit-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;min-height:44px}
   .exit-btn i{font-size:12px}
   .page-label{font-size:13px;color:var(--muted)}
-  main{max-width:500px;margin:0 auto;padding:80px 20px 60px}
+  main { max-width: 480px; margin: 0 auto; padding: 95px 20px 72px; }
   .hero{text-align:center;padding:32px 0 40px}
   .hero h1{font-size:24px;font-weight:400;line-height:1.35;margin-bottom:12px}
   .hero p{font-size:16px;color:var(--muted);line-height:1.5}
@@ -105,6 +105,20 @@
   <a href="index.html" class="page-label"><img src="logo-icon.png" alt="Neuroconecta" style="height:64px;width:auto;vertical-align:middle"></a>
 </div>
 <main>
+<div class="section">
+  <div class="st"><i class="fa-solid fa-phone-volume"></i> Apoyo inmediato</div>
+  <a href="tel:717003717" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
+    <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);font-size:20px;">
+      <i class="fa-solid fa-phone"></i>
+    </div>
+    <div>
+      <div class="qt">Teléfono de la Esperanza</div>
+      <div class="qsb">717 003 717 · Atención 24h · Gratuito</div>
+      <div class="qsb" style="margin-top:4px">Apoyo emocional en crisis, ansiedad o momento difícil</div>
+    </div>
+    <i class="fa-solid fa-chevron-right ql-arrow"></i>
+  </a>
+</div>
   <div class="section">
     <div class="st"><i class="fa-solid fa-shoe-prints"></i> Guía paso a paso</div>
     <div class="steps">
@@ -145,10 +159,20 @@
   </div>
   <div class="section">
     <div class="st"><i class="fa-solid fa-bolt"></i> Acceso rápido</div>
+    <a href="tel:717003717" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
+  <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);">
+    <i class="fa-solid fa-phone"></i>
+  </div>
+  <div>
+    <div class="qt">Teléfono de la Esperanza</div>
+    <div class="qsb">717 003 717 · 24h · Gratuito</div>
+  </div>
+  <i class="fa-solid fa-chevron-right ql-arrow"></i>
+</a>
     <a href="mapa-app.html" class="ql"><div class="qi m"><i class="fa-solid fa-location-dot"></i></div><div><div class="qt">Espacios silenciosos cerca</div><div class="qsb">Mapa de lugares tranquilos en España</div></div></a>
     <a href="herramientas.html" class="ql"><div class="qi t"><i class="fa-solid fa-toolbox"></i></div><div><div class="qt">Herramientas de regulación</div><div class="qsb">Apps y recursos para el día a día</div></div></a>
   </div>
-  <div class="cf"><p>Lo estás haciendo bien. Esto va a pasar.</p><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a></div>
+  <div class="cf"><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a></div>
 </main>
 <script>
 let currentStep=0;const steps=document.querySelectorAll('.step'),prevBtn=document.getElementById('prev-btn'),nextBtn=document.getElementById('next-btn');
