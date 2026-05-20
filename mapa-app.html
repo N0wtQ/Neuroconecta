@@ -372,53 +372,75 @@
     .email-selector-content { padding: 20px; }
     .email-buttons { grid-template-columns: 1fr; }
   }
+
+  /* ── Lang toggle ── */
+  .lang-toggle{display:flex;gap:2px;align-items:center;margin-left:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:3px}
+  .lang-btn{padding:4px 10px;border-radius:6px;border:none;background:transparent;color:rgba(255,255,255,.5);font-family:var(--font-body,'Inter',sans-serif);font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.03em;transition:all 150ms ease;min-width:32px}
+  .lang-btn.lang-active{background:rgba(255,255,255,.14);color:#fff}
+  .lang-btn:hover:not(.lang-active){color:#fff}
 </style>
+<script src="i18n.js"></script>
+<script>
+// Registrar ANTES de DOMContentLoaded — i18n.js lo llamará al arrancar
+function applyMapI18n(){
+  document.querySelectorAll('.chip-label[data-chip-key]').forEach(function(span){
+    span.textContent = i18n.t(span.getAttribute('data-chip-key'));
+  });
+  document.querySelectorAll('option[data-i18n]').forEach(function(opt){
+    opt.textContent = i18n.t(opt.getAttribute('data-i18n'));
+  });
+  var cl = document.getElementById('count-label-text');
+  if(cl) cl.textContent = i18n.t('map.count');
+  i18n.apply();
+}
+window.onLangChange = applyMapI18n;
+</script>
 </head>
 <body>
 
 <header id="header">
   <a href="index.html" class="logo"><img src="logo-icon.png" alt="Neuroconecta" class="logo-img"></a>
   <nav class="header-nav">
-    <a href="index.html">Inicio</a>
-    <a href="mapa-app.html" class="active">Mapa</a>
-    <a href="herramientas.html">Herramientas</a>
-    <a href="ayuda.html" class="cl" aria-label="Apoyo en crisis"><i class="fa-solid fa-heart-pulse"></i> Necesito ayuda</a>
+    <a href="index.html" data-i18n="nav.home">Inicio</a>
+    <a href="mapa-app.html" class="active" data-i18n="nav.map">Mapa</a>
+    <a href="herramientas.html" data-i18n="nav.tools">Herramientas</a>
+    <a href="ayuda.html" class="cl" aria-label="Apoyo en crisis"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="nav.help">Necesito ayuda</span></a>
   </nav>
 </header>
 
 <div id="toolbar">
   <div class="search-wrap">
     <svg class="search-ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input id="search-input" type="search" placeholder="Buscar lugar, ciudad…" oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')clearSearch()" autocomplete="off" spellcheck="false">
+    <input id="search-input" type="search" placeholder="Buscar lugar, ciudad…" data-i18n-ph="map.search.ph" oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')clearSearch()" autocomplete="off" spellcheck="false">
     <button id="search-clear" onclick="clearSearch()" aria-label="Limpiar">×</button>
   </div>
   <div class="tb-sep"></div>
-  <span class="tb-label">Filtrar</span>
-  <button class="chip active" data-cat="all"              onclick="ft('all')"><i class="fa-solid fa-map"></i> Todos</button>
-  <button class="chip"        data-cat="supermercado"     onclick="ft('supermercado')"><i class="fa-solid fa-cart-shopping"></i> Hora silenciosa</button>
-  <button class="chip"        data-cat="centro_comercial" onclick="ft('centro_comercial')"><i class="fa-solid fa-store"></i> C. Comercial</button>
-  <button class="chip"        data-cat="aeropuerto"       onclick="ft('aeropuerto')"><i class="fa-solid fa-plane"></i> Aeropuertos</button>
-  <button class="chip"        data-cat="sunflower"        onclick="ft('sunflower')"><i class="fa-solid fa-sun"></i> Discap. invisible</button>
-  <button class="chip"        data-cat="biblioteca"       onclick="ft('biblioteca')"><i class="fa-solid fa-book"></i> Bibliotecas</button>
-  <button class="chip"        data-cat="espacio_natural"  onclick="ft('espacio_natural')"><i class="fa-solid fa-leaf"></i> Naturaleza</button>
-  <button class="chip"        data-cat="cultura"          onclick="ft('cultura')"><i class="fa-solid fa-masks-theater"></i> Cultura</button>
-  <button class="chip"        data-cat="centro_civico"    onclick="ft('centro_civico')"><i class="fa-solid fa-landmark"></i> Cívico</button>
-  <button class="chip"        data-cat="hotel"            onclick="ft('hotel')"><i class="fa-solid fa-hotel"></i> Hoteles</button>
+  <span class="tb-label" data-i18n="map.filter.label">Filtrar</span>
+  <button class="chip active" data-cat="all"              onclick="ft('all')"><i class="fa-solid fa-map"></i> <span class="chip-label" data-chip-key="map.chip.all">Todos</span></button>
+  <button class="chip"        data-cat="supermercado"     onclick="ft('supermercado')"><i class="fa-solid fa-cart-shopping"></i> <span class="chip-label" data-chip-key="map.chip.super">Hora silenciosa</span></button>
+  <button class="chip"        data-cat="centro_comercial" onclick="ft('centro_comercial')"><i class="fa-solid fa-store"></i> <span class="chip-label" data-chip-key="map.chip.cc">C. Comercial</span></button>
+  <button class="chip"        data-cat="aeropuerto"       onclick="ft('aeropuerto')"><i class="fa-solid fa-plane"></i> <span class="chip-label" data-chip-key="map.chip.aero">Aeropuertos</span></button>
+  <button class="chip"        data-cat="sunflower"        onclick="ft('sunflower')"><i class="fa-solid fa-sun"></i> <span class="chip-label" data-chip-key="map.chip.sun">Discap. invisible</span></button>
+  <button class="chip"        data-cat="biblioteca"       onclick="ft('biblioteca')"><i class="fa-solid fa-book"></i> <span class="chip-label" data-chip-key="map.chip.bib">Bibliotecas</span></button>
+  <button class="chip"        data-cat="espacio_natural"  onclick="ft('espacio_natural')"><i class="fa-solid fa-leaf"></i> <span class="chip-label" data-chip-key="map.chip.nat">Naturaleza</span></button>
+  <button class="chip"        data-cat="cultura"          onclick="ft('cultura')"><i class="fa-solid fa-masks-theater"></i> <span class="chip-label" data-chip-key="map.chip.cult">Cultura</span></button>
+  <button class="chip"        data-cat="centro_civico"    onclick="ft('centro_civico')"><i class="fa-solid fa-landmark"></i> <span class="chip-label" data-chip-key="map.chip.civic">Cívico</span></button>
+  <button class="chip"        data-cat="hotel"            onclick="ft('hotel')"><i class="fa-solid fa-hotel"></i> <span class="chip-label" data-chip-key="map.chip.hotel">Hoteles</span></button>
   <div class="spacer"></div>
 </div>
 
 <div id="map-container">
   <div id="map"></div>
-  <div id="count-badge"><b id="count-num">–</b> lugares visibles</div>
+  <div id="count-badge"><b id="count-num">–</b> <span id="count-label-text" data-i18n="map.count">lugares visibles</span></div>
   <div id="legend">
-    <h4>Leyenda</h4>
-    <div class="leg-row"><span class="leg-dot" style="background:#0d9488"></span>Hora silenciosa / Alojamiento</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#7c3aed"></span>Aeropuerto</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#d97706"></span>Discapacidad invisible</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#b45309"></span>Biblioteca / Estudio</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#16a34a"></span>Espacio natural</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#dc2626"></span>Cultura / Restaurantes</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#2563eb"></span>Cívico / Servicios</div>
+    <h4 data-i18n="map.legend.title">Leyenda</h4>
+    <div class="leg-row"><span class="leg-dot" style="background:#0d9488"></span><span data-i18n="map.leg.quiet">Hora silenciosa / Alojamiento</span></div>
+    <div class="leg-row"><span class="leg-dot" style="background:#7c3aed"></span><span data-i18n="map.leg.aero">Aeropuerto</span></div>
+    <div class="leg-row"><span class="leg-dot" style="background:#d97706"></span><span data-i18n="map.leg.sun">Discapacidad invisible</span></div>
+    <div class="leg-row"><span class="leg-dot" style="background:#b45309"></span><span data-i18n="map.leg.bib">Biblioteca / Estudio</span></div>
+    <div class="leg-row"><span class="leg-dot" style="background:#16a34a"></span><span data-i18n="map.leg.nat">Espacio natural</span></div>
+    <div class="leg-row"><span class="leg-dot" style="background:#dc2626"></span><span data-i18n="map.leg.cult">Cultura / Restaurantes</span></div>
+    <div class="leg-row"><span class="leg-dot" style="background:#2563eb"></span><span data-i18n="map.leg.civic">Cívico / Servicios</span></div>
   </div>
 </div>
 
@@ -742,6 +764,8 @@ function openSuggest() {
   alert("Para sugerir un nuevo lugar necesitamos:\n\n• Nombre y dirección\n• Tipo (supermercado, biblioteca, espacio natural, aeropuerto…)\n• Descripción de la medida\n• URL de una fuente pública que lo confirme\n\nTodos los lugares se verifican antes de publicarse.\nEnvía la info a: atlasseek@proton.me");
 }
 render();
+// Traducir chips tras inicialización completa del mapa
+if(typeof applyMapI18n === "function") applyMapI18n();
 
 // Click en mapa para sugerir lugar (verifica que sea tierra con reverse geocoding)
 leafletMap.on('click', function(e) {
@@ -753,37 +777,37 @@ leafletMap.on('click', function(e) {
       if (!data.address || data.error) {
         L.popup().setLatLng(e.latlng).setContent(
           '<div style="font-family:var(--font-body);padding:4px;font-size:13px;color:#64748b">' +
-          '<i class="fa-solid fa-water" style="color:#3A82CA;margin-right:5px"></i>Esta zona es agua. Pulsa sobre tierra para sugerir un lugar.</div>'
+          '<i class="fa-solid fa-water" style="color:#3A82CA;margin-right:5px"></i>' + i18n.t('map.popup.water') + '</div>'
         ).openOn(leafletMap);
         return;
       }
       var lugar = data.display_name ? data.display_name.split(',').slice(0,3).join(',') : '';
       var html = '<div style="font-family:var(--font-body);max-width:280px">' +
-        '<div style="font-size:14px;font-weight:600;margin-bottom:8px"><i class="fa-solid fa-plus" style="color:#0d9488;margin-right:5px"></i>Sugerir un lugar aqu\u00ed</div>' +
+        '<div style="font-size:14px;font-weight:600;margin-bottom:8px"><i class="fa-solid fa-plus" style="color:#0d9488;margin-right:5px"></i>' + i18n.t('map.popup.suggest') + '</div>' +
         (lugar ? '<div style="font-size:11.5px;color:#0f172a;margin-bottom:4px">' + lugar + '</div>' : '') +
-        '<div style="font-size:11px;color:#64748b;margin-bottom:10px">Coordenadas: ' + lat + ', ' + lng + '</div>' +
+        '<div style="font-size:11px;color:#64748b;margin-bottom:10px">' + i18n.t('map.popup.coords') + ' ' + lat + ', ' + lng + '</div>' +
         '<div style="font-size:12.5px;color:#0f172a;line-height:1.5;margin-bottom:10px">' +
-        'Para a\u00f1adir este lugar, env\u00eda un email con:' +
+        i18n.t('map.popup.howto') +
         '<ul style="margin:6px 0 0 16px;padding:0">' +
-        '<li>Nombre del lugar</li>' +
-        '<li>Tipo (supermercado, biblioteca, etc.)</li>' +
-        '<li>Descripci\u00f3n de la medida de accesibilidad</li>' +
-        '<li>URL de una fuente p\u00fablica que lo confirme</li>' +
+        '<li>' + i18n.t('map.popup.li1') + '</li>' +
+        '<li>' + i18n.t('map.popup.li2') + '</li>' +
+        '<li>' + i18n.t('map.popup.li3') + '</li>' +
+        '<li>' + i18n.t('map.popup.li4') + '</li>' +
         '</ul></div>' +
         '<a href="#" onclick="openEmailSelector(' + lat + ',' + lng + ',\'' + lugar.replace(/'/g, "\\\'" ) + '\');return false;" ' +
         'style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:6px;background:#0d9488;color:#fff;text-decoration:none;font-size:12px;font-weight:600">' +
-        '<i class="fa-solid fa-envelope"></i> Enviar sugerencia</a>' +
+        '<i class="fa-solid fa-envelope"></i> ' + i18n.t('map.popup.send') + '</a>' +
         '</div>';
       L.popup().setLatLng(e.latlng).setContent(html).openOn(leafletMap);
     })
     .catch(function() {
       // Si falla la API, permitir igualmente
       var html = '<div style="font-family:var(--font-body);max-width:280px">' +
-        '<div style="font-size:14px;font-weight:600;margin-bottom:8px"><i class="fa-solid fa-plus" style="color:#0d9488;margin-right:5px"></i>Sugerir un lugar aqu\u00ed</div>' +
-        '<div style="font-size:11px;color:#64748b;margin-bottom:10px">Coordenadas: ' + lat + ', ' + lng + '</div>' +
+        '<div style="font-size:14px;font-weight:600;margin-bottom:8px"><i class="fa-solid fa-plus" style="color:#0d9488;margin-right:5px"></i>' + i18n.t('map.popup.suggest') + '</div>' +
+        '<div style="font-size:11px;color:#64748b;margin-bottom:10px">' + i18n.t('map.popup.coords') + ' ' + lat + ', ' + lng + '</div>' +
         '<a href="#" onclick="openEmailSelector(' + lat + ',' + lng + ',\'' + lugar.replace(/'/g, "\\\'" ) + '\');return false;" ' +
         'style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:6px;background:#0d9488;color:#fff;text-decoration:none;font-size:12px;font-weight:600">' +
-        '<i class="fa-solid fa-envelope"></i> Enviar sugerencia</a></div>';
+        '<i class="fa-solid fa-envelope"></i> ' + i18n.t('map.popup.send') + '</a></div>';
       L.popup().setLatLng(e.latlng).setContent(html).openOn(leafletMap);
     });
 });
@@ -798,44 +822,44 @@ document.addEventListener('click', function(e) {
 <!-- Email provider selector modal -->
 <div id="email-selector-modal">
   <div class="email-selector-content">
-    <h3><i class="fa-solid fa-envelope"></i> Sugerir un lugar</h3>
+    <h3><i class="fa-solid fa-envelope"></i> <span data-i18n="map.modal.title">Sugerir un lugar</span></h3>
     <form class="email-form" onsubmit="return false;">
       <div class="form-group">
-        <label for="form-name">Nombre del lugar *</label>
-        <input type="text" id="form-name" placeholder="Ej: Centro Comercial XYZ" required>
+        <label for="form-name" data-i18n="map.form.name">Nombre del lugar *</label>
+        <input type="text" id="form-name" placeholder="Ej: Centro Comercial XYZ" data-i18n-ph="map.form.name.ph" required>
       </div>
       
       <div class="form-group">
-        <label for="form-coords">Coordenadas</label>
+        <label for="form-coords" data-i18n="map.form.coords">Coordenadas</label>
         <input type="text" id="form-coords" readonly style="background:#f8fafc;">
       </div>
       
       <div class="form-group">
-        <label for="form-type">Tipo de lugar *</label>
+        <label for="form-type" data-i18n="map.form.type">Tipo de lugar *</label>
         <select id="form-type" required>
-          <option value="">-- Selecciona una opción --</option>
-          <option value="Supermercado - Hora silenciosa">Supermercado - Hora silenciosa</option>
-          <option value="Centro comercial - Zona silenciosa">Centro comercial - Zona silenciosa</option>
-          <option value="Biblioteca / Sala de estudio">Biblioteca / Sala de estudio</option>
-          <option value="Espacio natural - Lugar tranquilo">Espacio natural - Lugar tranquilo</option>
-          <option value="Aeropuerto - Sala sensorial">Aeropuerto - Sala sensorial</option>
-          <option value="Centro cívico - Accesibilidad">Centro cívico - Accesibilidad</option>
-          <option value="Cultura / Museo">Cultura / Museo</option>
-          <option value="Hotel - Discapacidad invisible">Hotel - Discapacidad invisible</option>
-          <option value="Restaurante - Ambiente tranquilo">Restaurante - Ambiente tranquilo</option>
-          <option value="Otro">Otro</option>
+          <option value="" data-i18n="map.form.type.ph">-- Selecciona una opción --</option>
+          <option value="Supermercado - Hora silenciosa" data-i18n="map.tipo.super">Supermercado - Hora silenciosa</option>
+          <option value="Centro comercial - Zona silenciosa" data-i18n="map.tipo.cc">Centro comercial - Zona silenciosa</option>
+          <option value="Biblioteca / Sala de estudio" data-i18n="map.tipo.bib">Biblioteca / Sala de estudio</option>
+          <option value="Espacio natural - Lugar tranquilo" data-i18n="map.tipo.nat">Espacio natural - Lugar tranquilo</option>
+          <option value="Aeropuerto - Sala sensorial" data-i18n="map.tipo.aero">Aeropuerto - Sala sensorial</option>
+          <option value="Centro cívico - Accesibilidad" data-i18n="map.tipo.civic">Centro cívico - Accesibilidad</option>
+          <option value="Cultura / Museo" data-i18n="map.tipo.cult">Cultura / Museo</option>
+          <option value="Hotel - Discapacidad invisible" data-i18n="map.tipo.hotel">Hotel - Discapacidad invisible</option>
+          <option value="Restaurante - Ambiente tranquilo" data-i18n="map.tipo.rest">Restaurante - Ambiente tranquilo</option>
+          <option value="Otro" data-i18n="map.tipo.otro">Otro</option>
         </select>
       </div>
       
       <div class="form-group">
-        <label for="form-description">Descripción del sitio y qué ofrece *</label>
-        <textarea id="form-description" placeholder="Ej: Tienen sala sensorial con luces tenues, sin sonido, muy silenciosa. Acceso preferente para discapacidad invisible." required></textarea>
+        <label for="form-description" data-i18n="map.form.desc">Descripción del sitio y qué ofrece *</label>
+        <textarea id="form-description" placeholder="Ej: Tienen sala sensorial…" data-i18n-ph="map.form.desc.ph" required></textarea>
       </div>
       
       <div class="form-group">
-        <label for="form-url">URL de fuente pública (opcional)</label>
+        <label for="form-url" data-i18n="map.form.url">URL de fuente pública (opcional)</label>
         <input type="url" id="form-url" placeholder="https://ejemplo.com">
-        <div class="form-hint">Link que verifique la información proporcionada</div>
+        <div class="form-hint" data-i18n="map.form.url.hint">Link que verifique la información proporcionada</div>
       </div>
       
       <div class="email-buttons">
@@ -847,3 +871,10 @@ document.addEventListener('click', function(e) {
     </form>
   </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  i18n.inject('.header-nav');
+});
+</script>
+</body>
+</html>
