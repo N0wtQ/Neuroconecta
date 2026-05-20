@@ -266,45 +266,52 @@
     nav .cl { padding: 5px 7px; font-size: 10px; }
     .pg h1 { font-size: 20px; }
   }
+
+  /* ── Lang toggle ── */
+  .lang-toggle{display:flex;gap:2px;align-items:center;margin-left:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:3px}
+  .lang-btn{padding:4px 10px;border-radius:6px;border:none;background:transparent;color:var(--muted);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.03em;transition:all .15s;min-width:32px}
+  .lang-btn.lang-active{background:rgba(255,255,255,.12);color:var(--text)}
+  .lang-btn:hover:not(.lang-active){color:var(--text)}
 </style>
+<script src="i18n.js"></script>
 </head>
 <body>
 <header class="site-header"><div class="hdr">
   <a href="index.html" class="logo"><img src="logo-icon.png" alt="Neuroconecta" class="logo-img"></a>
   <nav>
-    <a href="index.html">Inicio</a>
-    <a href="mapa-app.html">Mapa</a>
-    <a href="herramientas.html" class="active">Herramientas</a>
-    <a href="ayuda.html" class="cl" aria-label="Apoyo en crisis"><i class="fa-solid fa-heart-pulse"></i> Necesito ayuda</a>
+    <a href="index.html" data-i18n="nav.home">Inicio</a>
+    <a href="mapa-app.html" data-i18n="nav.map">Mapa</a>
+    <a href="herramientas.html" class="active" data-i18n="nav.tools">Herramientas</a>
+    <a href="ayuda.html" class="cl" aria-label="Apoyo en crisis"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="nav.help">Necesito ayuda</span></a>
   </nav>
 </div></header>
 
 <main>
   <div class="pg">
-    <h1><i class="fa-solid fa-toolbox" aria-hidden="true"></i>Herramientas</h1>
-    <p id="count-label">Cargando recursos…</p>
+    <h1><i class="fa-solid fa-toolbox" aria-hidden="true"></i><span data-i18n="tools.h1">Herramientas</span></h1>
+    <p id="count-label" data-i18n="tools.loading">Cargando recursos…</p>
   </div>
 
   <div class="filter-bar">
     <div class="search-box">
       <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <input type="search" id="f-search" placeholder="Buscar herramienta…" autocomplete="off" aria-label="Buscar herramienta" />
+      <input type="search" id="f-search" placeholder="Buscar herramienta…" data-i18n-ph="tools.search.ph" autocomplete="off" aria-label="Buscar herramienta" />
       <button class="search-clear" id="search-clear" aria-label="Limpiar búsqueda">&times;</button>
     </div>
     <div class="filter-select">
-      <label for="f-cat">Categoría</label>
+      <label for="f-cat" data-i18n="tools.lbl.cat">Categoría</label>
       <select id="f-cat"><option value="Todas">Todas</option></select>
     </div>
     <div class="filter-select">
-      <label for="f-precio">Precio</label>
+      <label for="f-precio" data-i18n="tools.lbl.price">Precio</label>
       <select id="f-precio"><option value="Todos">Todos</option></select>
     </div>
     <button class="filter-toggle" id="filter-toggle" aria-expanded="false" aria-controls="filter-advanced">
-      <i class="fa-solid fa-sliders" aria-hidden="true"></i> Más filtros
+      <i class="fa-solid fa-sliders" aria-hidden="true"></i> <span data-i18n="tools.filter.more">Más filtros</span>
     </button>
     <div class="filter-advanced" id="filter-advanced">
       <div class="filter-select">
-        <label for="f-perfil">Perfil ND</label>
+        <label for="f-perfil" data-i18n="tools.lbl.profile">Perfil ND</label>
         <select id="f-perfil"><option value="Todos">Todos</option></select>
       </div>
     </div>
@@ -452,7 +459,7 @@ function renderPage() {
   var visible = f.slice(0, showing);
 
   if (total === 0) {
-    g.innerHTML = '<p class="empty"><i class="fa-solid fa-filter-circle-xmark" aria-hidden="true"></i> No hay recursos con esos filtros.</p>';
+    g.innerHTML = '<p class="empty"><i class="fa-solid fa-filter-circle-xmark" aria-hidden="true"></i> '+i18n.t('tools.empty')+'</p>';
   } else {
     g.innerHTML = visible.map(renderCard).join("");
   }
@@ -460,12 +467,12 @@ function renderPage() {
   var wrap = document.getElementById("load-more-wrap");
   if (showing < total) {
     wrap.style.display = "";
-    document.getElementById("load-more-btn").textContent = "Cargar más (" + (total - showing) + " restantes)";
+    document.getElementById("load-more-btn").textContent = i18n.t("tools.load.remaining",{n:total-showing});
   } else {
     wrap.style.display = "none";
   }
 
-  document.getElementById("count-label").textContent = total + " de " + window.toolsData.length + " recursos digitales";
+  document.getElementById("count-label").textContent = i18n.t('tools.count',{n:total,total:window.toolsData.length});
 }
 
 function populateSelects() {
@@ -534,8 +541,15 @@ document.getElementById("filter-toggle").addEventListener("click", function() {
   var isOpen = adv.classList.toggle("open");
   this.setAttribute("aria-expanded", isOpen);
   this.innerHTML = isOpen
-    ? '<i class="fa-solid fa-sliders" aria-hidden="true"></i> Menos filtros'
-    : '<i class="fa-solid fa-sliders" aria-hidden="true"></i> Más filtros';
+    ? '<i class="fa-solid fa-sliders" aria-hidden="true"></i> '+i18n.t('tools.filter.less')
+    : '<i class="fa-solid fa-sliders" aria-hidden="true"></i> '+i18n.t('tools.filter.more');
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  i18n.inject('nav');
+  window.onLangChange = function(){ render(); };
 });
 </script>
 </body>
