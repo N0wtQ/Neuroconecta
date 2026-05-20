@@ -36,6 +36,8 @@
       "footer":             "Neuroconecta · Hecho con cuidado para personas neurodivergentes",
 
       // ── AYUDA ──
+      "ayuda.hero.h1":    "Estás a salvo.<br>Esto va a pasar.",
+      "ayuda.hero.p":     "Vamos paso a paso. Sin prisa.",
       "ayuda.exit":       "Salir",
       "ayuda.st.phone":   "Apoyo inmediato",
       "ayuda.phone.name": "Teléfono de la Esperanza",
@@ -166,6 +168,9 @@
       "map.tipo.hotel":     "Hotel - Discapacidad invisible",
       "map.tipo.rest":      "Restaurante - Ambiente tranquilo",
       "map.tipo.otro":      "Otro",
+      "map.chip.rest":     "Sin ruido",
+      "map.leg.rest":       "Restaurante silencioso",
+      "map.tipo.rest_sil":  "Restaurante - Sin ruido",
     },
 
     en: {
@@ -203,6 +208,8 @@
       "footer":             "Neuroconecta · Made with care for neurodivergent people",
 
       // ── AYUDA ──
+      "ayuda.hero.h1":    "You are safe.<br>This will pass.",
+      "ayuda.hero.p":     "One step at a time. No rush.",
       "ayuda.exit":       "Exit",
       "ayuda.st.phone":   "Immediate support",
       "ayuda.phone.name": "Teléfono de la Esperanza",
@@ -333,6 +340,9 @@
       "map.tipo.hotel":     "Hotel - Hidden disability",
       "map.tipo.rest":      "Restaurant - Quiet atmosphere",
       "map.tipo.otro":      "Other",
+      "map.chip.rest":     "Noise-free",
+      "map.leg.rest":       "Noise-free restaurant",
+      "map.tipo.rest_sil":  "Restaurant - Noise-free",
     }
   };
 
