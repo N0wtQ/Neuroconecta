@@ -285,6 +285,95 @@
     #btn-suggest { display: none; }
     .leaflet-popup-content-wrapper { min-width: 200px; max-width: 260px; }
   }
+  /* Email selector modal */
+  #email-selector-modal {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center;
+    z-index: 10000;
+  }
+  #email-selector-modal.show { display: flex; }
+  .email-selector-content {
+    background: white; border-radius: 12px; padding: 32px; max-width: 400px; width: 90%;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .email-selector-content h3 {
+    font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #0f172a;
+  }
+  .email-selector-content p {
+    font-size: 14px; color: #64748b; margin-bottom: 24px;
+  }
+  .email-options {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .email-option {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+    transition: all 150ms ease; text-decoration: none; color: inherit;
+  }
+  .email-option:hover {
+    background: #f8fafc; border-color: #cbd5e1; transform: translateX(4px);
+  }
+  .email-option i {
+    font-size: 20px; width: 24px; text-align: center;
+  }
+  .email-option span {
+    font-weight: 500; font-size: 14px;
+  }
+  .email-option.gmail i { color: #EA4335; }
+  .email-option.hotmail i { color: #0078D4; }
+  .email-option.protonmail i { color: #6C47FF; }
+  /* Form styles */
+  .email-form {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .form-group {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .form-group label {
+    font-size: 12px; font-weight: 600; color: #0f172a; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px; border: 1.5px solid #e2e8f0; border-radius: 8px;
+    font-family: var(--font-body); font-size: 14px; color: #0f172a;
+    transition: border-color 150ms ease;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none; border-color: #0d9488; box-shadow: 0 0 0 2px rgba(13,148,136,0.1);
+  }
+  .form-group textarea {
+    resize: vertical; min-height: 80px; font-size: 13px;
+  }
+  .form-group .form-hint {
+    font-size: 11px; color: #64748b; font-weight: 400;
+  }
+  .email-buttons {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e2e8f0;
+  }
+  .email-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px;
+    border: 1.5px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer;
+    transition: all 150ms ease; text-decoration: none; color: #0f172a;
+  }
+  .email-btn:hover {
+    border-color: #cbd5e1; background: #f8fafc;
+  }
+  .email-btn i {
+    font-size: 18px;
+  }
+  .email-btn span {
+    font-size: 11px; font-weight: 600;
+  }
+  .email-btn.gmail i { color: #EA4335; }
+  .email-btn.hotmail i { color: #0078D4; }
+  .email-btn.protonmail i { color: #6C47FF; }
+  @media(max-width: 500px) {
+    .email-selector-content { padding: 20px; }
+    .email-buttons { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -295,7 +384,7 @@
     <a href="index.html">Inicio</a>
     <a href="mapa-app.html" class="active">Mapa</a>
     <a href="herramientas.html">Herramientas</a>
-    <a href="saturado.html" class="cl" aria-label="Apoyo en crisis"><i class="fa-solid fa-heart-pulse"></i> Necesito ayuda</a>
+    <a href="ayuda.html" class="cl" aria-label="Apoyo en crisis"><i class="fa-solid fa-heart-pulse"></i> Necesito ayuda</a>
   </nav>
 </header>
 
@@ -318,7 +407,6 @@
   <button class="chip"        data-cat="centro_civico"    onclick="ft('centro_civico')"><i class="fa-solid fa-landmark"></i> Cívico</button>
   <button class="chip"        data-cat="hotel"            onclick="ft('hotel')"><i class="fa-solid fa-hotel"></i> Hoteles</button>
   <div class="spacer"></div>
-  <a id="btn-suggest" href="#" onclick="openSuggest();return false;">+ Sugerir lugar</a>
 </div>
 
 <div id="map-container">
@@ -341,6 +429,54 @@ const TIPO_FA={supermercado:"fa-cart-shopping",biblioteca:"fa-book",sala_estudio
 const TIPO_LABEL={supermercado:"Hora silenciosa",biblioteca:"Biblioteca / Estudio",sala_estudio:"Sala de estudio",espacio_natural:"Espacio natural",centro_civico:"Centro cívico",centro_comercial:"Centro comercial",aeropuerto:"Aeropuerto",sunflower:"Discapacidad invisible",cultura:"Cultura",museo:"Museo",hotel:"Hotel",coworking:"Coworking",otro:"Otro"};
 const ic = t => `<i class="fa-solid ${TIPO_FA[t]||'fa-location-dot'}"></i>`;
 const lb = t => TIPO_LABEL[t] || t;
+
+// Email selector function
+function openEmailSelector(lat, lng, lugar) {
+  window.emailData = { lat, lng, lugar };
+  document.getElementById('form-name').value = lugar;
+  document.getElementById('form-coords').value = `${lat}, ${lng}`;
+  document.getElementById('form-type').value = '';
+  document.getElementById('form-description').value = '';
+  document.getElementById('form-url').value = '';
+  document.getElementById('email-selector-modal').classList.add('show');
+}
+
+function closeEmailSelector() {
+  document.getElementById('email-selector-modal').classList.remove('show');
+}
+
+function sendWithEmail(provider) {
+  const name = document.getElementById('form-name').value || 'Sin especificar';
+  const coords = document.getElementById('form-coords').value;
+  const type = document.getElementById('form-type').value || 'No especificado';
+  const description = document.getElementById('form-description').value || 'Sin descripción';
+  const url = document.getElementById('form-url').value || 'No proporcionada';
+  
+  const body = `Sugerencia de nuevo lugar para Neuroconecta\n\n` +
+    `NOMBRE DEL LUGAR:\n${name}\n\n` +
+    `COORDENADAS:\n${coords}\n\n` +
+    `TIPO DE LUGAR:\n${type}\n\n` +
+    `DESCRIPCIÓN DEL SITIO Y QUÉ OFRECE:\n${description}\n\n` +
+    `URL DE FUENTE PÚBLICA:\n${url}\n\n` +
+    `---\nEnviado desde Neuroconecta`;
+  
+  const subject = 'Sugerencia%20Neuroconecta';
+  const bodyEncoded = encodeURIComponent(body);
+  let mailto = '';
+  
+  if (provider === 'gmail') {
+    mailto = `https://mail.google.com/mail/?view=cm&fs=1&su=${subject}&body=${bodyEncoded}&to=atlasseek@proton.me`;
+    window.open(mailto, '_blank');
+  } else if (provider === 'hotmail') {
+    mailto = `https://outlook.live.com/mail/0/compose?to=atlasseek@proton.me&subject=${subject}&body=${bodyEncoded}`;
+    window.open(mailto, '_blank');
+  } else if (provider === 'protonmail') {
+    mailto = `mailto:atlasseek@proton.me?subject=${subject}&body=${bodyEncoded}`;
+    window.location.href = mailto;
+  }
+  
+  closeEmailSelector();
+}
 
 function mkMarker(tipo) {
   return L.divIcon({ className:"", iconSize:[32,38], iconAnchor:[16,38], popupAnchor:[0,-40],
@@ -642,7 +778,7 @@ leafletMap.on('click', function(e) {
         '<li>Descripci\u00f3n de la medida de accesibilidad</li>' +
         '<li>URL de una fuente p\u00fablica que lo confirme</li>' +
         '</ul></div>' +
-        '<a href="mailto:atlasseek@proton.me?subject=Sugerencia%20Neuroconecta&body=Coordenadas:%20' + lat + ',%20' + lng + '%0AZona:%20' + encodeURIComponent(lugar) + '%0ANombre:%20%0ATipo:%20%0ADescripci%C3%B3n:%20%0AFuente%20URL:%20" ' +
+        '<a href="#" onclick="openEmailSelector(' + lat + ',' + lng + ',\'' + lugar.replace(/'/g, "\\\'" ) + '\');return false;" ' +
         'style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:6px;background:#0d9488;color:#fff;text-decoration:none;font-size:12px;font-weight:600">' +
         '<i class="fa-solid fa-envelope"></i> Enviar sugerencia</a>' +
         '</div>';
@@ -653,10 +789,76 @@ leafletMap.on('click', function(e) {
       var html = '<div style="font-family:var(--font-body);max-width:280px">' +
         '<div style="font-size:14px;font-weight:600;margin-bottom:8px"><i class="fa-solid fa-plus" style="color:#0d9488;margin-right:5px"></i>Sugerir un lugar aqu\u00ed</div>' +
         '<div style="font-size:11px;color:#64748b;margin-bottom:10px">Coordenadas: ' + lat + ', ' + lng + '</div>' +
-        '<a href="mailto:atlasseek@proton.me?subject=Sugerencia%20Neuroconecta&body=Coordenadas:%20' + lat + ',%20' + lng + '%0ANombre:%20%0ATipo:%20%0ADescripci%C3%B3n:%20%0AFuente%20URL:%20" ' +
+        '<a href="#" onclick="openEmailSelector(' + lat + ',' + lng + ',\'' + lugar.replace(/'/g, "\\\'" ) + '\');return false;" ' +
         'style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:6px;background:#0d9488;color:#fff;text-decoration:none;font-size:12px;font-weight:600">' +
         '<i class="fa-solid fa-envelope"></i> Enviar sugerencia</a></div>';
       L.popup().setLatLng(e.latlng).setContent(html).openOn(leafletMap);
     });
 });
+
+// Close modal when clicking outside
+document.getElementById('email-selector-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeEmailSelector();
+});
 </script>
+
+<!-- Email provider selector modal -->
+<div id="email-selector-modal">
+  <div class="email-selector-content">
+    <h3><i class="fa-solid fa-envelope"></i> Sugerir un lugar</h3>
+    <form class="email-form" onsubmit="return false;">
+      <div class="form-group">
+        <label for="form-name">Nombre del lugar *</label>
+        <input type="text" id="form-name" placeholder="Ej: Centro Comercial XYZ" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="form-coords">Coordenadas</label>
+        <input type="text" id="form-coords" readonly style="background:#f8fafc;">
+      </div>
+      
+      <div class="form-group">
+        <label for="form-type">Tipo de lugar *</label>
+        <select id="form-type" required>
+          <option value="">-- Selecciona una opción --</option>
+          <option value="Supermercado - Hora silenciosa">Supermercado - Hora silenciosa</option>
+          <option value="Centro comercial - Zona silenciosa">Centro comercial - Zona silenciosa</option>
+          <option value="Biblioteca / Sala de estudio">Biblioteca / Sala de estudio</option>
+          <option value="Espacio natural - Lugar tranquilo">Espacio natural - Lugar tranquilo</option>
+          <option value="Aeropuerto - Sala sensorial">Aeropuerto - Sala sensorial</option>
+          <option value="Centro cívico - Accesibilidad">Centro cívico - Accesibilidad</option>
+          <option value="Cultura / Museo">Cultura / Museo</option>
+          <option value="Hotel - Discapacidad invisible">Hotel - Discapacidad invisible</option>
+          <option value="Restaurante - Ambiente tranquilo">Restaurante - Ambiente tranquilo</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="form-description">Descripción del sitio y qué ofrece *</label>
+        <textarea id="form-description" placeholder="Ej: Tienen sala sensorial con luces tenues, sin sonido, muy silenciosa. Acceso preferente para discapacidad invisible." required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="form-url">URL de fuente pública (opcional)</label>
+        <input type="url" id="form-url" placeholder="https://ejemplo.com">
+        <div class="form-hint">Link que verifique la información proporcionada</div>
+      </div>
+      
+      <div class="email-buttons">
+        <button type="button" class="email-btn gmail" onclick="sendWithEmail('gmail')" title="Enviar con Gmail">
+          <i class="fa-brands fa-google"></i>
+          <span>Gmail</span>
+        </button>
+        <button type="button" class="email-btn hotmail" onclick="sendWithEmail('hotmail')" title="Enviar con Outlook">
+          <i class="fa-brands fa-windows"></i>
+          <span>Outlook</span>
+        </button>
+        <button type="button" class="email-btn protonmail" onclick="sendWithEmail('protonmail')" title="Enviar con ProtonMail">
+          <i class="fa-solid fa-shield"></i>
+          <span>ProtonMail</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
