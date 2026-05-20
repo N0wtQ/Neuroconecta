@@ -97,89 +97,179 @@
     .gt{font-size:13px}
     .ci{padding:10px 12px;min-height:44px;font-size:13px}
   }
+
+  /* ── Lang toggle ── */
+  .lang-toggle{display:flex;gap:2px;align-items:center;margin-left:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:3px}
+  .lang-btn{padding:4px 10px;border-radius:6px;border:none;background:transparent;color:var(--muted);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.03em;transition:all .15s;min-width:32px}
+  .lang-btn.lang-active{background:rgba(255,255,255,.12);color:var(--text)}
+  .lang-btn:hover:not(.lang-active){color:var(--text)}
 </style>
+<script src="i18n.js"></script>
 </head>
 <body>
 <div class="exit-bar">
-  <a href="index.html" class="exit-btn"><i class="fa-solid fa-arrow-left"></i> Salir</a>
+  <a href="index.html" class="exit-btn"><i class="fa-solid fa-arrow-left"></i><span data-i18n="ayuda.exit">Salir</span></a>
   <a href="index.html" class="page-label"><img src="logo-icon.png" alt="Neuroconecta" style="height:64px;width:auto;vertical-align:middle"></a>
 </div>
 <main>
 <div class="section">
-  <div class="st"><i class="fa-solid fa-phone-volume"></i> Apoyo inmediato</div>
-  <a href="tel:717003717" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
-    <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);font-size:20px;">
-      <i class="fa-solid fa-phone"></i>
-    </div>
-    <div>
-      <div class="qt">Teléfono de la Esperanza</div>
-      <div class="qsb">717 003 717 · Atención 24h · Gratuito</div>
-      <div class="qsb" style="margin-top:4px">Apoyo emocional en crisis, ansiedad o momento difícil</div>
-    </div>
-    <i class="fa-solid fa-chevron-right ql-arrow"></i>
-  </a>
+  <div class="st"><i class="fa-solid fa-phone-volume"></i><span data-i18n="ayuda.st.phone">Apoyo inmediato</span></div>
+  <div id="phone-block-es">
+    <a href="tel:717003717" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
+      <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);font-size:20px;">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <div>
+        <div class="qt" data-i18n="ayuda.phone.name">Teléfono de la Esperanza</div>
+        <div class="qsb" data-i18n="ayuda.phone.sub">717 003 717 · Atención 24h · Gratuito</div>
+        <div class="qsb" style="margin-top:4px" data-i18n="ayuda.phone.desc">Apoyo emocional en crisis, ansiedad o momento difícil</div>
+      </div>
+      <i class="fa-solid fa-chevron-right ql-arrow"></i>
+    </a>
+  </div>
+  <div id="phone-block-en" style="display:none">
+    <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
+      <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);font-size:20px;">
+        <i class="fa-solid fa-earth-europe"></i>
+      </div>
+      <div>
+        <div class="qt">Find a Helpline</div>
+        <div class="qsb">findahelpline.com · Free · International</div>
+        <div class="qsb" style="margin-top:4px">Crisis lines in your country — detected automatically</div>
+      </div>
+      <i class="fa-solid fa-chevron-right ql-arrow"></i>
+    </a>
+  </div>
 </div>
   <div class="section">
-    <div class="st"><i class="fa-solid fa-shoe-prints"></i> Guía paso a paso</div>
+    <div class="st"><i class="fa-solid fa-shoe-prints"></i><span data-i18n="ayuda.st.steps">Guía paso a paso</span></div>
     <div class="steps">
-      <div class="step active" data-step="0"><div class="step-ico"><i class="fa-solid fa-hand"></i></div><div class="step-txt">Detente un momento</div><div class="step-det">No tienes que hacer nada ahora mismo. Solo para.</div><div class="step-c">1 de 7</div></div>
-      <div class="step" data-step="1"><div class="step-ico"><i class="fa-solid fa-wind"></i></div><div class="step-txt">Respira lentamente</div><div class="step-det">Inspira 4 segundos. Mantén 4 segundos. Suelta 4 segundos.</div><div class="step-c">2 de 7</div></div>
-      <div class="step" data-step="2"><div class="step-ico"><i class="fa-solid fa-volume-xmark"></i></div><div class="step-txt">Reduce ruido y luz</div><div class="step-det">Baja el brillo de la pantalla. Si puedes, apaga luces fuertes o aléjate del ruido.</div><div class="step-c">3 de 7</div></div>
-      <div class="step" data-step="3"><div class="step-ico"><i class="fa-solid fa-droplet"></i></div><div class="step-txt">Bebe agua</div><div class="step-det">Un trago pequeño. Nota cómo se siente el agua.</div><div class="step-c">4 de 7</div></div>
-      <div class="step" data-step="4"><div class="step-ico"><i class="fa-solid fa-house-chimney"></i></div><div class="step-txt">Busca un lugar tranquilo</div><div class="step-det">Un rincón, una habitación, tu coche. Un espacio donde te sientas seguro.</div><div class="step-c">5 de 7</div></div>
-      <div class="step" data-step="5"><div class="step-ico"><i class="fa-solid fa-headphones"></i></div><div class="step-txt">Usa protección sensorial</div><div class="step-det">Auriculares, tapones, capucha, gafas de sol. Lo que tengas a mano.</div><div class="step-c">6 de 7</div></div>
-      <div class="step" data-step="6"><div class="step-ico"><i class="fa-solid fa-phone"></i></div><div class="step-txt">Contacta con alguien seguro</div><div class="step-det">Si lo necesitas, escribe o llama a alguien de confianza. No tienes que explicar mucho.</div><div class="step-c">7 de 7</div></div>
+      <div class="step active" data-step="0"><div class="step-ico"><i class="fa-solid fa-hand"></i></div><div class="step-txt" data-i18n="ayuda.step0.txt">Detente un momento</div><div class="step-det" data-i18n="ayuda.step0.det">No tienes que hacer nada ahora mismo. Solo para.</div><div class="step-c" data-i18n="ayuda.step0.c">1 de 7</div></div>
+      <div class="step" data-step="1"><div class="step-ico"><i class="fa-solid fa-wind"></i></div><div class="step-txt" data-i18n="ayuda.step1.txt">Respira lentamente</div><div class="step-det" data-i18n="ayuda.step1.det">Inspira 4 segundos. Mantén 4 segundos. Suelta 4 segundos.</div><div class="step-c" data-i18n="ayuda.step1.c">2 de 7</div></div>
+      <div class="step" data-step="2"><div class="step-ico"><i class="fa-solid fa-volume-xmark"></i></div><div class="step-txt" data-i18n="ayuda.step2.txt">Reduce ruido y luz</div><div class="step-det" data-i18n="ayuda.step2.det">Baja el brillo de la pantalla. Si puedes, apaga luces fuertes o aléjate del ruido.</div><div class="step-c" data-i18n="ayuda.step2.c">3 de 7</div></div>
+      <div class="step" data-step="3"><div class="step-ico"><i class="fa-solid fa-droplet"></i></div><div class="step-txt" data-i18n="ayuda.step3.txt">Bebe agua</div><div class="step-det" data-i18n="ayuda.step3.det">Un trago pequeño. Nota cómo se siente el agua.</div><div class="step-c" data-i18n="ayuda.step3.c">4 de 7</div></div>
+      <div class="step" data-step="4"><div class="step-ico"><i class="fa-solid fa-house-chimney"></i></div><div class="step-txt" data-i18n="ayuda.step4.txt">Busca un lugar tranquilo</div><div class="step-det" data-i18n="ayuda.step4.det">Un rincón, una habitación, tu coche. Un espacio donde te sientas seguro.</div><div class="step-c" data-i18n="ayuda.step4.c">5 de 7</div></div>
+      <div class="step" data-step="5"><div class="step-ico"><i class="fa-solid fa-headphones"></i></div><div class="step-txt" data-i18n="ayuda.step5.txt">Usa protección sensorial</div><div class="step-det" data-i18n="ayuda.step5.det">Auriculares, tapones, capucha, gafas de sol. Lo que tengas a mano.</div><div class="step-c" data-i18n="ayuda.step5.c">6 de 7</div></div>
+      <div class="step" data-step="6"><div class="step-ico"><i class="fa-solid fa-phone"></i></div><div class="step-txt" data-i18n="ayuda.step6.txt">Contacta con alguien seguro</div><div class="step-det" data-i18n="ayuda.step6.det">Si lo necesitas, escribe o llama a alguien de confianza. No tienes que explicar mucho.</div><div class="step-c" data-i18n="ayuda.step6.c">7 de 7</div></div>
       <div class="snav"><button id="prev-btn" disabled onclick="stepNav(-1)"><i class="fa-solid fa-chevron-left"></i> Anterior</button><button id="next-btn" onclick="stepNav(1)">Siguiente <i class="fa-solid fa-chevron-right"></i></button></div>
     </div>
   </div>
   <div class="section">
-    <div class="st"><i class="fa-solid fa-lungs"></i> Respiración guiada</div>
-    <div class="bb" id="breath-box"><div class="bv"><div class="bc" id="breath-circle"></div></div><div class="bl" id="breath-label">Respira con el círculo</div><div class="bs">4 segundos inspira · 4 mantén · 4 suelta</div><button class="bbtn" id="breath-btn" onclick="toggleBreath()"><i class="fa-solid fa-play"></i> Empezar</button></div>
+    <div class="st"><i class="fa-solid fa-lungs"></i><span data-i18n="ayuda.st.breath">Respiración guiada</span></div>
+    <div class="bb" id="breath-box"><div class="bv"><div class="bc" id="breath-circle"></div></div><div class="bl" id="breath-label" data-i18n="ayuda.breath.lbl">Respira con el círculo</div><div class="bs" data-i18n="ayuda.breath.sub">4 segundos inspira · 4 mantén · 4 suelta</div><button class="bbtn" id="breath-btn" onclick="toggleBreath()"><i class="fa-solid fa-play"></i> Empezar</button></div>
   </div>
   <div class="section">
-    <div class="st"><i class="fa-solid fa-anchor"></i> Grounding · 5-4-3-2-1</div>
+    <div class="st"><i class="fa-solid fa-anchor"></i><span data-i18n="ayuda.st.ground">Grounding · 5-4-3-2-1</span></div>
     <div class="gb">
-      <div class="gi"><div class="gn">5</div><div class="gt">Cosas que puedes <strong>ver</strong><em>Mira a tu alrededor despacio</em></div></div>
-      <div class="gi"><div class="gn">4</div><div class="gt">Cosas que puedes <strong>tocar</strong><em>Nota la textura con tus manos</em></div></div>
-      <div class="gi"><div class="gn">3</div><div class="gt">Cosas que puedes <strong>oír</strong><em>Escucha los sonidos más suaves</em></div></div>
-      <div class="gi"><div class="gn">2</div><div class="gt">Cosas que puedes <strong>oler</strong><em>Tu ropa, el aire, algo cercano</em></div></div>
-      <div class="gi"><div class="gn">1</div><div class="gt">Cosa que puedes <strong>saborear</strong><em>Un trago de agua, el sabor en tu boca</em></div></div>
+      <div class="gi"><div class="gn">5</div><div class="gt" data-i18n-html="ayuda.g5.txt">Cosas que puedes <strong>ver</strong><em data-i18n-html="ayuda.g5.sub">Mira a tu alrededor despacio</em></div></div>
+      <div class="gi"><div class="gn">4</div><div class="gt" data-i18n-html="ayuda.g4.txt">Cosas que puedes <strong>tocar</strong><em data-i18n-html="ayuda.g4.sub">Nota la textura con tus manos</em></div></div>
+      <div class="gi"><div class="gn">3</div><div class="gt" data-i18n-html="ayuda.g3.txt">Cosas que puedes <strong>oír</strong><em data-i18n-html="ayuda.g3.sub">Escucha los sonidos más suaves</em></div></div>
+      <div class="gi"><div class="gn">2</div><div class="gt" data-i18n-html="ayuda.g2.txt">Cosas que puedes <strong>oler</strong><em data-i18n-html="ayuda.g2.sub">Tu ropa, el aire, algo cercano</em></div></div>
+      <div class="gi"><div class="gn">1</div><div class="gt" data-i18n-html="ayuda.g1.txt">Cosa que puedes <strong>saborear</strong><em data-i18n-html="ayuda.g1.sub">Un trago de agua, el sabor en tu boca</em></div></div>
     </div>
   </div>
   <div class="section">
-    <div class="st"><i class="fa-solid fa-list-check"></i> Checklist rápido</div>
+    <div class="st"><i class="fa-solid fa-list-check"></i><span data-i18n="ayuda.st.check">Checklist rápido</span></div>
     <ul class="cl">
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He parado lo que estaba haciendo</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He respirado varias veces despacio</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He reducido estímulos (luz, sonido)</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He bebido agua</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>Estoy en un lugar seguro</span></li>
-      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span>He avisado a alguien si lo necesitaba</span></li>
+      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span data-i18n="ayuda.chk1">He parado lo que estaba haciendo</span></li>
+      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span data-i18n="ayuda.chk2">He respirado varias veces despacio</span></li>
+      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span data-i18n="ayuda.chk3">He reducido estímulos (luz, sonido)</span></li>
+      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span data-i18n="ayuda.chk4">He bebido agua</span></li>
+      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span data-i18n="ayuda.chk5">Estoy en un lugar seguro</span></li>
+      <li class="ci" onclick="toggleCheck(this)"><div class="cb"><i class="fa-solid fa-check"></i></div><span data-i18n="ayuda.chk6">He avisado a alguien si lo necesitaba</span></li>
     </ul>
   </div>
   <div class="section">
-    <div class="st"><i class="fa-solid fa-bolt"></i> Acceso rápido</div>
-    <a href="tel:717003717" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
-  <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);">
-    <i class="fa-solid fa-phone"></i>
+    <div class="st"><i class="fa-solid fa-bolt"></i><span data-i18n="ayuda.st.quick">Acceso rápido</span></div>
+    <div id="quick-phone-es">
+      <a href="tel:717003717" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
+        <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div>
+          <div class="qt" data-i18n="ayuda.phone.name">Teléfono de la Esperanza</div>
+          <div class="qsb" data-i18n="ayuda.phone.sub">717 003 717 · 24h · Gratuito</div>
+        </div>
+        <i class="fa-solid fa-chevron-right ql-arrow"></i>
+      </a>
+    </div>
+    <div id="quick-phone-en" style="display:none">
+      <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer" class="ql" style="border-color:rgba(229,123,134,.2);background:rgba(229,123,134,.04);">
+        <div class="qi" style="background:rgba(229,123,134,.12);color:#E57B86;border:1px solid rgba(229,123,134,.2);">
+          <i class="fa-solid fa-earth-europe"></i>
+        </div>
+        <div>
+          <div class="qt">Find a Helpline</div>
+          <div class="qsb">findahelpline.com · Free · International</div>
+        </div>
+        <i class="fa-solid fa-chevron-right ql-arrow"></i>
+      </a>
+    </div>
+    <a href="mapa-app.html" class="ql"><div class="qi m"><i class="fa-solid fa-location-dot"></i></div><div><div class="qt" data-i18n="ayuda.quick.map">Espacios silenciosos cerca</div><div class="qsb" data-i18n="ayuda.quick.map.sub">Mapa de lugares tranquilos en España</div></div></a>
+    <a href="herramientas.html" class="ql"><div class="qi t"><i class="fa-solid fa-toolbox"></i></div><div><div class="qt" data-i18n="ayuda.quick.tools">Herramientas de regulación</div><div class="qsb" data-i18n="ayuda.quick.tools.sub">Apps y recursos para el día a día</div></div></a>
   </div>
-  <div>
-    <div class="qt">Teléfono de la Esperanza</div>
-    <div class="qsb">717 003 717 · 24h · Gratuito</div>
-  </div>
-  <i class="fa-solid fa-chevron-right ql-arrow"></i>
-</a>
-    <a href="mapa-app.html" class="ql"><div class="qi m"><i class="fa-solid fa-location-dot"></i></div><div><div class="qt">Espacios silenciosos cerca</div><div class="qsb">Mapa de lugares tranquilos en España</div></div></a>
-    <a href="herramientas.html" class="ql"><div class="qi t"><i class="fa-solid fa-toolbox"></i></div><div><div class="qt">Herramientas de regulación</div><div class="qsb">Apps y recursos para el día a día</div></div></a>
-  </div>
-  <div class="cf"><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a></div>
+  <div class="cf"><a href="index.html"><i class="fa-solid fa-arrow-left"></i><span data-i18n="ayuda.back">Volver al inicio</span></a></div>
 </main>
 <script>
 let currentStep=0;const steps=document.querySelectorAll('.step'),prevBtn=document.getElementById('prev-btn'),nextBtn=document.getElementById('next-btn');
 function stepNav(d){steps[currentStep].classList.remove('active');currentStep+=d;steps[currentStep].classList.add('active');prevBtn.disabled=currentStep===0;nextBtn.disabled=currentStep===steps.length-1;nextBtn.innerHTML=currentStep===steps.length-1?'Último paso':'Siguiente <i class="fa-solid fa-chevron-right"></i>'}
-let breathing=false,breathInterval=null;const breathPhases=['Inspira…','Mantén…','Suelta…','Mantén…'];let breathPhase=0;
-function toggleBreath(){const box=document.getElementById('breath-box'),btn=document.getElementById('breath-btn'),label=document.getElementById('breath-label');if(breathing){breathing=false;box.classList.remove('breath-active');clearInterval(breathInterval);btn.innerHTML='<i class="fa-solid fa-play"></i> Empezar';label.textContent='Respira con el círculo'}else{breathing=true;box.classList.add('breath-active');breathPhase=0;label.textContent=breathPhases[0];btn.innerHTML='<i class="fa-solid fa-pause"></i> Parar';breathInterval=setInterval(function(){breathPhase=(breathPhase+1)%4;label.textContent=breathPhases[breathPhase]},2000)}}
+let breathing=false,breathInterval=null;const breathPhases=window._breathPhases||['Inspira…','Mantén…','Suelta…','Mantén…'];let breathPhase=0;
+function toggleBreath(){const box=document.getElementById('breath-box'),btn=document.getElementById('breath-btn'),label=document.getElementById('breath-label');if(breathing){breathing=false;box.classList.remove('breath-active');clearInterval(breathInterval);btn.innerHTML='<i class="fa-solid fa-play"></i> '+i18n.t('ayuda.breath.start');label.textContent=i18n.t('ayuda.breath.lbl')}else{breathing=true;box.classList.add('breath-active');breathPhase=0;label.textContent=breathPhases[0];btn.innerHTML='<i class="fa-solid fa-pause"></i> '+i18n.t('ayuda.breath.stop');breathInterval=setInterval(function(){breathPhase=(breathPhase+1)%4;label.textContent=breathPhases[breathPhase]},2000)}}
 function toggleCheck(el){el.classList.toggle('done')}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // En ayuda la barra es exit-bar, inyectamos al final
+  i18n.inject('.exit-bar');
+  // Override breath phases array with translated values
+  window.onLangChange = function(lang){ updateBreathPhases(); updatePhoneBlocks(lang); };
+  // Toggle phone blocks on load
+  updatePhoneBlocks(i18n.getLang());
+  function updateBreathPhases(){
+    window._breathPhases = [
+      i18n.t('ayuda.breath.ph0'),
+      i18n.t('ayuda.breath.ph1'),
+      i18n.t('ayuda.breath.ph2'),
+      i18n.t('ayuda.breath.ph3')
+    ];
+  }
+  updateBreathPhases();
+  // Update prev/next button labels
+  updateStepNav();
+  window._origStepNav = window.stepNav;
+});
+function updateStepNav(){
+  var nb = document.getElementById('next-btn');
+  var pb = document.getElementById('prev-btn');
+  if(pb) pb.innerHTML = '<i class="fa-solid fa-chevron-left"></i> ' + i18n.t('ayuda.prev');
+  if(nb){
+    var steps = document.querySelectorAll('.step');
+    var cur = Array.from(steps).findIndex(function(s){ return s.classList.contains('active'); });
+    if(cur === steps.length-1){
+      nb.textContent = i18n.t('ayuda.last');
+    } else {
+      nb.innerHTML = i18n.t('ayuda.next') + ' <i class="fa-solid fa-chevron-right"></i>';
+    }
+  }
+}
+function updatePhoneBlocks(lang){
+  var isEn = lang === 'en';
+  ['phone-block-es','quick-phone-es'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = isEn ? 'none' : '';
+  });
+  ['phone-block-en','quick-phone-en'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = isEn ? '' : 'none';
+  });
+}
+// Patch stepNav to update labels after navigation
+var _origStepNav = window.stepNav;
+window.stepNav = function(d){
+  _origStepNav ? _origStepNav(d) : (function(){})();
+  updateStepNav();
+};
 </script>
 </body>
 </html>
