@@ -1,102 +1,102 @@
-﻿Recurso;Categoría;Enlace;Notas;Perfiles ND;Plataforma;Precio;Subcategoría;Tipo;Valoración
-Tiimo;Gestión Ejecutiva;https://tiimoapp.com;Ayuda con la planificación diaria.;TCE,TDAH,TEA;Android,Web,iOS;Freemium;Tiempo;APP;Excelente
-TimeTimer;Gestión Ejecutiva;https://www.timetimer.com;Representación visual del tiempo sin necesidad de leer reloj.;TDAH,TEA;Android,Físico,iOS;Pago;Tiempo;APP;Excelente
-Pomofocus;Gestión Ejecutiva;https://pomofocus.io;Técnica Pomodoro personalizable para mantener el enfoque.;TDAH,TOD;Web;Gratis;Tiempo;WEB;Muy bueno
-Toggl Track;Gestión Ejecutiva;https://toggl.com;Time tracking para analizar patrones de uso del tiempo.;AACC,TDAH;Android,Mac,Web,Windows,iOS;Freemium;Tiempo;EXT;Muy bueno
-Routinery;Gestión Ejecutiva;https://www.routinery.app/;Guía paso a paso para rutinas que evita bloqueos.;TDAH,TEA;Android,iOS;Freemium;Tareas;APP;Excelente
-Sweepy;Gestión Ejecutiva;https://sweepy.app;Convierte la limpieza en un juego con recompensas.;TDAH,TEA;Android,iOS;Freemium;Tareas;APP;Muy bueno
-Goblin.tools;Gestión Ejecutiva;https://goblin.tools;Desglosa tareas complejas en pasos pequeños y manejables.;AACC,TDA,TDAH,TEA;Web;Gratis;Tareas;WEB;Excelente
-Structured;Gestión Ejecutiva;https://structured.app;Diario visual tipo línea de tiempo.;TDAH,TEA;Android,Mac,iOS;Freemium;Tareas;APP;Excelente
-Obsidian;Gestión Ejecutiva;https://obsidian.md;Base de conocimientos local.;AACC,TDAH;Android,Linux,Mac,Windows,iOS;Gratis;Memoria;APP;Excelente
-Capacities;Gestión Ejecutiva;https://capacities.io;Almacén visual de objetos digitales.;AACC,TDAH;Mac,Web,Windows;Freemium;Memoria;APP;Muy bueno
-MyNoise;Regulación Sensorial;https://mynoise.net;Paisajes sonoros ajustables frecuencia por frecuencia.;TDAH,TEA;Android,Web,iOS;Freemium;Auditivo;APP;Excelente
-Endel;Regulación Sensorial;https://endel.io;Soundscapes adaptativos al entorno para concentrarse o relajarse.;TDAH;Android,Mac,Windows,iOS;Pago;Auditivo;APP;Muy bueno
-Loop EarPlugs;Regulación Sensorial;https://www.loopearplugs.com;Tapones que reducen ruido ambiental.;TEA;Físico;Pago;Auditivo;HARD;Excelente
-Krisp;Regulación Sensorial;https://krisp.ai;Cancelación de ruido por IA en reuniones virtuales.;TDAH,TEA;Mac,Windows;Freemium;Auditivo;APP;Muy bueno
-Dark Reader;Regulación Sensorial;https://darkreader.org;Modo oscuro forzado en todas las webs.;TDAH,TEA;Chrome;Gratis;Visual;EXT;Excelente
-f.lux;Regulación Sensorial;https://justgetflux.com;Ajusta temperatura de color de pantalla según hora del día.;TEA;Linux,Mac,Windows;Gratis;Visual;APP;Excelente
-Redshift;Regulación Sensorial;http://jonls.dk/redshift;Similar a f.lux para Linux: ajusta la luz azul.;TEA;Linux;Gratis;Visual;APP;Bueno
-Home Assistant;Regulación Sensorial;https://www.home-assistant.io;Automatización del hogar para entornos controlables.;TEA,TOC;Android,Web,iOS;Gratis;Organización Física;APP;Muy bueno
-Notion;Regulación Sensorial;https://www.notion.so;Inventario visual y organización de espacios.;AACC,TDAH;Android,Mac,Web,Windows,iOS;Freemium;Organización Física;WEB;Muy bueno
-Mise En Place;Regulación Sensorial;https://miseenplace.app;Organización Física: Organización de cocina y recetas para crear orden.;TEA,TOC;iOS;Pago;Organización Física;APP;Muy bueno
-How We Feel;Salud Emocional;https://www.howwefeel.org;Autorregulación: Diario emocional creado por Yale para identificar y etiquetar emociones.;AACC,TEA;Android,iOS;Gratis;Autorregulación;APP;Excelente
-Finch;Salud Emocional;https://play.google.com/store/apps/details?id=com.finch.finch&hl=es;Autorregulación: Autocuidado gamificado con mascota virtual que crece cuando te cuidas.;AACC,TDAH;Android,iOS;Freemium;Autorregulación;APP;Excelente
-Rootd;Salud Emocional;https://play.google.com/store/apps/details?id=com.rootd&hl=es_419;Autorregulación: Gestión de ataques de pánico con guías paso a paso.;TEA,TOC;Android,iOS;Freemium;Autorregulación;APP;Muy bueno
-Woebot;Salud Emocional;https://play.google.com/store/apps/details?id=com.woebot&hl=es;Autorregulación: Terapia conversacional basada en CBT para reestructurar pensamientos.;TDAH;Android,iOS;Gratis;Autorregulación;APP;Muy bueno
-Smiling Mind;Salud Emocional;https://play.google.com/store/apps/details?id=com.smilingmind.app&hl=es;Mindfulness: Meditación gratuita y estructurada con programas por edad.;TDAH;Android,Web,iOS;Gratis;Mindfulness;APP;Excelente
-Balance;Salud Emocional;https://play.google.com/store/apps/details?id=com.elevatelabs.geonosis&hl=es_419;Mindfulness: Meditación personalizada que se adapta a tus necesidades.;TEA;Android,iOS;Freemium;Mindfulness;APP;Muy bueno
-Free Mindfulness;Salud Emocional;https://www.freemindfulness.org/download;Mindfulness: Audios descargables gratuitos de meditación y mindfulness.;TEA,TOD;Web;Gratis;Mindfulness;WEB;Bueno
-Insight Timer;Salud Emocional;https://play.google.com/store/apps/details/Insight_Timer_Meditation_App?id=com.spotlightsix.zentimerlite2&hl=en_NZ;Mindfulness: Gran biblioteca gratuita de meditaciones con miles de opciones.;AACC,TEA;Android,Web,iOS;Freemium;Mindfulness;APP;Excelente
-Sleep Cycle;Salud Emocional;https://www.sleepcycle.com;Rutinas Bienestar: Despertador que te despierta en fase de sueño ligero.;TDAH;Android,iOS;Freemium;Rutinas Bienestar;APP;Muy bueno
-Waterllama;Salud Emocional;https://waterllama.com;Rutinas Bienestar: Hidratación visual y gamificada con recordatorios.;TDAH,TEA,TOC;iOS;Freemium;Rutinas Bienestar;APP;Muy bueno
-Dailyo;Salud Emocional;https://daylio.net;Rutinas Bienestar: Mood tracker que no necesita escribir: solo seleccionar iconos.;AACC,TEA;Android,iOS;Freemium;Rutinas Bienestar;APP;Excelente
-Bearable;Salud Emocional;https://bearable.app;Rutinas Bienestar: Health tracking que relaciona ánimo sueño medicación y otros factores.;TEA,TOC;Android,iOS;Freemium;Rutinas Bienestar;APP;Muy bueno
-Proloquo4Text;Comunicación Social;https://www.assistiveware.com/products/proloquo4text;CAA: Comunicación texto a voz para bloqueo verbal o mutismo selectivo.;AACC,TEA;Android,iOS;Pago;CAA;APP;Excelente
-LetMeTalk;Comunicación Social;https://www.letmetalk.info;CAA: Comunicación con pictogramas gratuita y sencilla.;TCE,TEA;Android;Gratis;CAA;APP;Muy bueno
-Avaz;Comunicación Social;https://www.avazapp.com;CAA: CAA completa con vocabulario organizado y personalizable.;TEA;Android,iOS;Pago;CAA;APP;Muy bueno
-Arasaac;Comunicación Social;https://arasaac.org/;CAA: Comunicador descargable con pictogramas ARASAAC.;TCE,TEA;Web;Gratis;CAA;WEB;Muy bueno
-TEAppAutism;Comunicación Social;https://play.google.com/store/apps/details?id=com.TEAapp&hl=es;Entrenamiento Social: Ayuda a gestionar situaciones comunicativas con profesionales de salud.;TEA;Android,iOS;Gratis;Entrenamiento Social;APP;Bueno
-Model Me Kids;Comunicación Social;https://www.modelmekids.com;Entrenamiento Social: Videos de modelado de situaciones sociales para niños.;TEA;Web;Pago;Entrenamiento Social;WEB;Bueno
-Reddit;Comunicación Social;https://www.reddit.com/r/autism/;Redes ND: Comunidades como r/autism r/ADHD donde compartir experiencias.;TDAH,TEA,TOD;Android,Web,iOS;Gratis;Redes ND;COM;Excelente
-Foro Google - TEA;Comunicación Social;https://groups.google.com/g/foro-tea?pli=1;Redes ND: Grupo de Google sobre temas de TEA.;TEA;Web;Gratis;Redes ND;WEB;Muy bueno
-Bionic Reading;Accesibilidad Cognitiva;https://play.google.com/store/apps/details?id=com.bionic_reading_app&hl=es;Lectura: Resalta primeras letras de palabras para facilitar lectura rápida.;DIS,TDAH;Android,Web,iOS;Freemium;Lectura;EXT;Muy bueno
-Speechify;Accesibilidad Cognitiva;https://play.google.com/store/apps/details?id=com.cliffweitzman.speechify2&hl=es_MX;Lectura: Texto a voz con voces naturales que facilita comprensión lectora.;DIS,TDAH;Android,Chrome,iOS;Freemium;Lectura;APP;Excelente
-Helperbird;Accesibilidad Cognitiva;https://www.helperbird.com;Lectura: Suite completa de accesibilidad web con múltiples herramientas.;DIS,TEA;Chrome;Freemium;Lectura;EXT;Muy bueno
-Voice Dream Scanner;Accesibilidad Cognitiva;https://apps.apple.com/es/app/voice-dream-reader/id496177674;Lectura: Escanea documentos y los lee en voz alta.;DIS,TDAH;Android,iOS;Pago;Lectura;APP;Excelente
-Petit Bambu;Salud Emocional;https://play.google.com/store/apps/details?id=com.petitbambou&hl=es;Mindfulness: Meditación y mindfulness con sesiones guiadas para estrés y ansiedad.;TDAH,TEA;Android,Mac,Web,iOS;Freemium;Mindfulness;APP;Excelente
-Grammarly;Accesibilidad Cognitiva;https://www.grammarly.com;Escritura: Corrección de texto y tono para evitar errores y malentendidos.;DIS,TDAH;Chrome,Mac,Web,Windows;Freemium;Escritura;APP;Muy bueno
-Otter.ai;Accesibilidad Cognitiva;https://play.google.com/store/apps/details?id=com.aisense.otter&hl=es;Escritura: Transcripción automática de reuniones.;TDAH,TEA;Android,Web,iOS;Freemium;Escritura;APP;Muy bueno
-LanguageTool;Accesibilidad Cognitiva;https://languagetool.org;Escritura: Corrector ortográfico open source multiidioma.;DIS,TEA;Chrome,Web;Freemium;Escritura;EXT;Muy bueno
-Forest;Accesibilidad Cognitiva;https://www.forestapp.cc;Enfoque: Concentración gamificada: plantas árboles que crecen si no usas el móvil.;TDAH;Android,Chrome,iOS;Pago;Enfoque;APP;Excelente
-LeechBlock;Accesibilidad Cognitiva;https://chromewebstore.google.com/detail/leechblock-ng/blaaajhemilngeeffpbfkdjjoefldkok?hl=es&gl=AR;Enfoque: Bloqueo de páginas web para evitar distracciones.;TDAH;Web;Gratis;Enfoque;EXT;Muy bueno
-Opal;Accesibilidad Cognitiva;https://www.opal.so;Enfoque: Control de tiempo en pantalla con bloqueos programados.;TDAH;Android,iOS;Freemium;Enfoque;APP;Muy bueno
-Freedom;Accesibilidad Cognitiva;https://freedom.to;Enfoque: Bloqueo multiplataforma en todos tus dispositivos a la vez.;TDAH;Android,Mac,Web,Windows,iOS;Pago;Enfoque;APP;Muy bueno
-Integra CEE;Profesional Laboral;https://integracee.es/;Búsqueda Empleo: Plataforma de empleo para personas neurodivergentes.;TDAH,TEA;Web;Gratis;Búsqueda Empleo;WEB;Muy bueno
-Mentra;Profesional Laboral;https://www.mentra.com;Búsqueda Empleo: Conecta talento neurodivergente con empresas inclusivas.;TDAH,TEA;Web;Gratis;Búsqueda Empleo;WEB;Muy bueno
-Specialisterne;Profesional Laboral;https://dk.specialisterne.com;Búsqueda Empleo: Consultoría laboral especializada en autismo.;TEA;Web;Gratis;Búsqueda Empleo;WEB;Muy bueno
-LinkedIn;Profesional Laboral;https://www.linkedin.com;Búsqueda Empleo: Grupos y redes ND profesionales.;TOD;Android,Web,iOS;Gratis;Búsqueda Empleo;APP;Bueno
-Dragon NaturallySpeaking;Profesional Laboral;https://www.nuance.com/dragon.html;Adaptaciones: Dictado por voz profesional con alta precisión.;DIS,TDAH;Windows;Pago;Adaptaciones;SOFT;Muy bueno
-Zoom;Profesional Laboral;https://zoom.us;Adaptaciones: Transcripción en vivo para seguir reuniones.;TOD;Android,Mac,Web,Windows,iOS;Freemium;Adaptaciones;SOFT;Muy bueno
-Smart Lights;Profesional Laboral;https://www.philips-hue.com;Adaptaciones: Señalización visual del estado ocupado/disponible.;TDAH,TEA;Físico;Pago;Adaptaciones;HARD;Muy bueno
-Trello;Profesional Laboral;https://trello.com;Gestión Proyectos: Gestor visual tipo Kanban para organizar tareas.;TDAH;Android,Web,iOS;Freemium;Gestión Proyectos;APP;Muy bueno
-ClickUp;Profesional Laboral;https://play.google.com/store/apps/details?id=co.mangotechnologies.clickup&hl=es_419;Gestión Proyectos: Todo en uno para gestión con vistas personalizables.;TDAH;Android,Mac,Web,Windows,iOS;Freemium;Gestión Proyectos;APP;Muy bueno
-Sunsama;Profesional Laboral;https://sunsama.com;Gestión Proyectos: Planificación diaria guiada que ayuda a priorizar.;TDAH,TEA;Mac,Web,Windows;Pago;Gestión Proyectos;APP;Excelente
-Choiceworks;Educación Infantil;https://apps.apple.com/nz/app/choiceworks/id486210964;Herramientas Escolares: Tableros de elección y rutina visuales para niños.;TEA;iOS;Pago;Herramientas Escolares;APP;Excelente
-PictogramAgenda;Educación Infantil;https://play.google.com/store/apps/details?id=com.lorenzomoreno.pictogramagenda&hl=es;Herramientas Escolares: Agendas visuales personalizables con pictogramas.;TEA;Android,iOS;Pago;Herramientas Escolares;APP;Muy bueno
-EmocioLAND;Educación Infantil;https://emocioland.com/;Herramientas Escolares: Gestión de emociones para niños con cuentos y juegos.;TEA;Android,iOS;Gratis;Herramientas Escolares;APP;Muy bueno
-Social Stories;Educación Infantil;https://play.google.com/store/apps/details?id=org.greyolltwit.socialstories&hl=es;Juego Social: Crear historias sociales personalizadas.;TEA;Android,iOS;Pago;Juego Social;APP;Muy bueno
-Minecraft;Educación Infantil;https://www.minecraft.net;Juego Social: Modo creativo para construir mundos controlados y predecibles.;AACC,TEA;Android,Mac,Windows,iOS;Pago;Juego Social;JUEGO;Excelente
-Pocket;Hiperfocos;https://getpocket.com;Intereses Especiales: Guarda artículos para leer después.;AACC,TDAH,TEA;Android,Web,iOS;Freemium;Intereses Especiales;APP;Muy bueno
-Raindrop.io;Hiperfocos;https://raindrop.io;Intereses Especiales: Marcadores visuales para organizar intereses por colecciones.;AACC,TEA;Android,Mac,Web,Windows,iOS;Freemium;Intereses Especiales;APP;Excelente
-Mendeley;Hiperfocos;https://www.mendeley.com;Intereses Especiales: Gestor de referencias académicas para hiperfocos de investigación.;AACC,TEA;Android,Mac,Web,Windows,iOS;Gratis;Intereses Especiales;APP;Muy bueno
-Zotero;Hiperfocos;https://www.zotero.org;Intereses Especiales: Gestor de referencias open source para profundizar en temas.;AACC,TEA;Linux,Mac,Web,Windows;Gratis;Intereses Especiales;APP;Excelente
-DogMonitor;Mascotas Apoyo;https://dogmonitorapp.com/;Animales Apoyo: Monitoriza salud y actividad de perros de apoyo.;AACC,TEA;Android,iOS;Pago;Animales Apoyo;APP;Muy bueno
-Bring!;Mascotas Apoyo;https://www.getbring.com/en/home;Animales Apoyo: Listas de compra y cuidado para mascotas.;TEA,TOC;Android,iOS;Gratis;Animales Apoyo;APP;Muy bueno
-PetFirst;Mascotas Apoyo;https://play.google.com/store/apps/details?id=com.usmgroup.petfirst&hl=es;Animales Apoyo: Recordatorios de citas veterinarias y medicación.;TEA;Android,iOS;Freemium;Animales Apoyo;APP;Bueno
-11pets;Mascotas Apoyo;https://play.google.com/store/apps/details?id=com.m11pets.elevenpets&hl=es_419;Animales Apoyo: Gestión completa de salud y cuidados de mascotas.;TEA,TOC;Android,Web,iOS;Freemium;Animales Apoyo;APP;Muy bueno
-Pokémon GO;Ejercicio Movimiento;https://pokemongo.com/es;Movimiento: Gamifica el ejercicio para salir a caminar.;TDAH,TEA;Android,iOS;Gratis;Movimiento;APP;Muy bueno
-Supernatural;Ejercicio Movimiento;https://www.meta.com/es-es/experiences/supernatural-unreal-fitness/1830168170427369/;Movimiento: VR ejercicio sensorial con entornos inmersivos.;TEA;Meta Quest;Pago;Movimiento;APP;Muy bueno
-Down Dog;Ejercicio Movimiento;https://www.downdogapp.com;Movimiento: Yoga totalmente personalizable en ritmo voz y música.;TEA;Android,iOS;Freemium;Movimiento;APP;Excelente
-HomeCourt;Ejercicio Movimiento;https://apps.apple.com/us/app/homecourt-basketball-training/id1258520424;Movimiento: Entrenamiento de baloncesto con IA y feedback en tiempo real.;TDAH,TEA;Android,iOS;Freemium;Movimiento;APP;Muy bueno
-Sift;Alimentación;https://play.google.com/store/apps/details?id=com.mindhouse&hl=es_419;Selectividad Alimentaria: Gestión de alergias e intolerancias alimentarias.;TEA,TOC;Android,iOS;Freemium;Selectividad Alimentaria;APP;Muy bueno
-Mealime;Alimentación;https://www.mealime.com;Selectividad Alimentaria: Planificador de comidas simple que reduce decisiones.;TDAH,TEA;Android,iOS;Freemium;Selectividad Alimentaria;APP;Muy bueno
-SideChef;Alimentación;https://www.sidechef.com;Selectividad Alimentaria: Recetas guiadas paso a paso con voz e imágenes.;TDAH,TEA;Android,iOS;Freemium;Selectividad Alimentaria;APP;Muy bueno
-Plant Nanny;Alimentación;https://www.plantnannyapp.com;Selectividad Alimentaria: Recordatorio de hidratación con plantas que crecen.;TDAH;Android,iOS;Freemium;Selectividad Alimentaria;APP;Muy bueno
-Fintonic;Vida Independiente;https://fintonic.com;Finanzas: Control de finanzas personal con alertas de gastos.;TDAH,TOC;Android,Web,iOS;Gratis;Finanzas;APP;Muy bueno
-Ally;Vida Independiente;https://play.google.com/store/apps/details/Ally_Mobile?id=com.ally.MobileBanking&hl=es;Trámites: Asistente para trámites burocráticos simplificados.;TDAH,TEA;Web;Freemium;Trámites;WEB;Bueno
-Medisafe;Vida Independiente;https://www.medisafe.com;Medicación: Recordatorio de medicación con alertas personalizables.;TDAH,TEA;Android,iOS;Gratis;Medicación;APP;Excelente
-ContaAzul;Vida Independiente;https://play.google.com/store/apps/details?id=com.contaazul.mobile.pro.ca_mobile_pro&hl=es_SV;Finanzas: Gestión de finanzas y facturación simplificada.;TDAH;Web;Pago;Finanzas;WEB;Bueno
-AutistAPP;Comunicación Social;https://play.google.com/store/apps/details?id=cl.autistapp.autistapp&hl=es_419;CAA: Integra pictogramas autorregulación registro emocional y más.;TEA;Android;Gratis;CAA;APP;Bueno
-AutistaAI;Comunicación Social;https://autistaai.com;Entrenamiento Social: IA para apoyar comunicación y vida diaria de personas autistas.;TEA;Web;Gratis;Entrenamiento Social;WEB;Bueno
-La Monda;Vida Independiente;https://www.lamondashop.com/;Ropa Adaptada: Ropa para necesidades sensoriales: telas suaves y sin etiquetas.;TEA;Físico,Web;Pago;Ropa Adaptada;TIENDA;Muy bueno
-Autistic-Friendly;Vida Independiente;https://www.etsy.com/es/shop/chicaenelespectro;Regalos: Tienda con tote bags ilustraciones y marcapáginas sensoriales.;TEA;Físico,Web;Pago;Regalos;TIENDA;Excelente
-Para Nosotros;Regulación Sensorial;https://tiendaparanosotros.cl;Productos Sensoriales: Protectores auditivos mordedores sensoriales fidgets y más.;TDAH,TEA;Físico,Web;Pago;Productos Sensoriales;TIENDA;Excelente
-Divexia;Vida Independiente;https://www.divexia.com/;Ropa Adaptada: Ropa bordada suave y consciente para personas neurodivergentes.;TDA,TDAH,TEA;Físico,Web;Pago;Ropa Adaptada;TIENDA;Excelente
-AutiStok;Comunicación Social;https://play.google.com/store/apps/details?id=com.elmeneos.autistock;CAA: Ayuda a conocer tu bienestar diario y organizar tu vida.;TEA;Android;Gratis;CAA;APP;Muy bueno
-Dytective;Accesibilidad Cognitiva;https://apps.apple.com/es/app/dytective-para-la-dislexia/id1384568741;Lectura: 42000 juegos personalizados validados científicamente para dislexia.;DIS,TDAH;Web,iOS;Freemium;Lectura;APP;Muy bueno
-Constant Therapy;Profesional Laboral;https://play.google.com/store/apps/details?id=com.constanttherapy.android.main;Adaptaciones: Terapia cognitiva del lenguaje y habla basada en ciencia.;TCE;Android,iOS;Freemium;Adaptaciones;APP;Excelente
-Microsoft Immersive Reader;Accesibilidad Cognitiva;https://www.microsoft.com/es-es/edge/features/immersive-reader;Lectura: Mejora comprensión lectora con dictado modo foco y traducción.;DIS,TCE,TDAH,TOD;Android,Mac,Web,Windows,iOS;Gratis;Lectura;SOFT;Excelente
-LEGO Sensory Inclusion;Educación Infantil;https://www.lego.com/es-ar/sensory-inclusion;Juguetes Inclusivos: Tiendas con certificación Sensory Inclusive y revista adaptada.;TDAH,TEA;Físico,Web;Pago;Jueguetes Inclusivo;TIENDA;Excelente
-AsTeRICS GRID;Comunicación Social;https://grid.asterics.eu/#welcome;CAA: Comunicador dinámico multiplataforma gratuito y personalizable.;TCE,TEA;Android,Web,iOS;Gratis;CAA;APP;Excelente
-Reminders (Apple);Gestión Ejecutiva;https://www.icloud.com/reminders;Memoria: Sistema simple y nativo de recordatorios integrado en Apple.;TDAH,TOD;Mac,iOS;Gratis;Memoria;APP;Bueno
-Lexy;Accesibilidad Cognitiva;https://apps.apple.com/ec/app/lexy-lectura-y-fon%C3%A9tica/id1564885095;Lectura: Tutor de lectura con IA que se adapta al ritmo de cada persona.;AACC,DIS;Android,Mac,iOS;Freemium;Lectura;APP;Muy bueno
+﻿Recurso;Categoría;Enlace;Notas;Precio;Subcategoría;Tipo;Valoración
+Tiimo;Gestión Ejecutiva;https://tiimoapp.com;Ayuda con la planificación diaria.;Freemium;Tiempo;APP;Excelente
+TimeTimer;Gestión Ejecutiva;https://www.timetimer.com;Representación visual del tiempo sin necesidad de leer reloj.;Pago;Tiempo;APP;Excelente
+Pomofocus;Gestión Ejecutiva;https://pomofocus.io;Técnica Pomodoro personalizable para mantener el enfoque.;Gratis;Tiempo;WEB;Muy bueno
+Toggl Track;Gestión Ejecutiva;https://toggl.com;Time tracking para analizar patrones de uso del tiempo.;Freemium;Tiempo;EXT;Muy bueno
+Routinery;Gestión Ejecutiva;https://www.routinery.app/;Guía paso a paso para rutinas que evita bloqueos.;Freemium;Tareas;APP;Excelente
+Sweepy;Gestión Ejecutiva;https://sweepy.app;Convierte la limpieza en un juego con recompensas.;Freemium;Tareas;APP;Muy bueno
+Goblin.tools;Gestión Ejecutiva;https://goblin.tools;Desglosa tareas complejas en pasos pequeños y manejables.;Gratis;Tareas;WEB;Excelente
+Structured;Gestión Ejecutiva;https://structured.app;Diario visual tipo línea de tiempo.;Freemium;Tareas;APP;Excelente
+Obsidian;Gestión Ejecutiva;https://obsidian.md;Base de conocimientos local.;Gratis;Memoria;APP;Excelente
+Capacities;Gestión Ejecutiva;https://capacities.io;Almacén visual de objetos digitales.;Freemium;Memoria;APP;Muy bueno
+MyNoise;Regulación Sensorial;https://mynoise.net;Paisajes sonoros ajustables frecuencia por frecuencia.;Freemium;Auditivo;APP;Excelente
+Endel;Regulación Sensorial;https://endel.io;Soundscapes adaptativos al entorno para concentrarse o relajarse.;Pago;Auditivo;APP;Muy bueno
+Loop EarPlugs;Regulación Sensorial;https://www.loopearplugs.com;Tapones que reducen ruido ambiental.;Pago;Auditivo;HARD;Excelente
+Krisp;Regulación Sensorial;https://krisp.ai;Cancelación de ruido por IA en reuniones virtuales.;Freemium;Auditivo;APP;Muy bueno
+Dark Reader;Regulación Sensorial;https://darkreader.org;Modo oscuro forzado en todas las webs.;Gratis;Visual;EXT;Excelente
+f.lux;Regulación Sensorial;https://justgetflux.com;Ajusta temperatura de color de pantalla según hora del día.;Gratis;Visual;APP;Excelente
+Redshift;Regulación Sensorial;http://jonls.dk/redshift;Similar a f.lux para Linux  ajusta la luz azul.;Gratis;Visual;APP;Bueno
+Home Assistant;Regulación Sensorial;https://www.home-assistant.io;Automatización del hogar para entornos controlables.;Gratis;Organización Física;APP;Muy bueno
+Notion;Regulación Sensorial;https://www.notion.so;Inventario visual y organización de espacios.;Freemium;Organización Física;WEB;Muy bueno
+Mise En Place;Regulación Sensorial;https://miseenplace.app; Organización de cocina y recetas para crear orden.;Pago;Organización Física;APP;Muy bueno
+How We Feel;Salud Emocional;https://www.howwefeel.org; Diario emocional creado por Yale para identificar y etiquetar emociones.;Gratis;Autorregulación;APP;Excelente
+Finch;Salud Emocional;https://play.google.com/store/apps/details?id=com.finch.finch&hl=es; Autocuidado gamificado con mascota virtual que crece cuando te cuidas.;Freemium;Autorregulación;APP;Excelente
+Rootd;Salud Emocional;https://play.google.com/store/apps/details?id=com.rootd&hl=es_419; Gestión de ataques de pánico con guías paso a paso.;Freemium;Autorregulación;APP;Muy bueno
+Woebot;Salud Emocional;https://play.google.com/store/apps/details?id=com.woebot&hl=es; Terapia conversacional basada en CBT para reestructurar pensamientos.;Gratis;Autorregulación;APP;Muy bueno
+Smiling Mind;Salud Emocional;https://play.google.com/store/apps/details?id=com.smilingmind.app&hl=es; Meditación gratuita y estructurada con programas por edad.;Gratis;Mindfulness;APP;Excelente
+Balance;Salud Emocional;https://play.google.com/store/apps/details?id=com.elevatelabs.geonosis&hl=es_419; Meditación personalizada que se adapta a tus necesidades.;Freemium;Mindfulness;APP;Muy bueno
+Free Mindfulness;Salud Emocional;https://www.freemindfulness.org/download; Audios descargables gratuitos de meditación y mindfulness.;Gratis;Mindfulness;WEB;Bueno
+Insight Timer;Salud Emocional;https://play.google.com/store/apps/details/Insight_Timer_Meditation_App?id=com.spotlightsix.zentimerlite2&hl=en_NZ; Gran biblioteca gratuita de meditaciones con miles de opciones.;Freemium;Mindfulness;APP;Excelente
+Sleep Cycle;Salud Emocional;https://www.sleepcycle.com; Despertador que te despierta en fase de sueño ligero.;Freemium;Rutinas Bienestar;APP;Muy bueno
+Waterllama;Salud Emocional;https://waterllama.com; Hidratación visual y gamificada con recordatorios.;Freemium;Rutinas Bienestar;APP;Muy bueno
+Dailyo;Salud Emocional;https://daylio.net; Mood tracker que no necesita escribir;Freemium;Rutinas Bienestar;APP;Excelente
+Bearable;Salud Emocional;https://bearable.app; Health tracking que relaciona ánimo sueño medicación y otros factores.;Freemium;Rutinas Bienestar;APP;Muy bueno
+Proloquo4Text;Comunicación Social;https://www.assistiveware.com/products/proloquo4text; Comunicación texto a voz para bloqueo verbal o mutismo selectivo.;Pago;CAA;APP;Excelente
+LetMeTalk;Comunicación Social;https://www.letmetalk.info; Comunicación con pictogramas gratuita y sencilla.;Gratis;CAA;APP;Muy bueno
+Avaz;Comunicación Social;https://www.avazapp.com; CAA completa con vocabulario organizado y personalizable.;Pago;CAA;APP;Muy bueno
+Arasaac;Comunicación Social;https://arasaac.org/; Comunicador descargable con pictogramas ARASAAC.;Gratis;CAA;WEB;Muy bueno
+TEAppAutism;Comunicación Social;https://play.google.com/store/apps/details?id=com.TEAapp&hl=es; Ayuda a gestionar situaciones comunicativas con profesionales de salud.;Gratis;Entrenamiento Social;APP;Bueno
+Model Me Kids;Comunicación Social;https://www.modelmekids.com; Videos de modelado de situaciones sociales para niños.;Pago;Entrenamiento Social;WEB;Bueno
+Reddit;Comunicación Social;https://www.reddit.com/r/autism/; Comunidades como r/autism r/ADHD donde compartir experiencias.;Gratis;Redes ND;COM;Excelente
+Foro Google - TEA;Comunicación Social;https://groups.google.com/g/foro-tea?pli=1; Grupo de Google sobre temas de TEA.;Gratis;Redes ND;WEB;Muy bueno
+Bionic Reading;Accesibilidad Cognitiva;https://play.google.com/store/apps/details?id=com.bionic_reading_app&hl=es; Resalta primeras letras de palabras para facilitar lectura rápida.;Freemium;Lectura;EXT;Muy bueno
+Speechify;Accesibilidad Cognitiva;https://play.google.com/store/apps/details?id=com.cliffweitzman.speechify2&hl=es_MX; Texto a voz con voces naturales que facilita comprensión lectora.;Freemium;Lectura;APP;Excelente
+Helperbird;Accesibilidad Cognitiva;https://www.helperbird.com; Suite completa de accesibilidad web con múltiples herramientas.;Freemium;Lectura;EXT;Muy bueno
+Voice Dream Scanner;Accesibilidad Cognitiva;https://apps.apple.com/es/app/voice-dream-reader/id496177674; Escanea documentos y los lee en voz alta.;Pago;Lectura;APP;Excelente
+Petit Bambu;Salud Emocional;https://play.google.com/store/apps/details?id=com.petitbambou&hl=es; Meditación y mindfulness con sesiones guiadas para estrés y ansiedad.;Freemium;Mindfulness;APP;Excelente
+Grammarly;Accesibilidad Cognitiva;https://www.grammarly.com; Corrección de texto y tono para evitar errores y malentendidos.;Freemium;Escritura;APP;Muy bueno
+Otter.ai;Accesibilidad Cognitiva;https://play.google.com/store/apps/details?id=com.aisense.otter&hl=es; Transcripción automática de reuniones.;Freemium;Escritura;APP;Muy bueno
+LanguageTool;Accesibilidad Cognitiva;https://languagetool.org; Corrector ortográfico open source multiidioma.;Freemium;Escritura;EXT;Muy bueno
+Forest;Accesibilidad Cognitiva;https://www.forestapp.cc; Concentración gamificada;Pago;Enfoque;APP;Excelente
+LeechBlock;Accesibilidad Cognitiva;https://chromewebstore.google.com/detail/leechblock-ng/blaaajhemilngeeffpbfkdjjoefldkok?hl=es&gl=AR; Bloqueo de páginas web para evitar distracciones.;Gratis;Enfoque;EXT;Muy bueno
+Opal;Accesibilidad Cognitiva;https://www.opal.so; Control de tiempo en pantalla con bloqueos programados.;Freemium;Enfoque;APP;Muy bueno
+Freedom;Accesibilidad Cognitiva;https://freedom.to; Bloqueo multiplataforma en todos tus dispositivos a la vez.;Pago;Enfoque;APP;Muy bueno
+Integra CEE;Profesional Laboral;https://integracee.es/; Plataforma de empleo para personas neurodivergentes.;Gratis;Búsqueda Empleo;WEB;Muy bueno
+Mentra;Profesional Laboral;https://www.mentra.com; Conecta talento neurodivergente con empresas inclusivas.;Gratis;Búsqueda Empleo;WEB;Muy bueno
+Specialisterne;Profesional Laboral;https://dk.specialisterne.com; Consultoría laboral especializada en autismo.;Gratis;Búsqueda Empleo;WEB;Muy bueno
+LinkedIn;Profesional Laboral;https://www.linkedin.com; Grupos y redes ND profesionales.;Gratis;Búsqueda Empleo;APP;Bueno
+Dragon NaturallySpeaking;Profesional Laboral;https://www.nuance.com/dragon.html; Dictado por voz profesional con alta precisión.;Pago;Adaptaciones;SOFT;Muy bueno
+Zoom;Profesional Laboral;https://zoom.us; Transcripción en vivo para seguir reuniones.;Freemium;Adaptaciones;SOFT;Muy bueno
+Smart Lights;Profesional Laboral;https://www.philips-hue.com; Señalización visual del estado ocupado/disponible.;Pago;Adaptaciones;HARD;Muy bueno
+Trello;Profesional Laboral;https://trello.com; Gestor visual tipo Kanban para organizar tareas.;Freemium;Gestión Proyectos;APP;Muy bueno
+ClickUp;Profesional Laboral;https://play.google.com/store/apps/details?id=co.mangotechnologies.clickup&hl=es_419; Todo en uno para gestión con vistas personalizables.;Freemium;Gestión Proyectos;APP;Muy bueno
+Sunsama;Profesional Laboral;https://sunsama.com; Planificación diaria guiada que ayuda a priorizar.;Pago;Gestión Proyectos;APP;Excelente
+Choiceworks;Educación Infantil;https://apps.apple.com/nz/app/choiceworks/id486210964; Tableros de elección y rutina visuales para niños.;Pago;Herramientas Escolares;APP;Excelente
+PictogramAgenda;Educación Infantil;https://play.google.com/store/apps/details?id=com.lorenzomoreno.pictogramagenda&hl=es; Agendas visuales personalizables con pictogramas.;Pago;Herramientas Escolares;APP;Muy bueno
+EmocioLAND;Educación Infantil;https://emocioland.com/; Gestión de emociones para niños con cuentos y juegos.;Gratis;Herramientas Escolares;APP;Muy bueno
+Social Stories;Educación Infantil;https://play.google.com/store/apps/details?id=org.greyolltwit.socialstories&hl=es; Crear historias sociales personalizadas.;Pago;Juego Social;APP;Muy bueno
+Minecraft;Educación Infantil;https://www.minecraft.net; Modo creativo para construir mundos controlados y predecibles.;Pago;Juego Social;JUEGO;Excelente
+Pocket;Hiperfocos;https://getpocket.com; Guarda artículos para leer después.;Freemium;Intereses Especiales;APP;Muy bueno
+Raindrop.io;Hiperfocos;https://raindrop.io; Marcadores visuales para organizar intereses por colecciones.;Freemium;Intereses Especiales;APP;Excelente
+Mendeley;Hiperfocos;https://www.mendeley.com; Gestor de referencias académicas para hiperfocos de investigación.;Gratis;Intereses Especiales;APP;Muy bueno
+Zotero;Hiperfocos;https://www.zotero.org; Gestor de referencias open source para profundizar en temas.;Gratis;Intereses Especiales;APP;Excelente
+DogMonitor;Mascotas Apoyo;https://dogmonitorapp.com/; Monitoriza salud y actividad de perros de apoyo.;Pago;Animales Apoyo;APP;Muy bueno
+Bring!;Mascotas Apoyo;https://www.getbring.com/en/home; Listas de compra y cuidado para mascotas.;Gratis;Animales Apoyo;APP;Muy bueno
+PetFirst;Mascotas Apoyo;https://play.google.com/store/apps/details?id=com.usmgroup.petfirst&hl=es; Recordatorios de citas veterinarias y medicación.;Freemium;Animales Apoyo;APP;Bueno
+11pets;Mascotas Apoyo;https://play.google.com/store/apps/details?id=com.m11pets.elevenpets&hl=es_419; Gestión completa de salud y cuidados de mascotas.;Freemium;Animales Apoyo;APP;Muy bueno
+Pokémon GO;Ejercicio Movimiento;https://pokemongo.com/es; Gamifica el ejercicio para salir a caminar.;Gratis;Movimiento;APP;Muy bueno
+Supernatural;Ejercicio Movimiento;https://www.meta.com/es-es/experiences/supernatural-unreal-fitness/1830168170427369/; VR ejercicio sensorial con entornos inmersivos.;Pago;Movimiento;APP;Muy bueno
+Down Dog;Ejercicio Movimiento;https://www.downdogapp.com; Yoga totalmente personalizable en ritmo voz y música.;Freemium;Movimiento;APP;Excelente
+HomeCourt;Ejercicio Movimiento;https://apps.apple.com/us/app/homecourt-basketball-training/id1258520424; Entrenamiento de baloncesto con IA y feedback en tiempo real.;Freemium;Movimiento;APP;Muy bueno
+Sift;Alimentación;https://play.google.com/store/apps/details?id=com.mindhouse&hl=es_419; Gestión de alergias e intolerancias alimentarias.;Freemium;Selectividad Alimentaria;APP;Muy bueno
+Mealime;Alimentación;https://www.mealime.com; Planificador de comidas simple que reduce decisiones.;Freemium;Selectividad Alimentaria;APP;Muy bueno
+SideChef;Alimentación;https://www.sidechef.com; Recetas guiadas paso a paso con voz e imágenes.;Freemium;Selectividad Alimentaria;APP;Muy bueno
+Plant Nanny;Alimentación;https://www.plantnannyapp.com; Recordatorio de hidratación con plantas que crecen.;Freemium;Selectividad Alimentaria;APP;Muy bueno
+Fintonic;Vida Independiente;https://fintonic.com; Control de finanzas personal con alertas de gastos.;Gratis;Finanzas;APP;Muy bueno
+Ally;Vida Independiente;https://play.google.com/store/apps/details/Ally_Mobile?id=com.ally.MobileBanking&hl=es; Asistente para trámites burocráticos simplificados.;Freemium;Trámites;WEB;Bueno
+Medisafe;Vida Independiente;https://www.medisafe.com; Recordatorio de medicación con alertas personalizables.;Gratis;Medicación;APP;Excelente
+ContaAzul;Vida Independiente;https://play.google.com/store/apps/details?id=com.contaazul.mobile.pro.ca_mobile_pro&hl=es_SV; Gestión de finanzas y facturación simplificada.;Pago;Finanzas;WEB;Bueno
+AutistAPP;Comunicación Social;https://play.google.com/store/apps/details?id=cl.autistapp.autistapp&hl=es_419; Integra pictogramas autorregulación registro emocional y más.;Gratis;CAA;APP;Bueno
+AutistaAI;Comunicación Social;https://autistaai.com; IA para apoyar comunicación y vida diaria de personas autistas.;Gratis;Entrenamiento Social;WEB;Bueno
+La Monda;Vida Independiente;https://www.lamondashop.com/; Ropa para necesidades sensoriales;Pago;Ropa Adaptada;TIENDA;Muy bueno
+Autistic-Friendly;Vida Independiente;https://www.etsy.com/es/shop/chicaenelespectro; Tienda con tote bags ilustraciones y marcapáginas sensoriales.;Pago;Regalos;TIENDA;Excelente
+Para Nosotros;Regulación Sensorial;https://tiendaparanosotros.cl; Protectores auditivos mordedores sensoriales fidgets y más.;Pago;Productos Sensoriales;TIENDA;Excelente
+Divexia;Vida Independiente;https://www.divexia.com/; Ropa bordada suave y consciente para personas neurodivergentes.;Pago;Ropa Adaptada;TIENDA;Excelente
+AutiStok;Comunicación Social;https://play.google.com/store/apps/details?id=com.elmeneos.autistock; Ayuda a conocer tu bienestar diario y organizar tu vida.;Gratis;CAA;APP;Muy bueno
+Dytective;Accesibilidad Cognitiva;https://apps.apple.com/es/app/dytective-para-la-dislexia/id1384568741; 42000 juegos personalizados validados científicamente para dislexia.;Freemium;Lectura;APP;Muy bueno
+Constant Therapy;Profesional Laboral;https://play.google.com/store/apps/details?id=com.constanttherapy.android.main; Terapia cognitiva del lenguaje y habla basada en ciencia.;Freemium;Adaptaciones;APP;Excelente
+Microsoft Immersive Reader;Accesibilidad Cognitiva;https://www.microsoft.com/es-es/edge/features/immersive-reader; Mejora comprensión lectora con dictado modo foco y traducción.;Gratis;Lectura;SOFT;Excelente
+LEGO Sensory Inclusion;Educación Infantil;https://www.lego.com/es-ar/sensory-inclusion; Tiendas con certificación Sensory Inclusive y revista adaptada.;Pago;Jueguetes Inclusivo;TIENDA;Excelente
+AsTeRICS GRID;Comunicación Social;https://grid.asterics.eu/#welcome; Comunicador dinámico multiplataforma gratuito y personalizable.;Gratis;CAA;APP;Excelente
+Reminders (Apple);Gestión Ejecutiva;https://www.icloud.com/reminders; Sistema simple y nativo de recordatorios integrado en Apple.;Gratis;Memoria;APP;Bueno
+Lexy;Accesibilidad Cognitiva;https://apps.apple.com/ec/app/lexy-lectura-y-fon%C3%A9tica/id1564885095; Tutor de lectura con IA que se adapta al ritmo de cada persona.;Freemium;Lectura;APP;Muy bueno
