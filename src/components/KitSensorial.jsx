@@ -88,7 +88,7 @@ function EstadoCard({ estado, prefersReduced, index }) {
               {estado.subtitulo}
             </span>
           </div>
-          <p className="text-sm text-muted line-clamp-2 pr-6">{estado.que}</p>
+          <p className={`text-sm text-muted pr-6 ${open ? '' : 'line-clamp-2'}`}>{estado.que}</p>
         </div>
         <i
           className={`fa-solid fa-chevron-down text-xs text-muted transition-transform duration-200 shrink-0 ${open ? 'rotate-180' : ''}`}
