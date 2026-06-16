@@ -56,28 +56,6 @@ export default function MapPage() {
       >
         <SilentMap />
       </Suspense>
-
-      {/* Legend */}
-      <div className="mt-8 p-5 rounded-card bg-surface border border-border">
-        <h2 className="text-sm font-semibold text-text mb-3">Tipos de espacios</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs text-muted">
-          {[
-            { color: '#3A82CA', label: 'Hora silenciosa' },
-            { color: '#816AB7', label: 'Biblioteca' },
-            { color: '#9CC156', label: 'Sala de estudio' },
-            { color: '#48B0A1', label: 'Espacio natural' },
-            { color: '#6366f1', label: 'Centro comercial' },
-            { color: '#8b5cf6', label: 'Aeropuerto' },
-            { color: '#E57B86', label: 'Cultura / Museos' },
-            { color: '#FBB027', label: 'Centro cívico' },
-          ].map(({ color, label }) => (
-            <div key={label} className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: color }} aria-hidden="true" />
-              {label}
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }

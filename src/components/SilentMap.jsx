@@ -183,20 +183,6 @@ export default function SilentMap() {
           {filtered.length} espacio{filtered.length !== 1 ? 's' : ''} visibles
         </div>
       </div>
-
-      {/* Legend */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
-        {TIPOS.map(tipo => {
-          const cfg = TYPE_CONFIG[tipo]
-          if (!cfg) return null
-          return (
-            <div key={tipo} className="flex items-center gap-2 text-xs text-muted">
-              <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: cfg.color }} aria-hidden="true" />
-              {cfg.label}
-            </div>
-          )
-        })}
-      </div>
     </div>
   )
 }
