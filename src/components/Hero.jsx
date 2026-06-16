@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, lazy, Suspense, Component } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
@@ -8,6 +8,19 @@ import { herramientas } from '../data/herramientas'
 import { LUGARES } from '../data/lugares'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const Logo3D = lazy(() =>
+  import('./Logo3D').catch(() => ({ default: () => null }))
+)
+
+class Logo3DBoundary extends Component {
+  constructor(p) { super(p); this.state = { err: false } }
+  static getDerivedStateFromError() { return { err: true } }
+  render() {
+    if (this.state.err) return this.props.fallback
+    return this.props.children
+  }
+}
 
 const STATS = [
   { value: LUGARES.length,      label: 'espacios verificados', icon: 'fa-location-dot',  color: 'text-pri' },
@@ -47,14 +60,31 @@ export default function Hero() {
   return (
     <section ref={wrapRef} className="text-center pt-14 pb-16 px-4" aria-labelledby="hero-heading">
 
-      {/* Logo */}
-      <motion.img
-        src={`${import.meta.env.BASE_URL}logo.svg`}
-        alt="Refugio Sensorial"
-        className="mx-auto mb-5"
-        style={{ height: 'clamp(110px, 18vw, 190px)', width: 'auto' }}
+      {/* Logo 3D */}
+      <motion.div
+        className="mx-auto mb-2"
+        style={{ width: 'clamp(200px, 42vw, 380px)', height: 'clamp(120px, 24vw, 220px)' }}
+        aria-label="Refugio Sensorial"
+        role="img"
         {...fadeUp(prefersReduced, 0)}
-      />
+      >
+        <Logo3DBoundary fallback={
+          <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Refugio Sensorial" className="w-full h-full object-contain" />
+        }>
+          <Suspense fallback={
+            <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Refugio Sensorial" className="w-full h-full object-contain" />
+          }>
+            <Logo3D paused={prefersReduced} style={{ width: '100%', height: '100%' }} />
+          </Suspense>
+        </Logo3DBoundary>
+      </motion.div>
+      <motion.p
+        className="text-[10px] font-bold tracking-[0.35em] text-text/50 uppercase mb-5"
+        {...fadeUp(prefersReduced, 0.04)}
+        aria-hidden="true"
+      >
+        Refugio Sensorial
+      </motion.p>
 
       {/* Badge */}
       <motion.div {...fadeUp(prefersReduced, 0.08)} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pri/10 border border-sky-400/15 text-pri text-xs font-semibold uppercase tracking-widest mb-5">
