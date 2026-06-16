@@ -15,6 +15,7 @@ const cards = [
     label: 'Sitios silenciosos',
     description: 'Mapa de lugares con hora silenciosa, salas sensoriales y distintivo Sunflower en España.',
     linkText: 'Abrir el mapa',
+    linkColor: 'text-pri',
     badge: `${mapCount} espacios`,
     badgeColor: 'text-pri bg-pri/8 border-pri/15',
     glow: 'rgba(58,130,202,0.08)',
@@ -26,9 +27,22 @@ const cards = [
     label: 'Herramientas',
     description: 'Apps y recursos digitales clasificados por categoría y perfil neurodivergente.',
     linkText: 'Ver herramientas',
+    linkColor: 'text-sec',
     badge: `${toolCount}+ herramientas`,
     badgeColor: 'text-sec bg-sec/8 border-sec/15',
     glow: 'rgba(129,106,183,0.08)',
+  },
+  {
+    href: 'https://www.youtube.com/@LilPenguinStudios',
+    icon: 'fa-headphones',
+    iconBg: 'bg-coral/10 text-coral',
+    label: 'Lil Penguin Studios',
+    description: 'Sonidos ambientales y ruido blanco en YouTube para calmar la sobrecarga sensorial.',
+    linkText: 'Ver el canal',
+    linkColor: 'text-coral',
+    badge: 'YouTube',
+    badgeColor: 'text-coral bg-coral/8 border-coral/15',
+    glow: 'rgba(240,100,80,0.08)',
   },
 ]
 
@@ -38,21 +52,14 @@ export default function ResourceCards() {
   return (
     <section aria-labelledby="cards-heading" className="px-4 pb-14">
       <h2 id="cards-heading" className="sr-only">Secciones principales</h2>
-      <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
-        {cards.map((card, i) => (
-          <motion.div
-            key={card.to}
-            initial={prefersReduced ? {} : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: prefersReduced ? 0 : 0.5, delay: prefersReduced ? 0 : i * 0.1, ease: 'easeOut' }}
-          >
-            <Link
-              to={card.to}
-              className="group relative flex flex-col p-7 rounded-card border border-border bg-surface overflow-hidden
-                         transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/25
-                         focus-visible:ring-2 focus-visible:ring-pri focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-            >
+      <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {cards.map((card, i) => {
+          const isExternal = !!card.href
+          const className = `group relative flex flex-col p-7 rounded-card border border-border bg-surface overflow-hidden
+                             transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/25
+                             focus-visible:ring-2 focus-visible:ring-pri focus-visible:ring-offset-2 focus-visible:ring-offset-bg`
+          const inner = (
+            <>
               {/* Glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-card"
@@ -73,14 +80,35 @@ export default function ResourceCards() {
               <h3 className="relative text-xl font-bold text-text mb-2 leading-snug">{card.label}</h3>
               <p className="relative text-sm leading-relaxed text-muted flex-1 mb-6">{card.description}</p>
 
-              <span className="relative inline-flex items-center gap-2 text-sm font-semibold text-pri">
+              <span className={`relative inline-flex items-center gap-2 text-sm font-semibold ${card.linkColor}`}>
                 {card.linkText}
                 <i className="fa-solid fa-arrow-right text-xs transition-transform duration-200 group-hover:translate-x-1.5" aria-hidden="true" />
               </span>
-            </Link>
-          </motion.div>
-        ))}
+            </>
+          )
+
+          return (
+            <motion.div
+              key={card.to || card.href}
+              initial={prefersReduced ? {} : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: prefersReduced ? 0 : 0.5, delay: prefersReduced ? 0 : i * 0.1, ease: 'easeOut' }}
+            >
+              {isExternal ? (
+                <a href={card.href} target="_blank" rel="noopener noreferrer" className={className}>
+                  {inner}
+                </a>
+              ) : (
+                <Link to={card.to} className={className}>
+                  {inner}
+                </Link>
+              )}
+            </motion.div>
+          )
+        })}
       </div>
     </section>
   )
 }
+
