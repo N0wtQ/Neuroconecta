@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Reduced motion — disable everything at CSS level as a safety net */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased overflow-x-hidden;
+    min-height: 100dvh;
+  }
+
+  /* Focus ring — visible and calm */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-pri ring-offset-2 ring-offset-bg;
+  }
+
+  /* Scrollbar — subtle */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(129,106,183,0.25); }
+}
+
+@layer components {
+  /* Leaflet dark-mode override */
+  .leaflet-container {
+    background: #13152B !important;
+    font-family: 'Inter', system-ui, sans-serif !important;
+  }
+  .leaflet-popup-content-wrapper {
+    background: #1A1D38 !important;
+    color: #E5E7EB !important;
+    border: 1px solid rgba(129,106,183,0.15) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
+  }
+  .leaflet-popup-tip { background: #1A1D38 !important; }
+  .leaflet-popup-close-button { color: #9CA3AF !important; }
+  .leaflet-popup-close-button:hover { color: #E5E7EB !important; }
+  .leaflet-control-zoom a {
+    background: #13152B !important;
+    color: #9CA3AF !important;
+    border-color: rgba(129,106,183,0.2) !important;
+  }
+  .leaflet-control-zoom a:hover { background: #1A1D38 !important; color: #E5E7EB !important; }
+  .leaflet-tile-pane { filter: brightness(0.75) saturate(0.6); }
+}
