@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { usePictograms } from '../context/PictogramContext'
 import Picto from './Picto'
 
-const PICTO = { '/': 6830, '/mapa': 8476, '/biblioteca': 7882, '/ayuda': 7804 }
+const PICTO = { '/': 2573, '/mapa': 5606, '/biblioteca': 4560, '/ayuda': 2444 }
 
 const links = [
   { to: '/',           label: 'Inicio' },
@@ -67,7 +67,7 @@ export default function Navbar() {
                 }`}
               >
                 {pictoOn && PICTO[to] && (
-                  <Picto id={PICTO[to]} className="h-5 w-5 object-contain opacity-80" />
+                  <Picto id={PICTO[to]} />
                 )}
                 {label}
               </Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
             className="ml-1 flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-semibold text-coral border border-coral/25 bg-coral/5 hover:bg-coral/12 hover:border-coral/40 transition-all duration-200"
             aria-label="Necesito ayuda — acceso a recursos de apoyo en crisis"
           >
-            {pictoOn && <Picto id={PICTO['/ayuda']} className="h-5 w-5 object-contain opacity-80" />}
+            {pictoOn && <Picto id={PICTO['/ayuda']} />}
             <i className="fa-solid fa-heart-pulse text-xs" aria-hidden="true" />
             Necesito ayuda
           </Link>
@@ -143,7 +143,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-white/5 transition-colors duration-200"
               >
                 {pictoOn && PICTO[to] && (
-                  <Picto id={PICTO[to]} className="h-6 w-6 object-contain opacity-80" />
+                  <Picto id={PICTO[to]} size="lg" />
                 )}
                 {label}
               </Link>
