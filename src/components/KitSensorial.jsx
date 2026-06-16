@@ -489,7 +489,6 @@ export default function KitSensorial() {
               <i className="fa-solid fa-file-circle-plus text-xl" aria-hidden="true" />
             </div>
             <p className="text-sm font-semibold text-text mb-1">Aún no hay PDFs</p>
-            </p>
           </div>
         ) : (
           <div className="space-y-3">
