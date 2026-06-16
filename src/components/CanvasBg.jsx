@@ -7,7 +7,16 @@ const STATIC_BG = {
   background: 'radial-gradient(ellipse at 70% 10%, rgba(129,106,183,0.07) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(72,176,161,0.05) 0%, transparent 55%)',
 }
 
-// Catches WebGL / Three.js errors so they never blank the whole app
+// Pre-check WebGL support before ever creating a Canvas
+const WEBGL_OK = (() => {
+  try {
+    const c = document.createElement('canvas')
+    return !!(c.getContext('webgl') || c.getContext('experimental-webgl'))
+  } catch {
+    return false
+  }
+})()
+
 class CanvasErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { failed: false } }
   static getDerivedStateFromError() { return { failed: true } }
@@ -69,11 +78,15 @@ function ParticleField() {
   const texture = useMemo(() => createSoftCircleTexture(), [])
 
   useFrame((state) => {
-    if (!ref.current) return
-    const t = state.clock.elapsedTime
-    ref.current.rotation.y = t * 0.018
-    ref.current.rotation.x = Math.sin(t * 0.009) * 0.12
-    ref.current.position.y = Math.sin(t * 0.07) * 0.15
+    try {
+      if (!ref.current) return
+      const t = state.clock.elapsedTime
+      ref.current.rotation.y = t * 0.018
+      ref.current.rotation.x = Math.sin(t * 0.009) * 0.12
+      ref.current.position.y = Math.sin(t * 0.07) * 0.15
+    } catch {
+      // Silently absorb any animation frame errors
+    }
   })
 
   return (
@@ -109,7 +122,7 @@ function ParticleField() {
 export default function CanvasBg() {
   const prefersReduced = useReducedMotion()
 
-  if (prefersReduced) {
+  if (prefersReduced || !WEBGL_OK) {
     return <div className="fixed inset-0 -z-10" style={STATIC_BG} aria-hidden="true" />
   }
 
@@ -119,7 +132,7 @@ export default function CanvasBg() {
         <Canvas
           camera={{ position: [0, 0, 7], fov: 55 }}
           gl={{ antialias: false, alpha: true, powerPreference: 'low-power', failIfMajorPerformanceCaveat: false }}
-          dpr={Math.min(window.devicePixelRatio, 1.5)}
+          dpr={Math.max(1, Math.min(window.devicePixelRatio || 1, 1.5))}
           frameloop="always"
         >
           <ParticleField />

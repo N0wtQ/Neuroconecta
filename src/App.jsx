@@ -34,6 +34,16 @@ class AppErrorBoundary extends Component {
   }
 }
 
+// Silent error boundary for CanvasBg — on any crash just disappears, app keeps running
+class CanvasSilentBoundary extends Component {
+  constructor(props) { super(props); this.state = { failed: false } }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() {
+    if (this.state.failed) return null
+    return this.props.children
+  }
+}
+
 // Fade-in wrapper — instant when prefers-reduced-motion
 function PageTransition({ children }) {
   const prefersReduced = useReducedMotion()
@@ -76,7 +86,9 @@ export default function App() {
   return (
     <PictogramProvider>
       <HashRouter>
-        <CanvasBg />
+        <CanvasSilentBoundary>
+          <CanvasBg />
+        </CanvasSilentBoundary>
         <div className="relative z-10 min-h-dvh flex flex-col">
           <AppErrorBoundary>
             <Navbar />
