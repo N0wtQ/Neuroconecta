@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { usePictograms } from '../context/PictogramContext'
-import Picto from './Picto'
-
-const PICTO = { '/': 2573, '/mapa': 5606, '/biblioteca': 4560, '/ayuda': 2444 }
 
 const links = [
   { to: '/',           label: 'Inicio' },
@@ -17,7 +13,6 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const { enabled: pictoOn, toggle: togglePicto } = usePictograms()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
@@ -66,9 +61,6 @@ export default function Navbar() {
                     : 'text-muted hover:text-text hover:bg-white/5'
                 }`}
               >
-                {pictoOn && PICTO[to] && (
-                  <Picto id={PICTO[to]} />
-                )}
                 {label}
               </Link>
             )
@@ -80,25 +72,9 @@ export default function Navbar() {
             className="ml-1 flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-semibold text-coral border border-coral/25 bg-coral/5 hover:bg-coral/12 hover:border-coral/40 transition-all duration-200"
             aria-label="Necesito ayuda — acceso a recursos de apoyo en crisis"
           >
-            {pictoOn && <Picto id={PICTO['/ayuda']} />}
             <i className="fa-solid fa-heart-pulse text-xs" aria-hidden="true" />
             Necesito ayuda
           </Link>
-
-          {/* AAC / Pictogram toggle */}
-          <button
-            onClick={togglePicto}
-            aria-pressed={pictoOn}
-            title={pictoOn ? 'Desactivar pictogramas AAC' : 'Activar pictogramas AAC (ARASAAC)'}
-            className={`ml-1 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold border transition-all duration-200 ${
-              pictoOn
-                ? 'bg-acc/15 text-acc border-acc/30'
-                : 'bg-surface text-faint border-border hover:text-muted hover:border-border/80'
-            }`}
-          >
-            <i className="fa-solid fa-image text-[11px]" aria-hidden="true" />
-            AAC
-          </button>
         </nav>
 
         {/* Mobile right side */}
@@ -142,23 +118,9 @@ export default function Navbar() {
                 onClick={(e) => scroll && handleScrollLink(e, to)}
                 className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-white/5 transition-colors duration-200"
               >
-                {pictoOn && PICTO[to] && (
-                  <Picto id={PICTO[to]} size="lg" />
-                )}
                 {label}
               </Link>
             ))}
-            {/* AAC toggle in mobile menu */}
-            <button
-              onClick={togglePicto}
-              aria-pressed={pictoOn}
-              className={`mt-1 flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                pictoOn ? 'text-acc bg-acc/10' : 'text-faint hover:text-muted hover:bg-white/5'
-              }`}
-            >
-              <i className="fa-solid fa-image text-xs" aria-hidden="true" />
-              {pictoOn ? 'Pictogramas AAC: activados' : 'Activar pictogramas AAC'}
-            </button>
           </motion.nav>
         )}
       </AnimatePresence>

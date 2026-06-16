@@ -11,8 +11,6 @@ import MapPage from './pages/MapPage'
 import LibraryPage from './pages/LibraryPage'
 import AyudaPage from './pages/AyudaPage'
 import { useReducedMotion } from './hooks/useReducedMotion'
-import { PictogramProvider } from './context/PictogramContext'
-
 // Global error boundary — catches any React crash and shows a calm fallback
 class AppErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { error: null } }
@@ -87,26 +85,24 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <PictogramProvider>
-      <HashRouter>
-        <CanvasSilentBoundary>
-          <Suspense fallback={null}>
-            <CanvasBg />
-          </Suspense>
-        </CanvasSilentBoundary>
-        <div className="relative z-10 min-h-dvh flex flex-col">
-          <AppErrorBoundary>
-            <Navbar />
-            <main className="flex-1">
-              <AppErrorBoundary>
-                <AppRoutes />
-              </AppErrorBoundary>
-            </main>
-            <Footer />
-          </AppErrorBoundary>
-        </div>
-      </HashRouter>
-    </PictogramProvider>
+    <HashRouter>
+      <CanvasSilentBoundary>
+        <Suspense fallback={null}>
+          <CanvasBg />
+        </Suspense>
+      </CanvasSilentBoundary>
+      <div className="relative z-10 min-h-dvh flex flex-col">
+        <AppErrorBoundary>
+          <Navbar />
+          <main className="flex-1">
+            <AppErrorBoundary>
+              <AppRoutes />
+            </AppErrorBoundary>
+          </main>
+          <Footer />
+        </AppErrorBoundary>
+      </div>
+    </HashRouter>
   )
 }
 
