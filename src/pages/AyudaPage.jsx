@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import SoundPlayer from '../components/SoundPlayer'
 
 const URGENTES = [
   { nombre:'Teléfono de la Esperanza', desc:'Apoyo emocional 24h — crisis, ansiedad, momentos difíciles.', accion:'Llamar al 717 003 717', href:'tel:717003717', icon:'fa-phone', color:'coral' },
@@ -293,6 +294,50 @@ export default function AyudaPage() {
           <BreathingExercise prefersReduced={prefersReduced} />
           <GroundingCard />
           <ColdWaterCard />
+        </div>
+      </section>
+
+      {/* ── Sonidos ambientales ── */}
+      <section aria-labelledby="sonidos-h" className="mb-10">
+        <h2 id="sonidos-h" className="text-base font-semibold text-text mb-3 flex items-center gap-2">
+          <i className="fa-solid fa-headphones text-sec text-sm" aria-hidden="true" />
+          Sonidos para calmar
+        </h2>
+        <div className="flex flex-col gap-4">
+          <SoundPlayer />
+
+          {/* Lil Penguin Studios featured card */}
+          <a
+            href="https://www.youtube.com/@LilPenguinStudios"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-start gap-4 p-5 rounded-card bg-surface border border-border hover:border-coral/30 hover:bg-surfaceH transition-all duration-300"
+            aria-label="Lil Penguin Studios en YouTube — sonidos de larga duración (se abre en nueva pestaña)"
+          >
+            {/* YouTube icon badge */}
+            <div className="shrink-0 w-12 h-12 rounded-2xl bg-[#FF0000]/10 border border-[#FF0000]/20 flex items-center justify-center">
+              <i className="fa-brands fa-youtube text-[#FF0000] text-xl" aria-hidden="true" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2 mb-1">
+                <h3 className="font-semibold text-text text-sm group-hover:text-coral transition-colors duration-200">
+                  Lil Penguin Studios
+                </h3>
+                <span className="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-[#FF0000]/10 text-[#FF0000] border border-[#FF0000]/20">
+                  YouTube
+                </span>
+              </div>
+              <p className="text-xs text-muted leading-relaxed mb-2">
+                Vídeos de horas de duración con sonidos relajantes: lluvia, ruido blanco, cafeterías,
+                chimeneas y más. Especialmente recomendado durante meltdowns y momentos de
+                sobrecarga sensorial.
+              </p>
+              <span className="text-xs text-faint flex items-center gap-1 group-hover:text-coral/70 transition-colors duration-200">
+                Abrir en YouTube
+                <i className="fa-solid fa-arrow-up-right-from-square text-[9px]" aria-hidden="true" />
+              </span>
+            </div>
+          </a>
         </div>
       </section>
 

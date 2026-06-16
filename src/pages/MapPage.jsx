@@ -5,7 +5,7 @@ const SilentMap = lazy(() => import('../components/SilentMap'))
 
 export default function MapPage() {
   return (
-    <main className="max-w-5xl mx-auto px-4 pb-20 pt-8">
+    <div className="max-w-5xl mx-auto px-4 pb-20 pt-8">
       {/* Breadcrumb */}
       <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint flex items-center gap-2">
         <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
@@ -78,6 +78,6 @@ export default function MapPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   )
 }

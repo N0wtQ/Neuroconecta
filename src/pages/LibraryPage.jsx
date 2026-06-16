@@ -3,7 +3,7 @@ import ResourceLibrary from '../components/ResourceLibrary'
 
 export default function LibraryPage() {
   return (
-    <main className="max-w-5xl mx-auto px-4 pb-20 pt-8">
+    <div className="max-w-5xl mx-auto px-4 pb-20 pt-8">
       {/* Breadcrumb */}
       <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint flex items-center gap-2">
         <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
@@ -26,32 +26,7 @@ export default function LibraryPage() {
         </p>
       </header>
 
-      {/* Categories quick nav */}
-      <div
-        className="flex flex-wrap gap-2 mb-8 p-4 rounded-card bg-surface border border-border"
-        aria-label="Categorías de herramientas"
-      >
-        <span className="text-xs font-semibold text-faint self-center mr-1">Categorías:</span>
-        {[
-          'Gestión Ejecutiva',
-          'Regulación Sensorial',
-          'Salud Emocional',
-          'Comunicación Social',
-          'Accesibilidad Cognitiva',
-          'Profesional Laboral',
-          'Educación Infantil',
-          'Vida Independiente',
-        ].map(cat => (
-          <span
-            key={cat}
-            className="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-sec/8 text-sec border border-sec/15"
-          >
-            {cat}
-          </span>
-        ))}
-      </div>
-
       <ResourceLibrary />
-    </main>
+    </div>
   )
 }

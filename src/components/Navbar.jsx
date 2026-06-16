@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePictograms } from '../context/PictogramContext'
+import Picto from './Picto'
+
+const PICTO = { '/': 6830, '/mapa': 8476, '/biblioteca': 7882, '/ayuda': 7804 }
 
 const links = [
   { to: '/',           label: 'Inicio' },
-  { to: '/mapa',       label: 'Mapa silencioso' },
+  { to: '/mapa',       label: 'Mapa' },
   { to: '/biblioteca', label: 'Herramientas' },
   { to: '/#contacto',  label: 'Contacto', scroll: true },
 ]
@@ -13,6 +17,7 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { enabled: pictoOn, toggle: togglePicto } = usePictograms()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
@@ -20,7 +25,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => setMenuOpen(false), [pathname])
 
   const handleScrollLink = (e, to) => {
@@ -56,29 +60,48 @@ export default function Navbar() {
                 to={to}
                 onClick={(e) => scroll && handleScrollLink(e, to)}
                 aria-current={active ? 'page' : undefined}
-                className={`px-3.5 py-2 rounded-lg text-sm font-medium tracking-wide transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium tracking-wide transition-all duration-200 ${
                   active
                     ? 'bg-white/8 text-text'
                     : 'text-muted hover:text-text hover:bg-white/5'
                 }`}
               >
+                {pictoOn && PICTO[to] && (
+                  <Picto id={PICTO[to]} className="h-5 w-5 object-contain opacity-80" />
+                )}
                 {label}
               </Link>
             )
           })}
 
-          {/* Crisis button — always visible, high contrast */}
+          {/* Crisis button */}
           <Link
             to="/ayuda"
-            className="ml-2 flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-semibold text-coral border border-coral/25 bg-coral/5 hover:bg-coral/12 hover:border-coral/40 transition-all duration-200"
+            className="ml-1 flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-semibold text-coral border border-coral/25 bg-coral/5 hover:bg-coral/12 hover:border-coral/40 transition-all duration-200"
             aria-label="Necesito ayuda — acceso a recursos de apoyo en crisis"
           >
+            {pictoOn && <Picto id={PICTO['/ayuda']} className="h-5 w-5 object-contain opacity-80" />}
             <i className="fa-solid fa-heart-pulse text-xs" aria-hidden="true" />
             Necesito ayuda
           </Link>
+
+          {/* AAC / Pictogram toggle */}
+          <button
+            onClick={togglePicto}
+            aria-pressed={pictoOn}
+            title={pictoOn ? 'Desactivar pictogramas AAC' : 'Activar pictogramas AAC (ARASAAC)'}
+            className={`ml-1 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold border transition-all duration-200 ${
+              pictoOn
+                ? 'bg-acc/15 text-acc border-acc/30'
+                : 'bg-surface text-faint border-border hover:text-muted hover:border-border/80'
+            }`}
+          >
+            <i className="fa-solid fa-image text-[11px]" aria-hidden="true" />
+            AAC
+          </button>
         </nav>
 
-        {/* Mobile: crisis button always visible + hamburger */}
+        {/* Mobile right side */}
         <div className="flex items-center gap-2 md:hidden">
           <Link
             to="/ayuda"
@@ -117,11 +140,25 @@ export default function Navbar() {
                 key={to}
                 to={to}
                 onClick={(e) => scroll && handleScrollLink(e, to)}
-                className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-white/5 transition-colors duration-200"
+                className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-white/5 transition-colors duration-200"
               >
+                {pictoOn && PICTO[to] && (
+                  <Picto id={PICTO[to]} className="h-6 w-6 object-contain opacity-80" />
+                )}
                 {label}
               </Link>
             ))}
+            {/* AAC toggle in mobile menu */}
+            <button
+              onClick={togglePicto}
+              aria-pressed={pictoOn}
+              className={`mt-1 flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                pictoOn ? 'text-acc bg-acc/10' : 'text-faint hover:text-muted hover:bg-white/5'
+              }`}
+            >
+              <i className="fa-solid fa-image text-xs" aria-hidden="true" />
+              {pictoOn ? 'Pictogramas AAC: activados' : 'Activar pictogramas AAC'}
+            </button>
           </motion.nav>
         )}
       </AnimatePresence>
