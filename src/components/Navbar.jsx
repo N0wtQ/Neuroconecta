@@ -6,6 +6,7 @@ const links = [
   { to: '/',           label: 'Inicio' },
   { to: '/mapa',       label: 'Mapa' },
   { to: '/biblioteca', label: 'Herramientas' },
+  { to: '/kit',        label: 'Kit Sensorial' },
   { to: '/#contacto',  label: 'Contacto', scroll: true },
 ]
 
