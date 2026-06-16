@@ -44,6 +44,18 @@ const cards = [
     badgeColor: 'text-coral bg-coral/8 border-coral/15',
     glow: 'rgba(240,100,80,0.08)',
   },
+  {
+    to: '/trayectos',
+    icon: 'fa-route',
+    iconBg: 'bg-acc/10 text-acc',
+    label: 'Trayectos Sensoriales',
+    description: 'Planifica tu recorrido diario y descubre refugios sensoriales a menos de 5 minutos de tu ruta.',
+    linkText: 'Planificar ruta',
+    linkColor: 'text-acc',
+    badge: 'Nuevo',
+    badgeColor: 'text-acc bg-acc/8 border-acc/15',
+    glow: 'rgba(72,176,161,0.08)',
+  },
 ]
 
 export default function ResourceCards() {
@@ -52,7 +64,7 @@ export default function ResourceCards() {
   return (
     <section aria-labelledby="cards-heading" className="px-4 pb-14">
       <h2 id="cards-heading" className="sr-only">Secciones principales</h2>
-      <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cards.map((card, i) => {
           const isExternal = !!card.href
           const className = `group relative flex flex-col p-7 rounded-card border border-border bg-surface overflow-hidden
