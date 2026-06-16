@@ -1,8 +1,11 @@
 import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
-import { useEffect, Component } from 'react'
+import { useEffect, Component, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
-import CanvasBg from './components/CanvasBg'
 import Navbar from './components/Navbar'
+
+const CanvasBg = lazy(() =>
+  import('./components/CanvasBg').catch(() => ({ default: () => null }))
+)
 import Home from './pages/Home'
 import MapPage from './pages/MapPage'
 import LibraryPage from './pages/LibraryPage'
@@ -87,7 +90,9 @@ export default function App() {
     <PictogramProvider>
       <HashRouter>
         <CanvasSilentBoundary>
-          <CanvasBg />
+          <Suspense fallback={null}>
+            <CanvasBg />
+          </Suspense>
         </CanvasSilentBoundary>
         <div className="relative z-10 min-h-dvh flex flex-col">
           <AppErrorBoundary>
