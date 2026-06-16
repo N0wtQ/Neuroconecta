@@ -49,7 +49,7 @@ export default function Hero() {
 
       {/* Logo */}
       <motion.img
-        src="/logo.svg"
+        src={`${import.meta.env.BASE_URL}logo.svg`}
         alt="Refugio Sensorial"
         className="mx-auto mb-5"
         style={{ height: 'clamp(110px, 18vw, 190px)', width: 'auto' }}

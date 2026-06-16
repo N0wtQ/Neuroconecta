@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-5 flex items-center justify-between h-[72px] gap-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label="Refugio Sensorial — inicio">
-          <img src="/logo-icon.svg" alt="" className="h-10 w-auto" aria-hidden="true" />
+          <img src={`${import.meta.env.BASE_URL}logo-icon.svg`} alt="" className="h-10 w-auto" aria-hidden="true" />
         </Link>
 
         {/* Desktop nav */}
