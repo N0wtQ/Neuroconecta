@@ -6,7 +6,6 @@ const links = [
   { to: '/',           label: 'Inicio' },
   { to: '/mapa',       label: 'Mapa' },
   { to: '/biblioteca', label: 'Herramientas' },
-  { to: '/trayectos',  label: 'Trayectos' },
   { to: '/#contacto',  label: 'Contacto', scroll: true },
 ]
 
