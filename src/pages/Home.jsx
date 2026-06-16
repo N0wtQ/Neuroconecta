@@ -33,7 +33,7 @@ export default function Home() {
           <div className="p-8">
             <div className="flex flex-col sm:flex-row items-start gap-6">
               <img
-                src="/almudena.jpeg"
+                src={`${import.meta.env.BASE_URL}almudena.jpeg`}
                 alt="Almudena, creadora de Refugio Sensorial"
                 className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-sec/30 shrink-0"
               />
