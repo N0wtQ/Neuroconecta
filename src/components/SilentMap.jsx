@@ -140,21 +140,21 @@ export default function SilentMap() {
                     <i className={`fa-solid ${TYPE_CONFIG[lugar.tipo]?.icon ?? 'fa-location-dot'} mr-1.5`} aria-hidden="true" />
                     {TYPE_CONFIG[lugar.tipo]?.label ?? lugar.tipo}
                   </p>
-                  <h3 style={{ fontWeight: 600, color: '#E5E7EB', fontSize: '15px', marginBottom: '4px', lineHeight: '1.3' }}>
+                  <h3 style={{ fontWeight: 600, color: '#111827', fontSize: '15px', marginBottom: '4px', lineHeight: '1.3' }}>
                     {lugar.nombre}
                   </h3>
-                  <p style={{ color: '#9CA3AF', fontSize: '12px', marginBottom: '6px' }}>
+                  <p style={{ color: '#4B5563', fontSize: '12px', marginBottom: '6px' }}>
                     <i className="fa-solid fa-location-dot mr-1" style={{ color: '#6B7280' }} aria-hidden="true" />
                     {lugar.ciudad}
                   </p>
                   {lugar.horario && (
-                    <p style={{ color: '#9CA3AF', fontSize: '12px', marginBottom: '8px' }}>
+                    <p style={{ color: '#4B5563', fontSize: '12px', marginBottom: '8px' }}>
                       <i className="fa-regular fa-clock mr-1" style={{ color: '#6B7280' }} aria-hidden="true" />
                       {lugar.horario}
                     </p>
                   )}
                   {lugar.descripcion && (
-                    <p style={{ color: '#9CA3AF', fontSize: '12px', lineHeight: '1.55', marginBottom: '10px' }}>
+                    <p style={{ color: '#374151', fontSize: '12px', lineHeight: '1.55', marginBottom: '10px' }}>
                       {lugar.descripcion}
                     </p>
                   )}
