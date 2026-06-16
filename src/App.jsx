@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import CanvasBg from './components/CanvasBg'
@@ -50,7 +50,8 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    // HashRouter: URLs como /#/mapa — funciona sin configuración de servidor
+    <HashRouter>
       {/* 3D particle background — pointer-events-none, dismounts on reduced-motion */}
       <CanvasBg />
 
@@ -61,7 +62,7 @@ export default function App() {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
@@ -80,12 +81,12 @@ function Footer() {
             Autismo España
           </a>
           <span aria-hidden="true">·</span>
-          <a
-            href="/ayuda"
+          <Link
+            to="/ayuda"
             className="text-coral hover:text-coral/75 transition-colors duration-200 font-medium"
           >
             Necesito ayuda
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
