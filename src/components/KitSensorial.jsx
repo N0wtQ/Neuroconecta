@@ -148,7 +148,7 @@ function EstadoCard({ estado, prefersReduced, index }) {
 const REGULACION = [
   { icon: 'fa-snowflake',      color: 'text-pri',   bg: 'bg-pri/8',   titulo: 'Frío',           desc: 'Agua fría en muñecas y cara, hielo en manos o frente. Activa el reflejo de buceo y desacelera el sistema nervioso.' },
   { icon: 'fa-wind',           color: 'text-acc',   bg: 'bg-acc/8',   titulo: 'Respiración',     desc: 'Exhala el doble de lo que inhales. 4 seg. entrar, 8 salir. Activa el nervio vago y regula el ritmo cardíaco.' },
-  { icon: 'fa-dumbbell',       color: 'text-coral', bg: 'bg-coral/8', titulo: 'Movimiento',      desc: 'Saltar, apretar una pelota, apretar los puños, estirarse. El movimiento propioceptivo calma el sistema nervioso.' },
+  { icon: 'fa-ball',           color: 'text-coral', bg: 'bg-coral/8', titulo: 'Movimiento',      desc: 'Saltar, apretar una pelota, apretar los puños, estirarse. El movimiento propioceptivo calma el sistema nervioso.' },
   { icon: 'fa-headphones',     color: 'text-sec',   bg: 'bg-sec/8',   titulo: 'Sonido',          desc: 'Tapones, auriculares con cancelación de ruido o sonidos de fondo (lluvia, blanco). Reduce carga sensorial auditiva.' },
   { icon: 'fa-eye-slash',      color: 'text-pri',   bg: 'bg-pri/8',   titulo: 'Oscuridad',       desc: 'Cubrirse los ojos, gafas de sol o un cuarto oscuro. Elimina la sobrecarga visual y da sensación de refugio.' },
   { icon: 'fa-dumbbell',       color: 'text-acc',   bg: 'bg-acc/8',   titulo: 'Presión',         desc: 'Manta con peso, chaqueta apretada o simplemente abrazar las rodillas. La presión profunda regula el sistema nervioso.' },
