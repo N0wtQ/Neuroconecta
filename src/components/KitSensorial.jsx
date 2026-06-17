@@ -276,9 +276,10 @@ function KitSelectorCard({ kit, selected, onClick }) {
 
 function PDFCard({ pdf, prefersReduced, index }) {
   const BASE = import.meta.env.BASE_URL
+  const href = pdf.url ?? `${BASE}docs/${pdf.archivo}`
   return (
     <motion.a
-      href={`${BASE}docs/${pdf.archivo}`}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
@@ -309,7 +310,7 @@ function PDFCard({ pdf, prefersReduced, index }) {
           <p className="text-xs text-muted mt-1 leading-relaxed">{pdf.descripcion}</p>
         )}
       </div>
-      <i className="fa-solid fa-arrow-down-to-line text-xs text-muted group-hover:text-pri transition-colors duration-200 mt-0.5 shrink-0" aria-hidden="true" />
+      <i className={`fa-solid ${pdf.url ? 'fa-arrow-up-right-from-square' : 'fa-arrow-down-to-line'} text-xs text-muted group-hover:text-pri transition-colors duration-200 mt-0.5 shrink-0`} aria-hidden="true" />
     </motion.a>
   )
 }
