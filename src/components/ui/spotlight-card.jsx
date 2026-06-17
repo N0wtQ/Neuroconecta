@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 const glowColorMap = {
-  blue:   { base: 220, spread: 200 },
-  purple: { base: 280, spread: 300 },
-  green:  { base: 120, spread: 200 },
-  red:    { base: 0,   spread: 200 },
-  orange: { base: 30,  spread: 200 },
+  blue:    { base: 220, spread: 200 },
+  purple:  { base: 280, spread: 300 },
+  green:   { base: 120, spread: 200 },
+  red:     { base: 0,   spread: 200 },
+  orange:  { base: 30,  spread: 200 },
+  rainbow: { base: 0,   spread: 360 },
 }
 
 const sizeMap = {
@@ -68,6 +69,14 @@ const GLOW_STYLES = `
 
 let stylesInjected = false
 
+export function injectGlowStyles() {
+  if (typeof document === 'undefined' || stylesInjected) return
+  const style = document.createElement('style')
+  style.textContent = GLOW_STYLES
+  document.head.appendChild(style)
+  stylesInjected = true
+}
+
 export function GlowCard({
   children,
   className = '',
@@ -79,14 +88,7 @@ export function GlowCard({
 }) {
   const cardRef = useRef(null)
 
-  // Inject shared styles once
-  useEffect(() => {
-    if (stylesInjected) return
-    const style = document.createElement('style')
-    style.textContent = GLOW_STYLES
-    document.head.appendChild(style)
-    stylesInjected = true
-  }, [])
+  useEffect(() => { injectGlowStyles() }, [])
 
   useEffect(() => {
     const syncPointer = (e) => {
