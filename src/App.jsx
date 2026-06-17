@@ -11,6 +11,7 @@ import MapPage from './pages/MapPage'
 import LibraryPage from './pages/LibraryPage'
 import AyudaPage from './pages/AyudaPage'
 import KitPage from './pages/KitPage'
+import NotFoundPage from './pages/NotFoundPage'
 import { useReducedMotion } from './hooks/useReducedMotion'
 // Global error boundary — catches any React crash and shows a calm fallback
 class AppErrorBoundary extends Component {
@@ -80,6 +81,7 @@ function AppRoutes() {
         <Route path="/biblioteca" element={<PageTransition><LibraryPage /></PageTransition>} />
         <Route path="/ayuda"     element={<PageTransition><AyudaPage /></PageTransition>} />
         <Route path="/kit"       element={<PageTransition><KitPage /></PageTransition>} />
+        <Route path="*"          element={<PageTransition><NotFoundPage /></PageTransition>} />
       </Routes>
     </>
   )
