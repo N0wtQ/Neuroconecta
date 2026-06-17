@@ -3,7 +3,6 @@ import Hero from '../components/Hero'
 import ResourceCards from '../components/ResourceCards'
 import ContactForm from '../components/ContactForm'
 import { useReducedMotion } from '../hooks/useReducedMotion'
-import { LiquidAurora } from '../components/ui/liquid-aurora'
 
 function FadeSection({ id, children, className = '' }) {
   const prefersReduced = useReducedMotion()
@@ -24,11 +23,7 @@ function FadeSection({ id, children, className = '' }) {
 export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-4 pb-20">
-      {/* Aurora behind the Hero only */}
-      <div className="relative">
-        <LiquidAurora />
-        <Hero />
-      </div>
+      <Hero />
       <ResourceCards />
 
       {/* ── Sobre mí ── */}
