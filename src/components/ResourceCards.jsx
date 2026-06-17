@@ -63,17 +63,33 @@ const cards = [
 // CSS vars for the rainbow border glow — applied inline on each card element.
 // --x / --y / --xp / --yp are set on the grid container and inherited by each card
 // and its ::before / ::after pseudo-elements (CSS custom properties inherit).
+// Full GlowCard-style inline styles: CSS vars + background spotlight + border.
+// --x/--y/--xp/--yp are set on the grid container and inherited by descendants.
 const RAINBOW_VARS = {
+  // Custom props
   '--base':           '0',
   '--spread':         '360',
   '--size':           '320',
   '--border':         '3',
   '--radius':         '14',
+  '--outer':          '1',
   '--spotlight-size': 'calc(var(--size, 150) * 1px)',
   '--border-size':    'calc(var(--border, 2) * 1px)',
   '--hue':            'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
-  // Real CSS border must match --border so the mask clips correctly
+  // Background spotlight — tints the card interior with the rainbow colour near the cursor
+  backgroundImage: `radial-gradient(
+    var(--spotlight-size) var(--spotlight-size) at
+    calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(var(--hue, 210) 100% 70% / 0.18),
+    transparent
+  )`,
+  backgroundColor:    '#13152B',
+  backgroundSize:     'calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)))',
+  backgroundPosition: '50% 50%',
+  backgroundAttachment: 'fixed',
   border:             '3px solid rgba(129,106,183,0.12)',
+  position:           'relative',
+  touchAction:        'none',
 }
 
 export default function ResourceCards() {
@@ -100,12 +116,14 @@ export default function ResourceCards() {
       <div ref={gridRef} className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-6">
         {cards.map((card, i) => {
           const isExternal = !!card.href
-          const cardClass = `group relative flex flex-col p-7 rounded-card bg-surface overflow-hidden
+          const cardClass = `group relative flex flex-col p-7 rounded-card overflow-hidden
                              transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/25
                              focus-visible:ring-2 focus-visible:ring-pri focus-visible:ring-offset-2 focus-visible:ring-offset-bg`
           const inner = (
             <>
-              {/* Colour glow on hover */}
+              {/* Bloom diffusion layer — mirrors GlowCard's inner <div data-glow /> */}
+              <div data-glow aria-hidden="true" />
+              {/* Per-card colour glow on hover */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-card"
                 style={{ background: `radial-gradient(ellipse at 20% 20%, ${card.glow}, transparent 65%)` }}
