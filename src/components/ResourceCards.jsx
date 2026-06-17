@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { herramientas } from '../data/herramientas'
 import { LUGARES } from '../data/lugares'
+import { injectGlowStyles } from '@/components/ui/spotlight-card'
 
 const mapCount  = LUGARES.length
 const toolCount = herramientas.length
@@ -58,21 +60,50 @@ const cards = [
   },
 ]
 
+// CSS vars for the rainbow border glow — applied inline on each card element.
+// --x / --y / --xp / --yp are set on the grid container and inherited by each card
+// and its ::before / ::after pseudo-elements (CSS custom properties inherit).
+const RAINBOW_VARS = {
+  '--base':           '0',
+  '--spread':         '360',
+  '--size':           '220',
+  '--border':         '1',
+  '--radius':         '14',
+  '--spotlight-size': 'calc(var(--size, 150) * 1px)',
+  '--border-size':    'calc(var(--border, 2) * 1px)',
+  '--hue':            'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
+}
+
 export default function ResourceCards() {
   const prefersReduced = useReducedMotion()
+  const gridRef = useRef(null)
+
+  useEffect(() => {
+    injectGlowStyles()
+    const el = gridRef.current
+    if (!el) return
+    const handler = (e) => {
+      el.style.setProperty('--x',  e.clientX.toFixed(2))
+      el.style.setProperty('--xp', (e.clientX / window.innerWidth).toFixed(2))
+      el.style.setProperty('--y',  e.clientY.toFixed(2))
+      el.style.setProperty('--yp', (e.clientY / window.innerHeight).toFixed(2))
+    }
+    document.addEventListener('pointermove', handler)
+    return () => document.removeEventListener('pointermove', handler)
+  }, [])
 
   return (
     <section aria-labelledby="cards-heading" className="px-4 pb-14">
       <h2 id="cards-heading" className="sr-only">Secciones principales</h2>
-      <div className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-6">
+      <div ref={gridRef} className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-6">
         {cards.map((card, i) => {
           const isExternal = !!card.href
-          const className = `group relative flex flex-col p-7 rounded-card border border-border bg-surface overflow-hidden
+          const cardClass = `group relative flex flex-col p-7 rounded-card border border-border bg-surface overflow-hidden
                              transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/25
                              focus-visible:ring-2 focus-visible:ring-pri focus-visible:ring-offset-2 focus-visible:ring-offset-bg`
           const inner = (
             <>
-              {/* Glow */}
+              {/* Colour glow on hover */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-card"
                 style={{ background: `radial-gradient(ellipse at 20% 20%, ${card.glow}, transparent 65%)` }}
@@ -108,11 +139,23 @@ export default function ResourceCards() {
               transition={{ duration: prefersReduced ? 0 : 0.5, delay: prefersReduced ? 0 : i * 0.1, ease: 'easeOut' }}
             >
               {isExternal ? (
-                <a href={card.href} target="_blank" rel="noopener noreferrer" className={className}>
+                <a
+                  href={card.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                  data-glow
+                  style={RAINBOW_VARS}
+                >
                   {inner}
                 </a>
               ) : (
-                <Link to={card.to} className={className}>
+                <Link
+                  to={card.to}
+                  className={cardClass}
+                  data-glow
+                  style={RAINBOW_VARS}
+                >
                   {inner}
                 </Link>
               )}
@@ -123,4 +166,3 @@ export default function ResourceCards() {
     </section>
   )
 }
-
