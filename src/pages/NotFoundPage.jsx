@@ -3,63 +3,54 @@ import { motion } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 const links = [
-  { to: '/mapa',       icon: 'fa-location-dot', label: 'Mapa de espacios',  color: 'text-pri  bg-pri/10  border-pri/20'  },
-  { to: '/biblioteca', icon: 'fa-toolbox',       label: 'Herramientas',      color: 'text-sec  bg-sec/10  border-sec/20'  },
-  { to: '/kit',        icon: 'fa-kit-medical',   label: 'Kit Sensorial',     color: 'text-acc  bg-acc/10  border-acc/20'  },
+  { to: '/mapa',       icon: 'fa-location-dot', label: 'Mapa de espacios', color: 'text-pri bg-pri/10 border-pri/20'  },
+  { to: '/biblioteca', icon: 'fa-toolbox',       label: 'Herramientas',     color: 'text-sec bg-sec/10 border-sec/20'  },
+  { to: '/kit',        icon: 'fa-kit-medical',   label: 'Kit Sensorial',    color: 'text-acc bg-acc/10 border-acc/20'  },
 ]
 
 export default function NotFoundPage() {
   const reduced = useReducedMotion()
 
   return (
-    <div className="min-h-[80dvh] flex flex-col items-center justify-center px-6 py-16 text-center">
+    <div className="min-h-[80dvh] flex flex-col items-center justify-center px-6 py-12 text-center">
 
-      {/* Big soft 404 behind everything */}
-      <div
-        aria-hidden="true"
-        className="select-none pointer-events-none absolute font-black text-[clamp(6rem,30vw,16rem)] leading-none text-pri/5"
-        style={{ userSelect: 'none' }}
-      >
-        404
-      </div>
-
-      {/* Icon */}
+      {/* GIF animation with 404 number on top */}
       <motion.div
-        initial={reduced ? {} : { scale: 0.7, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: reduced ? 0 : 0.4, ease: 'easeOut' }}
-        className="relative mb-8"
+        initial={reduced ? {} : { opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: reduced ? 0 : 0.5, ease: 'easeOut' }}
+        className="relative w-full max-w-sm h-52 sm:h-64 mb-2"
       >
-        <div className="w-24 h-24 rounded-3xl bg-pri/10 border border-pri/20 flex items-center justify-center shadow-lg shadow-pri/5">
-          <i className="fa-solid fa-map text-4xl text-pri" aria-hidden="true" />
-        </div>
-        {/* Small pulse ring — respects reduced motion */}
-        {!reduced && (
-          <motion.div
-            className="absolute inset-0 rounded-3xl border border-pri/20"
-            animate={{ scale: [1, 1.18], opacity: [0.5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
-            aria-hidden="true"
-          />
-        )}
+        {/* Dribbble 404 GIF */}
+        <div
+          className="absolute inset-0 bg-center bg-no-repeat bg-contain opacity-80"
+          style={{
+            backgroundImage: "url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif')",
+          }}
+          role="img"
+          aria-label="Ilustración animada de una página no encontrada"
+        />
+        {/* 404 number overlay */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-4 text-center text-7xl sm:text-8xl font-black text-text/90 leading-none select-none"
+        >
+          404
+        </span>
       </motion.div>
 
       {/* Text */}
       <motion.div
         initial={reduced ? {} : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.1, ease: 'easeOut' }}
-        className="relative max-w-sm"
+        transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.15, ease: 'easeOut' }}
+        className="max-w-xs"
       >
-        <h1 className="text-3xl font-bold text-text mb-3 leading-snug">
+        <h1 className="text-2xl font-bold text-text mb-2 leading-snug">
           Esta página no existe
         </h1>
-        <p className="text-base text-muted leading-relaxed mb-2">
-          No pasa nada. La dirección que visitaste no se encontró,
-          pero el resto del sitio está bien.
-        </p>
-        <p className="text-sm text-faint leading-relaxed">
-          Puedes volver al inicio o ir directamente a una sección.
+        <p className="text-sm text-muted leading-relaxed">
+          No pasa nada. Puedes volver al inicio o ir a otra sección.
         </p>
       </motion.div>
 
@@ -67,8 +58,8 @@ export default function NotFoundPage() {
       <motion.div
         initial={reduced ? {} : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.2, ease: 'easeOut' }}
-        className="relative mt-8"
+        transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.25, ease: 'easeOut' }}
+        className="mt-7"
       >
         <Link
           to="/"
@@ -85,13 +76,13 @@ export default function NotFoundPage() {
       <motion.div
         initial={reduced ? {} : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.3, ease: 'easeOut' }}
-        className="relative mt-10 w-full max-w-sm"
+        transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.35, ease: 'easeOut' }}
+        className="mt-8 w-full max-w-xs"
       >
-        <p className="text-xs text-faint mb-4 uppercase tracking-wider font-medium">
+        <p className="text-xs text-faint mb-3 uppercase tracking-wider font-medium">
           O ve directamente a
         </p>
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-2">
           {links.map((l) => (
             <Link
               key={l.to}
