@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 const glowColorMap = {
-  blue:    { base: 220, spread: 200 },
-  purple:  { base: 280, spread: 300 },
-  green:   { base: 120, spread: 200 },
-  red:     { base: 0,   spread: 200 },
-  orange:  { base: 30,  spread: 200 },
-  rainbow: { base: 0,   spread: 360 },
+  blue:    { base: 200, spread: 50 },   // stays cyan-blue
+  purple:  { base: 260, spread: 50 },   // stays purple-violet
+  green:   { base: 140, spread: 50 },   // stays green-teal
+  red:     { base: 345, spread: 30 },   // stays red-coral
+  orange:  { base: 25,  spread: 30 },   // stays orange
+  rainbow: { base: 0,   spread: 360 },  // full spectrum (intentional)
 }
 
 const sizeMap = {

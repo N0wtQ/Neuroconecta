@@ -21,6 +21,7 @@ const cards = [
     badge: `${mapCount} espacios`,
     badgeColor: 'text-pri bg-pri/8 border-pri/15',
     glow: 'rgba(58,130,202,0.08)',
+    hueBase: 210, hueSpread: 40,   // stays blue
   },
   {
     to: '/biblioteca',
@@ -33,6 +34,7 @@ const cards = [
     badge: `${toolCount}+ herramientas`,
     badgeColor: 'text-sec bg-sec/8 border-sec/15',
     glow: 'rgba(129,106,183,0.08)',
+    hueBase: 260, hueSpread: 50,   // stays purple
   },
   {
     href: 'https://www.youtube.com/@LilPenguinStudios',
@@ -45,6 +47,7 @@ const cards = [
     badge: 'YouTube',
     badgeColor: 'text-coral bg-coral/8 border-coral/15',
     glow: 'rgba(240,100,80,0.08)',
+    hueBase: 345, hueSpread: 30,   // stays red/coral
   },
   {
     to: '/kit',
@@ -57,6 +60,7 @@ const cards = [
     badge: 'Guía',
     badgeColor: 'text-acc bg-acc/8 border-acc/15',
     glow: 'rgba(72,176,161,0.08)',
+    hueBase: 172, hueSpread: 40,   // stays teal
   },
 ]
 
@@ -89,8 +93,8 @@ function ResourceCard({ card, index, prefersReduced }) {
 
   // --rx/--ry default to -9999 so the inner glow is invisible until cursor enters the card
   const glowStyle = {
-    '--base':           '0',
-    '--spread':         '360',
+    '--base':           String(card.hueBase),
+    '--spread':         String(card.hueSpread),
     '--size':           '280',
     '--border':         '3',
     '--radius':         '14',
