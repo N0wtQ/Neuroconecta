@@ -217,7 +217,7 @@ const KITS = [
     bgColor: 'bg-coral/5',
     badgeBg: 'bg-coral/10 text-coral border-coral/20',
     glowColor: 'rgba(229,123,134,0.08)',
-    spotlightColor: 'orange',
+    spotlightColor: 'red',
     items: [
       { icon: 'fa-headphones',     label: 'Auriculares NC premium', nota: 'La herramienta más importante' },
       { icon: 'fa-sun',            label: 'Gafas de sol oscuras',   nota: 'Polarizadas si es posible' },
