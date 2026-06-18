@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import SoundPlayer from '../components/SoundPlayer'
+import TTSButton from '../components/ui/TTSButton'
 
 const URGENTES = [
   { nombre:'Teléfono de la Esperanza', desc:'Apoyo emocional 24h — crisis, ansiedad, momentos difíciles.', accion:'Llamar al 717 003 717', href:'tel:717003717', icon:'fa-phone', color:'coral' },
@@ -61,7 +62,13 @@ function BreathingExercise({ prefersReduced }) {
 
   return (
     <div className="flex flex-col items-center gap-5 p-6 rounded-card bg-surface border border-border">
-      <h3 className="font-semibold text-text text-sm">Respiración 4-7-8</h3>
+      <div className="flex items-center gap-3 w-full">
+        <div className="w-10 h-10 rounded-xl bg-pri/10 border border-pri/20 flex items-center justify-center shrink-0">
+          <i className="fa-solid fa-wind text-pri text-base" aria-hidden="true" />
+        </div>
+        <h3 className="font-semibold text-text text-sm flex-1">Respiración 4-7-8</h3>
+        <TTSButton text="Respiración 4-7-8. Inhala lentamente durante 4 segundos. Mantén la respiración durante 7 segundos. Exhala completamente durante 8 segundos. Repite el ciclo." />
+      </div>
 
       {/* Animated ring */}
       <div className="relative w-32 h-32">
@@ -137,7 +144,13 @@ function GroundingCard() {
 
   return (
     <div className="flex flex-col gap-4 p-6 rounded-card bg-surface border border-border">
-      <h3 className="font-semibold text-text text-sm">Técnica 5-4-3-2-1 (grounding)</h3>
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-xl bg-sec/10 border border-sec/20 flex items-center justify-center shrink-0">
+          <i className="fa-solid fa-anchor text-sec text-base" aria-hidden="true" />
+        </div>
+        <h3 className="font-semibold text-text text-sm flex-1">Técnica 5-4-3-2-1</h3>
+        <TTSButton text="Técnica de grounding 5-4-3-2-1. Nombra 5 cosas que puedes ver ahora mismo. 4 cosas que puedes tocar. 3 cosas que puedes oír. 2 cosas que puedes oler. 1 cosa que puedes saborear. Esto te ancla en el presente." />
+      </div>
 
       <div className="flex gap-1.5">
         {GROUNDING_5.map((g, i) => (
@@ -205,27 +218,35 @@ function GroundingCard() {
 }
 
 // ── Cold water technique ──────────────────────────────────────────────────
+const COLD_STEPS = [
+  { icon: 'fa-droplet',     text: 'Busca agua fría o un cubo de hielo' },
+  { icon: 'fa-hand',        text: 'Pon las manos bajo agua fría 30 segundos' },
+  { icon: 'fa-snowflake',   text: 'O sostén un cubito de hielo en la mano' },
+  { icon: 'fa-circle-info', text: 'El frío activa el sistema nervioso parasimpático y frena la respuesta de alarma' },
+]
+
 function ColdWaterCard() {
   return (
     <div className="flex flex-col gap-4 p-6 rounded-card bg-surface border border-border">
-      <h3 className="font-semibold text-text text-sm">Regulación con frío</h3>
-      <div className="flex flex-col gap-3 flex-1">
-        {[
-          'Busca agua fría o un cubo de hielo',
-          'Pon las manos bajo agua fría 30 segundos',
-          'O sostén un cubito de hielo en la mano',
-          'El frío activa el sistema nervioso parasimpático y frena la respuesta de alarma',
-        ].map((p, i) => (
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-xl bg-acc/10 border border-acc/20 flex items-center justify-center shrink-0">
+          <i className="fa-solid fa-snowflake text-acc text-base" aria-hidden="true" />
+        </div>
+        <h3 className="font-semibold text-text text-sm flex-1">Regulación con frío</h3>
+        <TTSButton text="Regulación con frío. Paso 1: Busca agua fría o un cubo de hielo. Paso 2: Pon las manos bajo agua fría 30 segundos. Paso 3: O sostén un cubito de hielo en la mano. El frío activa el sistema nervioso parasimpático y frena la respuesta de alarma." />
+      </div>
+      <div className="flex flex-col gap-2.5 flex-1">
+        {COLD_STEPS.map((step, i) => (
           <div key={i} className="flex items-start gap-3">
-            <span className="shrink-0 w-5 h-5 rounded-full bg-pri/10 text-pri text-[10px] font-bold flex items-center justify-center mt-0.5">
-              {i + 1}
-            </span>
-            <p className="text-xs text-muted leading-relaxed">{p}</p>
+            <div className="shrink-0 w-7 h-7 rounded-lg bg-pri/8 border border-pri/15 flex items-center justify-center mt-0.5">
+              <i className={`fa-solid ${step.icon} text-pri text-[11px]`} aria-hidden="true" />
+            </div>
+            <p className="text-xs text-muted leading-relaxed pt-1">{step.text}</p>
           </div>
         ))}
       </div>
       <div className="flex items-center gap-2 p-3 rounded-xl bg-pri/6 border border-pri/15">
-        <i className="fa-solid fa-snowflake text-pri text-sm" aria-hidden="true" />
+        <i className="fa-solid fa-bolt text-pri text-sm" aria-hidden="true" />
         <p className="text-xs text-muted">Ideal cuando hay mucha activación o sensación de pánico.</p>
       </div>
     </div>

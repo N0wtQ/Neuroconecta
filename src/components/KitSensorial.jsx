@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { RECURSOS_PDF } from '../data/recursos-pdf'
 import { GlowCard } from '@/components/ui/spotlight-card'
+import TTSButton from '@/components/ui/TTSButton'
 
 // ── MELTDOWN / SHUTDOWN / BURNOUT ─────────────────────────────────────────────
 
@@ -392,15 +393,18 @@ export default function KitSensorial() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-20px' }}
               transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : i * 0.06 }}
-              className="flex items-start gap-3 p-4 rounded-card border border-border bg-surface"
+              className="flex flex-col p-4 rounded-card border border-border bg-surface gap-3"
             >
-              <div className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm shrink-0 ${item.bg} ${item.color}`}>
-                <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
+              <div className="flex items-start gap-3">
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg shrink-0 ${item.bg} ${item.color}`}>
+                  <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-text mb-0.5">{item.titulo}</p>
+                  <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-semibold text-text mb-0.5">{item.titulo}</p>
-                <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
-              </div>
+              <TTSButton text={`${item.titulo}. ${item.desc}`} className="self-end" />
             </motion.div>
           ))}
         </div>
