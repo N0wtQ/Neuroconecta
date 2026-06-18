@@ -15,6 +15,15 @@ export const RECURSOS_PDF = [
   },
   {
     id: 2,
+    titulo: 'Tarjeta de autonomía y de crisis — Pempox',
+    descripcion: 'Para tener a mano cuando no puedes hablar. Se imprime, se corta y se plastifica. Documento de Pempox.',
+    archivo: 'tarjeta-autonomia-crisis-pempox.pdf',
+    categoria: 'Crisis',
+    color: '#E57B86',
+    icono: 'fa-id-card',
+  },
+  {
+    id: 3,
     titulo: 'Estrategias proactivas de regulación emocional',
     descripcion: 'Guía práctica de Autismo Madrid sobre conducta desafiante, causas subyacentes y plan de intervención para la regulación emocional en TEA. 70 páginas.',
     archivo: 'estrategias-regulacion-emocional-autismo-madrid.pdf',
@@ -22,7 +31,7 @@ export const RECURSOS_PDF = [
     color: '#48B0A1',
   },
   {
-    id: 3,
+    id: 4,
     titulo: 'Guía 2: Orientaciones para una convivencia inclusiva con estudiantes autistas',
     descripcion: 'Universidad Autónoma de Chile · PsiConecta. Enfoque interdisciplinario con casos prácticos: orientaciones para la comunidad universitaria sobre el "¿Qué hago?" en situaciones académicas y de convivencia.',
     url: 'https://drive.google.com/file/d/1MMJApw5XKwsnYeXk32M84JxKBsWD1bQZ/view?usp=drive_link',
@@ -30,7 +39,7 @@ export const RECURSOS_PDF = [
     color: '#3A82CA',
   },
   {
-    id: 4,
+    id: 5,
     titulo: 'Educación de personas adultas con autismo',
     descripcion: 'Para familias, profesores y terapeutas. Modelos teóricos, orientaciones pedagógicas y estrategias para la transición a la vida adulta. 210 páginas.',
     url: 'https://drive.google.com/file/d/1fxIawEc4BNjHrU0Lu9WzJ1Lk5XLwjaHH/view?usp=drive_link',
@@ -38,7 +47,7 @@ export const RECURSOS_PDF = [
     color: '#816AB7',
   },
   {
-    id: 5,
+    id: 6,
     titulo: '¿Cómo recuperarse de un Burnout siendo autista?',
     descripcion: 'Artículo de Mujeres y Autismo con estrategias prácticas de recuperación: descanso real, reducción de enmascaramiento, apoyos y ritmos sostenibles.',
     url: 'https://www.mujeresyautismo.com/post/c%C3%B3mo-recuperarse-de-un-burnout-siendo-autista',
