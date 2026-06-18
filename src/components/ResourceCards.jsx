@@ -113,7 +113,7 @@ function ResourceCard({ card, index, prefersReduced }) {
     backgroundPosition: '0 0',
     border:             '3px solid rgba(129,106,183,0.12)',
     position:           'relative',
-    touchAction:        'none',
+    touchAction:        'pan-y',
   }
 
   const cardClass = `group flex flex-col p-7 rounded-card overflow-hidden

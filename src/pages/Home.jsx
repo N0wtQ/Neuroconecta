@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Hero from '../components/Hero'
 import ResourceCards from '../components/ResourceCards'
@@ -21,6 +23,16 @@ function FadeSection({ id, children, className = '' }) {
 }
 
 export default function Home() {
+  const { state } = useLocation()
+
+  useEffect(() => {
+    if (!state?.scrollTo) return
+    const t = setTimeout(() => {
+      document.getElementById(state.scrollTo)?.scrollIntoView({ behavior: 'smooth' })
+    }, 150)
+    return () => clearTimeout(t)
+  }, [state?.scrollTo])
+
   return (
     <div className="max-w-5xl mx-auto px-4 pb-20">
       <Hero />

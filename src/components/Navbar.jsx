@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const links = [
@@ -12,6 +12,7 @@ const links = [
 
 export default function Navbar() {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -25,10 +26,12 @@ export default function Navbar() {
 
   const handleScrollLink = (e, to) => {
     if (!to.startsWith('/#')) return
+    e.preventDefault()
     const id = to.slice(2)
     if (pathname === '/') {
-      e.preventDefault()
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/', { state: { scrollTo: id } })
     }
   }
 
