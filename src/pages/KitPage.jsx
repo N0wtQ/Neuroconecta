@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import KitSensorial from '../components/KitSensorial'
 
 export default function KitPage() {
@@ -12,6 +13,11 @@ export default function KitPage() {
           }}
           aria-hidden="true"
         />
+        <nav aria-label="Ruta de navegación" className="relative mb-4 text-sm text-faint flex items-center gap-2">
+          <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
+          <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
+          <span className="text-muted" aria-current="page">Kit Sensorial</span>
+        </nav>
         <h1 className="relative text-2xl font-bold text-text mb-1">Kit Sensorial</h1>
         <p className="relative text-sm text-muted">
           Entiende lo que te pasa, regúlate y prepara tu kit para salir al mundo.
