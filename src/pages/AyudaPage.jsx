@@ -67,7 +67,7 @@ function BreathingExercise({ prefersReduced }) {
           <i className="fa-solid fa-wind text-pri text-base" aria-hidden="true" />
         </div>
         <h3 className="font-semibold text-text text-sm flex-1">Respiración 4-7-8</h3>
-        <TTSButton text="Respiración 4-7-8. Inhala lentamente durante 4 segundos. Mantén la respiración durante 7 segundos. Exhala completamente durante 8 segundos. Repite el ciclo." />
+        <TTSButton text="Respiración 4-7-8. Inhala lentamente durante 4 segundos. Mantén la respiración durante 7 segundos. Exhala completamente durante 8 segundos. Repite el ciclo." iconOnly />
       </div>
 
       {/* Animated ring */}
@@ -149,7 +149,7 @@ function GroundingCard() {
           <i className="fa-solid fa-anchor text-sec text-base" aria-hidden="true" />
         </div>
         <h3 className="font-semibold text-text text-sm flex-1">Técnica 5-4-3-2-1</h3>
-        <TTSButton text="Técnica de grounding 5-4-3-2-1. Nombra 5 cosas que puedes ver ahora mismo. 4 cosas que puedes tocar. 3 cosas que puedes oír. 2 cosas que puedes oler. 1 cosa que puedes saborear. Esto te ancla en el presente." />
+        <TTSButton text="Técnica de grounding 5-4-3-2-1. Nombra 5 cosas que puedes ver ahora mismo. 4 cosas que puedes tocar. 3 cosas que puedes oír. 2 cosas que puedes oler. 1 cosa que puedes saborear. Esto te ancla en el presente." iconOnly />
       </div>
 
       <div className="flex gap-1.5">
@@ -233,7 +233,7 @@ function ColdWaterCard() {
           <i className="fa-solid fa-snowflake text-acc text-base" aria-hidden="true" />
         </div>
         <h3 className="font-semibold text-text text-sm flex-1">Regulación con frío</h3>
-        <TTSButton text="Regulación con frío. Paso 1: Busca agua fría o un cubo de hielo. Paso 2: Pon las manos bajo agua fría 30 segundos. Paso 3: O sostén un cubito de hielo en la mano. El frío activa el sistema nervioso parasimpático y frena la respuesta de alarma." />
+        <TTSButton text="Regulación con frío. Paso 1: Busca agua fría o un cubo de hielo. Paso 2: Pon las manos bajo agua fría 30 segundos. Paso 3: O sostén un cubito de hielo en la mano. El frío activa el sistema nervioso parasimpático y frena la respuesta de alarma." iconOnly />
       </div>
       <div className="flex flex-col gap-2.5 flex-1">
         {COLD_STEPS.map((step, i) => (
