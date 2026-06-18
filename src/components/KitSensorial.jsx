@@ -147,15 +147,60 @@ function EstadoCard({ estado, prefersReduced, index }) {
 // ── REGULACIÓN ────────────────────────────────────────────────────────────────
 
 const REGULACION = [
-  { icon: 'fa-snowflake',      color: 'text-pri',   bg: 'bg-pri/8',   titulo: 'Frío',           desc: 'Agua fría en muñecas y cara, hielo en manos o frente. Activa el reflejo de buceo y desacelera el sistema nervioso.' },
-  { icon: 'fa-wind',           color: 'text-acc',   bg: 'bg-acc/8',   titulo: 'Respiración',     desc: 'Exhala el doble de lo que inhales. 4 seg. entrar, 8 salir. Activa el nervio vago y regula el ritmo cardíaco.' },
-  { icon: 'fa-person-running',  color: 'text-coral', bg: 'bg-coral/8', titulo: 'Movimiento',      desc: 'Saltar, apretar una pelota, apretar los puños, estirarse. El movimiento propioceptivo calma el sistema nervioso.' },
-  { icon: 'fa-headphones',     color: 'text-sec',   bg: 'bg-sec/8',   titulo: 'Sonido',          desc: 'Tapones, auriculares con cancelación de ruido o sonidos de fondo (lluvia, blanco). Reduce carga sensorial auditiva.' },
-  { icon: 'fa-eye-slash',      color: 'text-pri',   bg: 'bg-pri/8',   titulo: 'Oscuridad',       desc: 'Cubrirse los ojos, gafas de sol o un cuarto oscuro. Elimina la sobrecarga visual y da sensación de refugio.' },
-  { icon: 'fa-dumbbell',       color: 'text-acc',   bg: 'bg-acc/8',   titulo: 'Presión',         desc: 'Manta con peso, chaqueta apretada o simplemente abrazar las rodillas. La presión profunda regula el sistema nervioso.' },
-  { icon: 'fa-lemon',          color: 'text-coral', bg: 'bg-coral/8', titulo: 'Sabor intenso',   desc: 'Caramelo ácido, chicle, hielo. La estimulación oral fuerte atrae la atención del sistema nervioso a una sola cosa.' },
-  { icon: 'fa-layer-group',    color: 'text-sec',   bg: 'bg-sec/8',   titulo: 'Grounding 5-4-3', desc: 'Nombra 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas. Ancla en el presente.' },
-  { icon: 'fa-person-walking', color: 'text-pri',   bg: 'bg-pri/8',   titulo: 'Salida',          desc: 'Cambiar de entorno — salir a un pasillo, baño o al aire libre. A veces el único regulador es romper el estímulo.' },
+  {
+    icon: 'fa-snowflake', color: 'text-pri', bg: 'bg-pri/8',
+    titulo: 'Frío',
+    desc: 'Agua fría en muñecas y cara, hielo en manos o frente. Activa el reflejo de buceo y desacelera el sistema nervioso.',
+    tts: 'Frío. Pon agua fría en las muñecas y en la cara, o sostén hielo en las manos o en la frente. Esto activa el reflejo de buceo y desacelera el sistema nervioso.',
+  },
+  {
+    icon: 'fa-wind', color: 'text-acc', bg: 'bg-acc/8',
+    titulo: 'Respiración',
+    desc: 'Exhala el doble de lo que inhales. 4 seg. entrar, 8 salir. Activa el nervio vago y regula el ritmo cardíaco.',
+    tts: 'Respiración. Exhala el doble de lo que inhalas. Cuatro segundos para entrar el aire, ocho segundos para soltarlo. Esto activa el nervio vago y regula el ritmo cardíaco.',
+  },
+  {
+    icon: 'fa-person-running', color: 'text-coral', bg: 'bg-coral/8',
+    titulo: 'Movimiento',
+    desc: 'Saltar, apretar una pelota, apretar los puños, estirarse. El movimiento propioceptivo calma el sistema nervioso.',
+    tts: 'Movimiento. Salta, aprieta una pelota, aprieta los puños o estírate. El movimiento propioceptivo calma el sistema nervioso.',
+  },
+  {
+    icon: 'fa-headphones', color: 'text-sec', bg: 'bg-sec/8',
+    titulo: 'Sonido',
+    desc: 'Tapones, auriculares con cancelación de ruido o sonidos de fondo (lluvia, blanco). Reduce carga sensorial auditiva.',
+    tts: 'Sonido. Usa tapones o auriculares con cancelación de ruido, o pon sonidos de fondo como lluvia o ruido blanco. Reduce la carga sensorial auditiva.',
+  },
+  {
+    icon: 'fa-eye-slash', color: 'text-pri', bg: 'bg-pri/8',
+    titulo: 'Oscuridad',
+    desc: 'Cubrirse los ojos, gafas de sol o un cuarto oscuro. Elimina la sobrecarga visual y da sensación de refugio.',
+    tts: 'Oscuridad. Cúbrete los ojos, ponte gafas de sol o busca un cuarto oscuro. Elimina la sobrecarga visual y da sensación de refugio.',
+  },
+  {
+    icon: 'fa-dumbbell', color: 'text-acc', bg: 'bg-acc/8',
+    titulo: 'Presión',
+    desc: 'Manta con peso, chaqueta apretada o simplemente abrazar las rodillas. La presión profunda regula el sistema nervioso.',
+    tts: 'Presión. Usa una manta con peso, ponte una chaqueta apretada o simplemente abraza tus rodillas. La presión profunda regula el sistema nervioso.',
+  },
+  {
+    icon: 'fa-lemon', color: 'text-coral', bg: 'bg-coral/8',
+    titulo: 'Sabor intenso',
+    desc: 'Caramelo ácido, chicle, hielo. La estimulación oral fuerte atrae la atención del sistema nervioso a una sola cosa.',
+    tts: 'Sabor intenso. Come un caramelo ácido, chicle o hielo. La estimulación oral fuerte concentra la atención del sistema nervioso en una sola cosa.',
+  },
+  {
+    icon: 'fa-layer-group', color: 'text-sec', bg: 'bg-sec/8',
+    titulo: 'Grounding 5-4-3',
+    desc: 'Nombra 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas. Ancla en el presente.',
+    tts: 'Técnica de anclaje. Nombra cinco cosas que ves, cuatro que tocas, tres que oyes, dos que hueles y una que saboreas. Esto te ancla en el presente.',
+  },
+  {
+    icon: 'fa-person-walking', color: 'text-pri', bg: 'bg-pri/8',
+    titulo: 'Salida',
+    desc: 'Cambiar de entorno — salir a un pasillo, baño o al aire libre. A veces el único regulador es romper el estímulo.',
+    tts: 'Salida. Cambia de entorno. Sal a un pasillo, al baño o al aire libre. A veces el único regulador es alejarse del estímulo.',
+  },
 ]
 
 // ── KIT DE BOLSO ─────────────────────────────────────────────────────────────
@@ -404,7 +449,7 @@ export default function KitSensorial() {
                   <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
                 </div>
               </div>
-              <TTSButton text={`${item.titulo}. ${item.desc}`} className="self-end" />
+              <TTSButton text={item.tts} className="self-end" />
             </motion.div>
           ))}
         </div>
