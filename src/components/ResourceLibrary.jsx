@@ -145,9 +145,8 @@ function PerfilDropdown({ value, onChange }) {
             : 'bg-surface text-muted border-border hover:text-text'
         }`}
       >
-        <i className="fa-solid fa-user-tag text-[9px]" aria-hidden="true" />
         {label}
-        <i className={`fa-solid fa-chevron-down text-[9px] transition-transform duration-150 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+        <i className={`fa-solid fa-chevron-down text-[11px] transition-transform duration-150 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
 
       <AnimatePresence>
