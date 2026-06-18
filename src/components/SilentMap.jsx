@@ -91,13 +91,18 @@ export default function SilentMap() {
             <button
               key={tipo}
               onClick={() => handleTypeClick(tipo)}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors duration-200 border"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors duration-200 border"
               style={active
                 ? { backgroundColor: `${cfg.color}20`, color: cfg.color, borderColor: `${cfg.color}50` }
                 : { backgroundColor: 'rgba(19,21,43,1)', color: '#9CA3AF', borderColor: 'rgba(129,106,183,0.1)' }
               }
               aria-pressed={active}
             >
+              <span
+                className="inline-block w-2 h-2 rounded-full shrink-0"
+                style={{ backgroundColor: cfg.color, opacity: active ? 1 : 0.5 }}
+                aria-hidden="true"
+              />
               {cfg.label} ({count})
             </button>
           )
