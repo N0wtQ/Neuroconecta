@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
 import { useEffect, Component, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -89,7 +89,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename="/refugio-sensorial">
       <CanvasSilentBoundary>
         <Suspense fallback={null}>
           <CanvasBg />
@@ -106,7 +106,7 @@ export default function App() {
           <Footer />
         </AppErrorBoundary>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
