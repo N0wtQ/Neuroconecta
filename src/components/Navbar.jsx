@@ -26,17 +26,22 @@ function DesktopDropdown({ link, pathname }) {
   const active = pathname.startsWith(link.basePath)
 
   useEffect(() => {
-    const handler = (e) => {
+    const onClickOutside = (e) => {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false)
     }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
+    const onScroll = () => setOpen(false)
+    document.addEventListener('mousedown', onClickOutside)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      document.removeEventListener('mousedown', onClickOutside)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   return (
     <div
       ref={ref}
-      className="relative"
+      className="relative z-[200]"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
@@ -62,7 +67,7 @@ function DesktopDropdown({ link, pathname }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.14 }}
-            className="absolute top-full left-0 mt-1.5 w-52 rounded-xl border border-border bg-bg/98 backdrop-blur-md shadow-xl shadow-black/30 overflow-hidden z-50 py-1"
+            className="absolute top-full left-0 mt-1.5 w-52 rounded-xl border border-borderH bg-[#0C0E1E] shadow-2xl shadow-black/60 overflow-hidden z-[200] py-1"
             role="menu"
           >
             {link.children.map((child) => {
