@@ -11,6 +11,8 @@ import MapPage from './pages/MapPage'
 import LibraryPage from './pages/LibraryPage'
 import AyudaPage from './pages/AyudaPage'
 import KitPage from './pages/KitPage'
+import RecursosPage from './pages/RecursosPage'
+import SenalesPage from './pages/SenalesPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useReducedMotion } from './hooks/useReducedMotion'
 // Global error boundary — catches any React crash and shows a calm fallback
@@ -80,8 +82,10 @@ function AppRoutes() {
         <Route path="/mapa"      element={<PageTransition><MapPage /></PageTransition>} />
         <Route path="/biblioteca" element={<PageTransition><LibraryPage /></PageTransition>} />
         <Route path="/ayuda"     element={<PageTransition><AyudaPage /></PageTransition>} />
-        <Route path="/kit"       element={<PageTransition><KitPage /></PageTransition>} />
-        <Route path="*"          element={<PageTransition><NotFoundPage /></PageTransition>} />
+        <Route path="/kit"           element={<PageTransition><KitPage /></PageTransition>} />
+        <Route path="/kit/recursos"  element={<PageTransition><RecursosPage /></PageTransition>} />
+        <Route path="/kit/senales"   element={<PageTransition><SenalesPage /></PageTransition>} />
+        <Route path="*"              element={<PageTransition><NotFoundPage /></PageTransition>} />
       </Routes>
     </>
   )

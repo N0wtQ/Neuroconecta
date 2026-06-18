@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
-import { RECURSOS_PDF } from '../data/recursos-pdf'
 import { GlowCard } from '@/components/ui/spotlight-card'
 import TTSButton from '@/components/ui/TTSButton'
 
@@ -350,48 +350,32 @@ function KitSelectorCard({ kit, selected, onClick }) {
   )
 }
 
-// ── PDF RECURSOS ──────────────────────────────────────────────────────────────
+// ── NAV CARDS ─────────────────────────────────────────────────────────────────
 
-function PDFCard({ pdf, prefersReduced, index }) {
-  const BASE = import.meta.env.BASE_URL
-  const href = pdf.url ?? `${BASE}docs/${pdf.archivo}`
-  return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : index * 0.08 }}
-      className="group flex items-start gap-4 p-5 rounded-card border border-border bg-surface hover:border-pri/25 hover:bg-surface/80 transition-all duration-200"
-    >
-      <div
-        className="w-10 h-10 rounded-xl flex items-center justify-center text-sm shrink-0"
-        style={{ background: `${pdf.color}18`, color: pdf.color }}
-      >
-        <i className={`fa-solid ${pdf.icono ?? 'fa-file-pdf'} text-base`} aria-hidden="true" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-start justify-between gap-2">
-          <p className="text-sm font-semibold text-text leading-snug group-hover:text-pri transition-colors duration-200">
-            {pdf.titulo}
-          </p>
-          <span
-            className="text-[10px] font-semibold px-2 py-0.5 rounded-md border shrink-0"
-            style={{ background: `${pdf.color}12`, color: pdf.color, borderColor: `${pdf.color}30` }}
-          >
-            {pdf.categoria}
-          </span>
-        </div>
-        {pdf.descripcion && (
-          <p className="text-xs text-muted mt-1 leading-relaxed">{pdf.descripcion}</p>
-        )}
-      </div>
-      <i className={`fa-solid ${pdf.url ? 'fa-arrow-up-right-from-square' : 'fa-arrow-down-to-line'} text-xs text-muted group-hover:text-pri transition-colors duration-200 mt-0.5 shrink-0`} aria-hidden="true" />
-    </motion.a>
-  )
-}
+const NAV_CARDS = [
+  {
+    to: '/kit/senales',
+    icon: 'fa-triangle-exclamation',
+    color: 'text-coral',
+    bg: 'bg-coral/10',
+    borderColor: 'border-coral/25',
+    bgCard: 'bg-coral/5',
+    glowColor: 'rgba(229,123,134,0.07)',
+    titulo: 'Señales previas a la crisis',
+    desc: 'Aprende a reconocer las señales de que tu sistema nervioso está llegando al límite antes de que ocurra.',
+  },
+  {
+    to: '/kit/recursos',
+    icon: 'fa-folder-open',
+    color: 'text-pri',
+    bg: 'bg-pri/10',
+    borderColor: 'border-pri/25',
+    bgCard: 'bg-pri/5',
+    glowColor: 'rgba(58,130,202,0.07)',
+    titulo: 'Recursos y documentos',
+    desc: 'Guías, PDFs y artículos sobre autismo y neurodiversidad para leer, descargar y llevar encima.',
+  },
+]
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────────
 
@@ -563,40 +547,50 @@ export default function KitSensorial() {
         </AnimatePresence>
       </section>
 
-      {/* ── PDF Recursos ────────────────────────────────────────────────── */}
-      <section aria-labelledby="pdf-heading">
+      {/* ── Explorar más ────────────────────────────────────────────────── */}
+      <section aria-labelledby="explorar-heading">
         <motion.div
           initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: prefersReduced ? 0 : 0.4 }}
-          className="mb-6"
+          className="mb-5"
         >
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-pri/10 flex items-center justify-center text-pri shrink-0">
-              <i className="fa-solid fa-folder-open" aria-hidden="true" />
-            </div>
-            <div>
-              <h2 id="pdf-heading" className="text-xl font-bold text-text leading-tight">Mis recursos</h2>
-              <p className="text-sm text-muted">Guías y documentos en PDF para descargar</p>
-            </div>
-          </div>
+          <h2 id="explorar-heading" className="text-base font-semibold text-muted uppercase tracking-wider">
+            Explorar más
+          </h2>
         </motion.div>
 
-        {RECURSOS_PDF.length === 0 ? (
-          <div className="rounded-card border border-border border-dashed bg-surface/40 p-10 text-center">
-            <div className="w-12 h-12 rounded-xl bg-pri/8 flex items-center justify-center text-pri mx-auto mb-4">
-              <i className="fa-solid fa-file-circle-plus text-xl" aria-hidden="true" />
-            </div>
-            <p className="text-sm font-semibold text-text mb-1">Aún no hay PDFs</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {RECURSOS_PDF.map((pdf, i) => (
-              <PDFCard key={pdf.id} pdf={pdf} prefersReduced={prefersReduced} index={i} />
-            ))}
-          </div>
-        )}
+        <div className="grid sm:grid-cols-2 gap-3">
+          {NAV_CARDS.map((card, i) => (
+            <motion.div
+              key={card.to}
+              initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : i * 0.1 }}
+            >
+              <Link
+                to={card.to}
+                className={`group relative flex items-start gap-4 p-5 rounded-card border ${card.borderColor} ${card.bgCard} overflow-hidden transition-all duration-200 hover:border-opacity-50 hover:shadow-sm block`}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none rounded-card"
+                  style={{ background: `radial-gradient(ellipse at 10% 10%, ${card.glowColor}, transparent 60%)` }}
+                  aria-hidden="true"
+                />
+                <div className={`relative w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${card.bg} ${card.color}`}>
+                  <i className={`fa-solid ${card.icon}`} aria-hidden="true" />
+                </div>
+                <div className="relative flex-1 min-w-0">
+                  <p className={`text-sm font-semibold ${card.color} mb-1 group-hover:underline`}>{card.titulo}</p>
+                  <p className="text-xs text-muted leading-relaxed">{card.desc}</p>
+                </div>
+                <i className={`relative fa-solid fa-chevron-right text-xs ${card.color} opacity-60 group-hover:opacity-100 mt-0.5 transition-opacity duration-200`} aria-hidden="true" />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </section>
     </div>
   )
