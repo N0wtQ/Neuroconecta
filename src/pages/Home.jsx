@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import ResourceCards from '../components/ResourceCards'
 import ContactForm from '../components/ContactForm'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 function FadeSection({ id, children, className = '' }) {
   const prefersReduced = useReducedMotion()
@@ -24,6 +25,10 @@ function FadeSection({ id, children, className = '' }) {
 
 export default function Home() {
   const { state } = useLocation()
+  usePageMeta({
+    title: 'Refugio Sensorial — Recursos para personas neurodivergentes en España',
+    description: 'Mapa de sitios silenciosos, herramientas digitales para TEA y TDAH, kit sensorial y apoyo en crisis. Recursos para personas neurodivergentes en España.',
+  })
 
   useEffect(() => {
     if (!state?.scrollTo) return

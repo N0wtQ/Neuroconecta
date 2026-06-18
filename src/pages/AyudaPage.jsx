@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import SoundPlayer from '../components/SoundPlayer'
 import TTSButton from '../components/ui/TTSButton'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const URGENTES = [
   { nombre:'Teléfono de la Esperanza', desc:'Apoyo emocional 24h — crisis, ansiedad, momentos difíciles.', accion:'Llamar al 717 003 717', href:'tel:717003717', icon:'fa-phone', color:'coral' },
@@ -254,6 +255,10 @@ function ColdWaterCard() {
 }
 
 export default function AyudaPage() {
+  usePageMeta({
+    title: 'Necesito ayuda ahora — Técnicas de crisis para personas neurodivergentes | Refugio Sensorial',
+    description: 'Técnicas de regulación inmediata para crisis autista: respiración 4-7-8, grounding 5-4-3, agua fría. Contactos de apoyo y recursos de emergencia para TEA y TDAH.',
+  })
   const prefersReduced = useReducedMotion()
 
   return (

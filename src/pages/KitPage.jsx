@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
 import KitSensorial from '../components/KitSensorial'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function KitPage() {
+  usePageMeta({
+    title: 'Kit Sensorial para personas autistas y con TDAH — Refugio Sensorial',
+    description: 'Aprende a identificar meltdown, shutdown y burnout autista. Técnicas de regulación sensorial y guía de kit de bolso para salidas. Recursos para TEA y TDAH.',
+  })
   return (
     <div className="min-h-dvh">
       {/* Header with open background so canvas particles are visible */}

@@ -5,7 +5,23 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" href="/fav.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0C0E1E" />
   <meta name="description" content="Mapa de sitios silenciosos y biblioteca de herramientas digitales para personas neurodivergentes en España." />
+
+  <!-- CSP parcial via meta (frame-ancestors y HSTS requieren Cloudflare para funcionar) -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline';
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
+    img-src 'self' data: blob: https://*.tile.openstreetmap.org https://*.cartocdn.com https://*.basemaps.cartocdn.com https://n0wtq.github.io;
+    media-src 'self';
+    connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
+    worker-src 'self' blob:;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'none';
+  " />
 
   <!-- Open Graph / WhatsApp / redes sociales -->
   <meta property="og:type"        content="website" />
@@ -22,7 +38,30 @@
   <meta name="twitter:title"       content="Refugio Sensorial" />
   <meta name="twitter:description" content="Recursos digitales para personas neurodivergentes." />
   <meta name="twitter:image"       content="https://n0wtq.github.io/refugio-sensorial/logo-icon.png" />
+
   <title>Refugio Sensorial — Recursos para personas neurodivergentes</title>
+
+  <!-- Datos estructurados Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Refugio Sensorial",
+    "url": "https://n0wtq.github.io/refugio-sensorial/",
+    "description": "Recursos digitales para personas neurodivergentes en España: mapa de lugares silenciosos, herramientas digitales para TEA y TDAH, kit sensorial y apoyo en crisis.",
+    "inLanguage": "es-ES",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Personas con TEA, TDAH, TDA, TOC y otras neurodivergencias"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://n0wtq.github.io/refugio-sensorial/biblioteca?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
   <script>
     // Recover path encoded by 404.html redirect (SPA on GitHub Pages)
     (function(l) {
@@ -37,11 +76,26 @@
       }
     }(window.location));
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Font Awesome con Subresource Integrity (SRI) — protección ante CDN comprometido -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha384-xscEkekms/SQq5SFOOIcbfflRgUup5sdW1duER21mIKxWcHi9Xyv37aIOSrCepJf"
+    crossorigin="anonymous"
+  />
+
+  <!-- Leaflet con SRI -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha384-t5dCbwd2JAhkzYowmy8eV7aUW/ByHz2ZXUp1P2le0v8vAVHoCgLsHMrNOwDb5DF4"
+    crossorigin="anonymous"
+  />
 </head>
 <body style="background:#0C0E1E;color:#E5E7EB;margin:0">
   <div id="root"></div>

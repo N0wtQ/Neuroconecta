@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
 import ResourceLibrary from '../components/ResourceLibrary'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function LibraryPage() {
+  usePageMeta({
+    title: 'Herramientas digitales para TEA y TDAH — Biblioteca Neurodivergente | Refugio Sensorial',
+    description: 'Más de 80 apps, extensiones y recursos digitales clasificados por perfil neurodivergente: TEA, TDAH, dislexia, TOC y más. Filtra por categoría y precio.',
+  })
   return (
     <div className="max-w-5xl mx-auto px-4 pb-20 pt-8">
       {/* Breadcrumb */}

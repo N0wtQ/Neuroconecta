@@ -1,9 +1,14 @@
 import { Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const SilentMap = lazy(() => import('../components/SilentMap'))
 
 export default function MapPage() {
+  usePageMeta({
+    title: 'Mapa de lugares silenciosos para personas autistas — Refugio Sensorial',
+    description: 'Encuentra y comparte sitios silenciosos, accesibles y seguros para personas autistas y con hipersensibilidad sensorial en España.',
+  })
   return (
     <div className="max-w-5xl mx-auto px-4 pb-20 pt-8">
       {/* Breadcrumb */}

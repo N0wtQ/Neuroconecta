@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Excluye assets técnicos del índice
+Disallow: /refugio-sensorial/assets/
+
+Sitemap: https://n0wtq.github.io/refugio-sensorial/sitemap.xml
+
+# Nota: actualiza ambas URLs cuando uses dominio propio con Cloudflare

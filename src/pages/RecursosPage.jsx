@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { RECURSOS_PDF } from '../data/recursos-pdf'
 import TTSButton from '../components/ui/TTSButton'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const BASE_URL = import.meta.env.BASE_URL
 
@@ -63,6 +64,10 @@ function PDFCard({ pdf, prefersReduced, index }) {
 }
 
 export default function RecursosPage() {
+  usePageMeta({
+    title: 'Guías y recursos sobre autismo y neurodivergencia — Refugio Sensorial',
+    description: 'Documentos PDF y artículos sobre meltdown, burnout autista, regulación emocional y educación. Recursos descargables para personas TEA, TDAH y sus familias.',
+  })
   const prefersReduced = useReducedMotion()
 
   return (
