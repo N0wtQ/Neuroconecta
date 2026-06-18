@@ -11,7 +11,7 @@ const links = [
     basePath: '/kit',
     children: [
       { to: '/kit',          label: 'Kit Sensorial',   icon: 'fa-kit-medical',          color: 'text-sec' },
-      { to: '/kit/senales',  label: 'Señales previas', icon: 'fa-triangle-exclamation', color: 'text-coral' },
+      { to: '/kit/senales',  label: 'Señales previas a crisis', icon: 'fa-triangle-exclamation', color: 'text-coral' },
       { to: '/kit/recursos', label: 'Recursos',        icon: 'fa-folder-open',          color: 'text-pri' },
     ],
   },
