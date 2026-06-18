@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { herramientas, categorias, precios } from '../data/herramientas'
+import { herramientas, categorias, precios, perfiles } from '../data/herramientas'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 const TIPO_BADGE = {
@@ -123,11 +123,17 @@ const CAT_COUNTS = categorias.reduce((acc, c) => {
   return acc
 }, {})
 
+const PERFIL_COUNTS = perfiles.reduce((acc, p) => {
+  acc[p] = herramientas.filter(h => h.perfiles.split(',').map(s => s.trim()).includes(p)).length
+  return acc
+}, {})
+
 export default function ResourceLibrary() {
   const prefersReduced = useReducedMotion()
   const [search, setSearch]       = useState('')
   const [catFilter, setCatFilter] = useState('todas')
   const [precioFilter, setPrecioFilter] = useState('todos')
+  const [perfilFilter, setPerfilFilter] = useState('todos')
 
   const results = useMemo(() => {
     const q = search.toLowerCase().trim()
@@ -140,11 +146,12 @@ export default function ResourceLibrary() {
         h.categoria.toLowerCase().includes(q)
       const matchCat    = catFilter === 'todas'  || h.categoria === catFilter
       const matchPrecio = precioFilter === 'todos' || h.precio  === precioFilter
-      return matchSearch && matchCat && matchPrecio
+      const matchPerfil = perfilFilter === 'todos' || h.perfiles.split(',').map(p => p.trim()).includes(perfilFilter)
+      return matchSearch && matchCat && matchPrecio && matchPerfil
     })
-  }, [search, catFilter, precioFilter])
+  }, [search, catFilter, precioFilter, perfilFilter])
 
-  const resetFilters = () => { setSearch(''); setCatFilter('todas'); setPrecioFilter('todos') }
+  const resetFilters = () => { setSearch(''); setCatFilter('todas'); setPrecioFilter('todos'); setPerfilFilter('todos') }
 
   return (
     <div className="flex flex-col gap-6">
@@ -196,6 +203,35 @@ export default function ResourceLibrary() {
             aria-pressed={catFilter === cat}
           >
             {cat} ({CAT_COUNTS[cat]})
+          </button>
+        ))}
+      </div>
+
+      {/* ── Profile chips ── */}
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por perfil neurodivergente">
+        <button
+          onClick={() => setPerfilFilter('todos')}
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
+            perfilFilter === 'todos'
+              ? 'bg-acc/15 text-acc border-acc/30'
+              : 'bg-surface text-muted border-border hover:text-text hover:border-border/80'
+          }`}
+          aria-pressed={perfilFilter === 'todos'}
+        >
+          Todos los perfiles ({herramientas.length})
+        </button>
+        {perfiles.map(p => (
+          <button
+            key={p}
+            onClick={() => setPerfilFilter(prev => prev === p ? 'todos' : p)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
+              perfilFilter === p
+                ? 'bg-acc/15 text-acc border-acc/30'
+                : 'bg-surface text-muted border-border hover:text-text hover:border-border/80'
+            }`}
+            aria-pressed={perfilFilter === p}
+          >
+            {p} ({PERFIL_COUNTS[p]})
           </button>
         ))}
       </div>

@@ -90,3 +90,4 @@ export const categorias = [...new Set(herramientas.map(h => h.categoria))]
 export const subcategorias = [...new Set(herramientas.map(h => h.subcategoria))]
 export const precios = ['Gratis', 'Freemium', 'Pago']
 export const tipos = [...new Set(herramientas.map(h => h.tipo))]
+export const perfiles = [...new Set(herramientas.flatMap(h => h.perfiles.split(',').map(p => p.trim()).filter(Boolean)))].sort()
