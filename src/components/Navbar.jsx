@@ -10,9 +10,8 @@ const links = [
     label: 'Kit Sensorial',
     basePath: '/kit',
     children: [
-      { to: '/kit',          label: 'Kit Sensorial',   icon: 'fa-kit-medical',          color: 'text-sec' },
       { to: '/kit/senales',  label: 'Señales previas a crisis', icon: 'fa-triangle-exclamation', color: 'text-coral' },
-      { to: '/kit/recursos', label: 'Recursos',        icon: 'fa-folder-open',          color: 'text-pri' },
+      { to: '/kit/recursos', label: 'Recursos',                 icon: 'fa-folder-open',          color: 'text-pri' },
     ],
   },
   { to: '/#contacto',  label: 'Contacto', scroll: true },
@@ -45,10 +44,10 @@ function DesktopDropdown({ link, pathname }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button
-        type="button"
-        aria-expanded={open}
+      <Link
+        to={link.basePath}
         aria-haspopup="true"
+        aria-expanded={open}
         className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium tracking-wide transition-all duration-200 ${
           active ? 'bg-white/8 text-text' : 'text-muted hover:text-text hover:bg-white/5'
         }`}
@@ -58,7 +57,7 @@ function DesktopDropdown({ link, pathname }) {
           className={`fa-solid fa-chevron-down text-[9px] transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           aria-hidden="true"
         />
-      </button>
+      </Link>
 
       <AnimatePresence>
         {open && (
@@ -216,20 +215,28 @@ export default function Navbar() {
                 const isActive = pathname.startsWith(link.basePath)
                 return (
                   <div key={link.label}>
-                    <button
-                      type="button"
-                      onClick={() => setExpandedMobile(isExpanded ? null : link.label)}
-                      aria-expanded={isExpanded}
-                      className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        isActive ? 'text-text bg-white/5' : 'text-muted hover:text-text hover:bg-white/5'
-                      }`}
-                    >
-                      {link.label}
-                      <i
-                        className={`fa-solid fa-chevron-down text-[10px] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <div className={`flex items-center rounded-lg transition-colors duration-200 ${isActive ? 'bg-white/5' : ''}`}>
+                      <Link
+                        to={link.basePath}
+                        className={`flex-1 px-3 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                          isActive ? 'text-text' : 'text-muted hover:text-text'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedMobile(isExpanded ? null : link.label)}
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? 'Contraer sección' : 'Expandir sección'}
+                        className="px-3 py-2.5 text-muted hover:text-text transition-colors duration-200"
+                      >
+                        <i
+                          className={`fa-solid fa-chevron-down text-[10px] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
 
                     <AnimatePresence initial={false}>
                       {isExpanded && (
