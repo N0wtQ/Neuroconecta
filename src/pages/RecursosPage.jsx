@@ -1,5 +1,6 @@
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { RECURSOS_PDF } from '../data/recursos-pdf'
 import TTSButton from '../components/ui/TTSButton'
@@ -15,6 +16,11 @@ const TTS_POR_PDF = {
   5: 'Este documento de doscientas diez páginas cubre la educación de personas adultas con autismo. Incluye modelos teóricos, orientaciones pedagógicas y estrategias para la transición a la vida adulta. Es una guía completa para familias, profesores y terapeutas.',
   6: 'Este artículo de Mujeres y Autismo da estrategias prácticas para recuperarse del burnout siendo autista: cómo descansar de verdad, reducir el enmascaramiento, encontrar apoyos y crear ritmos sostenibles.',
 }
+
+// Unique categories preserving first-seen order
+const CATEGORIAS = [...new Set(RECURSOS_PDF.map(p => p.categoria))]
+// Color per category (from first document in that category)
+const CAT_COLOR = Object.fromEntries(RECURSOS_PDF.map(p => [p.categoria, p.color]))
 
 function PDFCard({ pdf, prefersReduced, index }) {
   const href = pdf.url ?? `${BASE_URL}docs/${pdf.archivo}`
@@ -69,6 +75,34 @@ export default function RecursosPage() {
     description: 'Documentos PDF y artículos sobre meltdown, burnout autista, regulación emocional y educación. Recursos descargables para personas TEA, TDAH y sus familias.',
   })
   const prefersReduced = useReducedMotion()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(() => searchParams.get('q') ?? '')
+  const catFilter = searchParams.get('cat') ?? 'todas'
+
+  const results = useMemo(() => {
+    const q = search.toLowerCase().trim()
+    return RECURSOS_PDF.filter(pdf => {
+      const matchCat = catFilter === 'todas' || pdf.categoria === catFilter
+      const matchSearch = !q ||
+        pdf.titulo.toLowerCase().includes(q) ||
+        pdf.descripcion?.toLowerCase().includes(q) ||
+        pdf.categoria.toLowerCase().includes(q)
+      return matchCat && matchSearch
+    })
+  }, [search, catFilter])
+
+  function updateSearch(val) {
+    setSearch(val)
+    const next = new URLSearchParams(searchParams)
+    if (val) next.set('q', val); else next.delete('q')
+    setSearchParams(next, { replace: true })
+  }
+
+  function updateCat(cat) {
+    const next = new URLSearchParams(searchParams)
+    if (cat === 'todas') next.delete('cat'); else next.set('cat', cat)
+    setSearchParams(next, { replace: true })
+  }
 
   return (
     <div className="max-w-3xl mx-auto px-4 pb-20 pt-8">
@@ -84,7 +118,7 @@ export default function RecursosPage() {
         initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: prefersReduced ? 0 : 0.4 }}
-        className="mb-8"
+        className="mb-6"
       >
         <div className="flex items-center gap-3 mb-2">
           <div className="w-10 h-10 rounded-xl bg-pri/10 flex items-center justify-center text-pri shrink-0">
@@ -97,11 +131,88 @@ export default function RecursosPage() {
         </div>
       </motion.div>
 
-      <div className="space-y-3">
-        {RECURSOS_PDF.map((pdf, i) => (
-          <PDFCard key={pdf.id} pdf={pdf} prefersReduced={prefersReduced} index={i} />
-        ))}
+      {/* Search */}
+      <div className="relative mb-4">
+        <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-faint text-sm pointer-events-none" aria-hidden="true" />
+        <input
+          type="search"
+          value={search}
+          onChange={e => updateSearch(e.target.value)}
+          placeholder="Buscar por título, descripción o categoría..."
+          className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-surface border border-border text-text text-sm placeholder:text-faint outline-none focus:border-pri/50 focus:ring-1 focus:ring-pri/30 transition-colors duration-200"
+          aria-label="Buscar recursos"
+        />
+        {search && (
+          <button
+            onClick={() => updateSearch('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-faint hover:text-text transition-colors"
+            aria-label="Borrar búsqueda"
+          >
+            <i className="fa-solid fa-xmark text-sm" aria-hidden="true" />
+          </button>
+        )}
       </div>
+
+      {/* Category chips */}
+      <div className="flex flex-wrap gap-2 mb-6" role="group" aria-label="Filtrar por categoría">
+        <button
+          onClick={() => updateCat('todas')}
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
+            catFilter === 'todas'
+              ? 'bg-white/10 text-text border-white/20'
+              : 'bg-surface text-muted border-border hover:text-text'
+          }`}
+          aria-pressed={catFilter === 'todas'}
+        >
+          Todas ({RECURSOS_PDF.length})
+        </button>
+        {CATEGORIAS.map(cat => {
+          const active = catFilter === cat
+          const color = CAT_COLOR[cat]
+          return (
+            <button
+              key={cat}
+              onClick={() => updateCat(active ? 'todas' : cat)}
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200"
+              style={active
+                ? { background: `${color}18`, color, borderColor: `${color}45` }
+                : { background: 'rgba(19,21,43,1)', color: '#9CA3AF', borderColor: 'rgba(129,106,183,0.1)' }
+              }
+              aria-pressed={active}
+            >
+              {cat}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Result count */}
+      <p className="text-xs text-faint mb-4" aria-live="polite" aria-atomic="true">
+        {results.length === RECURSOS_PDF.length
+          ? <><strong className="text-muted">{results.length}</strong> documentos</>
+          : <><strong className="text-text">{results.length}</strong> resultado{results.length !== 1 ? 's' : ''}</>
+        }
+      </p>
+
+      {results.length > 0 ? (
+        <div className="space-y-3">
+          {results.map((pdf, i) => (
+            <PDFCard key={pdf.id} pdf={pdf} prefersReduced={prefersReduced} index={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-14 rounded-card border border-border bg-surface">
+          <i className="fa-solid fa-magnifying-glass text-3xl text-faint mb-4 block" aria-hidden="true" />
+          <p className="text-muted text-sm font-medium mb-1">Sin resultados</p>
+          <p className="text-faint text-xs mb-5">Prueba con otras palabras o quita el filtro de categoría.</p>
+          <button
+            onClick={() => { updateSearch(''); updateCat('todas') }}
+            className="px-4 py-2 rounded-lg bg-pri/10 text-pri text-xs font-semibold border border-pri/25 hover:bg-pri/18 transition-colors duration-200"
+          >
+            Ver todos los recursos
+          </button>
+        </div>
+      )}
     </div>
   )
 }
