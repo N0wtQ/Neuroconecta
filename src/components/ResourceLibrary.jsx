@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useSearchParams } from 'react-router-dom'
 import { herramientas, categorias, precios, perfiles } from '../data/herramientas'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
@@ -206,10 +207,11 @@ const PERFIL_COUNTS = perfiles.reduce((acc, p) => {
 
 export default function ResourceLibrary() {
   const prefersReduced = useReducedMotion()
-  const [search, setSearch]       = useState('')
-  const [catFilter, setCatFilter] = useState('todas')
-  const [precioFilter, setPrecioFilter] = useState('todos')
-  const [perfilFilter, setPerfilFilter] = useState('todos')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(() => searchParams.get('q') ?? '')
+  const catFilter    = searchParams.get('categoria') ?? 'todas'
+  const precioFilter = searchParams.get('precio')    ?? 'todos'
+  const perfilFilter = searchParams.get('perfil')    ?? 'todos'
 
   const results = useMemo(() => {
     const q = search.toLowerCase().trim()
@@ -227,7 +229,7 @@ export default function ResourceLibrary() {
     })
   }, [search, catFilter, precioFilter, perfilFilter])
 
-  const resetFilters = () => { setSearch(''); setCatFilter('todas'); setPrecioFilter('todos'); setPerfilFilter('todos') }
+  const resetFilters = () => { setSearch(''); setSearchParams({}, { replace: true }) }
 
   return (
     <div className="flex flex-col gap-6">
@@ -238,14 +240,25 @@ export default function ResourceLibrary() {
         <input
           type="text"
           value={search}
-          onChange={e => setSearch(e.target.value)}
+          onChange={e => {
+            const val = e.target.value
+            setSearch(val)
+            const next = new URLSearchParams(searchParams)
+            if (val) next.set('q', val); else next.delete('q')
+            setSearchParams(next, { replace: true })
+          }}
           placeholder="Buscar herramienta, perfil neurodivergente o necesidad..."
           className="w-full pl-10 pr-10 py-3 rounded-xl bg-surface border border-border text-text text-sm placeholder:text-faint outline-none focus:border-pri/50 focus:ring-1 focus:ring-pri/30 transition-colors duration-200"
           aria-label="Buscar herramientas"
         />
         {search && (
           <button
-            onClick={() => setSearch('')}
+            onClick={() => {
+              setSearch('')
+              const next = new URLSearchParams(searchParams)
+              next.delete('q')
+              setSearchParams(next, { replace: true })
+            }}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-faint hover:text-text transition-colors"
             aria-label="Borrar búsqueda"
           >
@@ -257,7 +270,11 @@ export default function ResourceLibrary() {
       {/* ── Category chips ── */}
       <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría">
         <button
-          onClick={() => setCatFilter('todas')}
+          onClick={() => {
+            const next = new URLSearchParams(searchParams)
+            next.delete('categoria')
+            setSearchParams(next, { replace: true })
+          }}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
             catFilter === 'todas'
               ? 'bg-sec/15 text-sec border-sec/30'
@@ -270,7 +287,12 @@ export default function ResourceLibrary() {
         {categorias.map(cat => (
           <button
             key={cat}
-            onClick={() => setCatFilter(prev => prev === cat ? 'todas' : cat)}
+            onClick={() => {
+              const next = new URLSearchParams(searchParams)
+              if (searchParams.get('categoria') === cat) next.delete('categoria')
+              else next.set('categoria', cat)
+              setSearchParams(next, { replace: true })
+            }}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
               catFilter === cat
                 ? 'bg-sec/15 text-sec border-sec/30'
@@ -294,14 +316,22 @@ export default function ResourceLibrary() {
         <div className="flex items-center gap-3 flex-wrap justify-end">
           <div className="flex items-center gap-2">
             <span className="text-xs text-faint">Perfil:</span>
-            <PerfilDropdown value={perfilFilter} onChange={setPerfilFilter} />
+            <PerfilDropdown value={perfilFilter} onChange={p => {
+              const next = new URLSearchParams(searchParams)
+              if (p === 'todos') next.delete('perfil'); else next.set('perfil', p)
+              setSearchParams(next, { replace: true })
+            }} />
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xs text-faint">Precio:</span>
             {['todos', 'Gratis', 'Freemium', 'Pago'].map(p => (
               <button
                 key={p}
-                onClick={() => setPrecioFilter(p)}
+                onClick={() => {
+                  const next = new URLSearchParams(searchParams)
+                  if (p === 'todos') next.delete('precio'); else next.set('precio', p)
+                  setSearchParams(next, { replace: true })
+                }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
                   precioFilter === p
                     ? 'bg-pri/12 text-pri border-pri/30'
