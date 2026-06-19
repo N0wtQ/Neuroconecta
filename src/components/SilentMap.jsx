@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from 'react'
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet'
 import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { LUGARES, TIPOS } from '../data/lugares'
 
 const TYPE_CONFIG = {
@@ -35,8 +36,9 @@ const STATS = TIPOS.reduce((acc, t) => {
 }, {})
 
 export default function SilentMap() {
-  const [filter, setFilter] = useState('todos')
-  const [search, setSearch] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const filter = searchParams.get('tipo') ?? 'todos'
+  const [search, setSearch] = useState(() => searchParams.get('q') ?? '')
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim()
@@ -51,8 +53,11 @@ export default function SilentMap() {
   }, [filter, search])
 
   const handleTypeClick = useCallback((tipo) => {
-    setFilter(prev => prev === tipo ? 'todos' : tipo)
-  }, [])
+    const next = new URLSearchParams(searchParams)
+    if (searchParams.get('tipo') === tipo) next.delete('tipo')
+    else next.set('tipo', tipo)
+    setSearchParams(next, { replace: true })
+  }, [searchParams, setSearchParams])
 
   return (
     <div className="flex flex-col gap-4">
@@ -62,7 +67,13 @@ export default function SilentMap() {
         <input
           type="search"
           value={search}
-          onChange={e => setSearch(e.target.value)}
+          onChange={e => {
+          const val = e.target.value
+          setSearch(val)
+          const next = new URLSearchParams(searchParams)
+          if (val) next.set('q', val); else next.delete('q')
+          setSearchParams(next, { replace: true })
+        }}
           placeholder="Buscar por ciudad, nombre o tipo de espacio..."
           className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface border border-border text-text text-sm placeholder:text-faint outline-none focus:border-pri/50 focus:ring-1 focus:ring-pri/30 transition-colors duration-200"
           aria-label="Buscar espacios silenciosos"
@@ -72,7 +83,11 @@ export default function SilentMap() {
       {/* Type filters */}
       <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por tipo de espacio">
         <button
-          onClick={() => setFilter('todos')}
+          onClick={() => {
+            const next = new URLSearchParams(searchParams)
+            next.delete('tipo')
+            setSearchParams(next, { replace: true })
+          }}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors duration-200 border ${
             filter === 'todos'
               ? 'bg-white/10 text-text border-white/20'
