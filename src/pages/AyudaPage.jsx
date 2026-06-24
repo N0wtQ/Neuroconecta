@@ -86,7 +86,11 @@ function BreathingExercise({ prefersReduced }) {
             style={{ transition: prefersReduced ? 'none' : 'stroke-dashoffset 1s linear, stroke 0.5s ease' }}
           />
         </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
           {running ? (
             <>
               <span className="text-2xl font-bold tabular-nums" style={{ color: cur.color }}>{seconds}</span>
@@ -98,8 +102,8 @@ function BreathingExercise({ prefersReduced }) {
         </div>
       </div>
 
-      {/* Phase dots */}
-      <div className="flex items-center gap-3">
+      {/* Phase dots — decorativo, la fase se anuncia vía aria-live */}
+      <div className="flex items-center gap-3" aria-hidden="true">
         {PHASES.map((p, i) => (
           <div key={p.label} className="flex flex-col items-center gap-1">
             <div className={`w-2 h-2 rounded-full transition-all duration-300 ${running && phase === i ? 'scale-125' : 'scale-100'}`}
@@ -109,13 +113,14 @@ function BreathingExercise({ prefersReduced }) {
         ))}
       </div>
 
-      {cycles > 0 && (
-        <p className="text-xs text-acc font-medium">{cycles} ciclo{cycles > 1 ? 's' : ''} completado{cycles > 1 ? 's' : ''} ✓</p>
-      )}
+      <p className="text-xs text-acc font-medium min-h-[1.1rem]" aria-live="polite" aria-atomic="true">
+        {cycles > 0 ? `${cycles} ciclo${cycles > 1 ? 's' : ''} completado${cycles > 1 ? 's' : ''}` : ''}
+      </p>
 
       <div className="flex gap-2">
         <button
           onClick={() => running ? stop() : setRunning(true)}
+          aria-label={running ? 'Detener ejercicio de respiración' : 'Comenzar ejercicio de respiración 4-7-8'}
           className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
             running
               ? 'bg-faint/15 text-muted hover:bg-faint/25'
@@ -186,6 +191,7 @@ function GroundingCard() {
         ) : (
           <motion.div
             key="done"
+            role="status"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex flex-col items-center gap-2 py-4 text-center"
@@ -201,9 +207,14 @@ function GroundingCard() {
         {!done ? (
           <button
             onClick={() => setStep(s => s + 1)}
+            aria-label={
+              step + 1 < GROUNDING_5.length
+                ? `Siguiente: ${GROUNDING_5[step + 1].n} cosas que puedes ${GROUNDING_5[step + 1].sense}`
+                : 'Completar ejercicio'
+            }
             className="flex-1 py-2 rounded-xl text-sm font-semibold bg-acc/10 text-acc border border-acc/25 hover:bg-acc/20 transition-colors duration-200"
           >
-            Siguiente →
+            Siguiente <span aria-hidden="true">→</span>
           </button>
         ) : (
           <button
@@ -264,10 +275,12 @@ export default function AyudaPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 pb-20 pt-8">
       {/* Breadcrumb */}
-      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint flex items-center gap-2">
-        <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
-        <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
-        <span className="text-muted" aria-current="page">Necesito ayuda</span>
+      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint">
+        <ol className="flex items-center gap-2 list-none p-0 m-0">
+          <li><Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link></li>
+          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
+          <li><span className="text-muted" aria-current="page">Necesito ayuda</span></li>
+        </ol>
       </nav>
 
       {/* Header */}
@@ -380,6 +393,7 @@ export default function AyudaPage() {
               href={r.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${r.nombre}: ${r.desc} (se abre en nueva pestaña)`}
               className={`group flex flex-col gap-3 p-5 rounded-card bg-surface border border-border hover:border-${r.color}/30 hover:bg-surfaceH transition-all duration-300`}
             >
               <i className={`fa-solid ${r.icon} ${COLOR[r.color].text} text-lg`} aria-hidden="true" />

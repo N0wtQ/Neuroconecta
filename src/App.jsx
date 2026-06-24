@@ -100,9 +100,16 @@ export default function App() {
         </Suspense>
       </CanvasSilentBoundary>
       <div className="relative z-10 min-h-dvh flex flex-col">
+        {/* Skip-to-content — WCAG 2.4.1 Level A */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#0C0E1E] focus:text-text focus:border-2 focus:border-pri focus:rounded-lg focus:text-sm focus:font-semibold focus:shadow-xl"
+        >
+          Saltar al contenido principal
+        </a>
         <AppErrorBoundary>
           <Navbar />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1" tabIndex="-1">
             <AppErrorBoundary>
               <AppRoutes />
             </AppErrorBoundary>

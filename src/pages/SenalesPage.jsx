@@ -151,12 +151,14 @@ export default function SenalesPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 pb-20 pt-8">
-      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint flex items-center gap-2">
-        <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
-        <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
-        <Link to="/kit" className="hover:text-text transition-colors duration-200">Kit Sensorial</Link>
-        <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
-        <span className="text-muted" aria-current="page">Señales previas</span>
+      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint">
+        <ol className="flex items-center gap-2 list-none p-0 m-0">
+          <li><Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link></li>
+          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
+          <li><Link to="/kit" className="hover:text-text transition-colors duration-200">Kit Sensorial</Link></li>
+          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
+          <li><span className="text-muted" aria-current="page">Señales previas</span></li>
+        </ol>
       </nav>
 
       <motion.div

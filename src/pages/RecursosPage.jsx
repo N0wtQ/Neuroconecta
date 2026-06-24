@@ -106,12 +106,14 @@ export default function RecursosPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 pb-20 pt-8">
-      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint flex items-center gap-2">
-        <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
-        <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
-        <Link to="/kit" className="hover:text-text transition-colors duration-200">Kit Sensorial</Link>
-        <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
-        <span className="text-muted" aria-current="page">Recursos</span>
+      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint">
+        <ol className="flex items-center gap-2 list-none p-0 m-0">
+          <li><Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link></li>
+          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
+          <li><Link to="/kit" className="hover:text-text transition-colors duration-200">Kit Sensorial</Link></li>
+          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
+          <li><span className="text-muted" aria-current="page">Recursos</span></li>
+        </ol>
       </nav>
 
       <motion.div
@@ -173,7 +175,7 @@ export default function RecursosPage() {
             <button
               key={cat}
               onClick={() => updateCat(active ? 'todas' : cat)}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200"
+              className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${active ? 'ring-1 ring-inset ring-current/40' : ''}`}
               style={active
                 ? { background: `${color}18`, color, borderColor: `${color}45` }
                 : { background: 'rgba(19,21,43,1)', color: '#9CA3AF', borderColor: 'rgba(129,106,183,0.1)' }

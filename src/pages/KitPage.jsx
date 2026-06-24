@@ -33,10 +33,12 @@ export default function KitPage() {
           }}
           aria-hidden="true"
         />
-        <nav aria-label="Ruta de navegación" className="relative mb-4 text-sm text-faint flex items-center gap-2">
-          <Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link>
-          <i className="fa-solid fa-chevron-right text-[10px]" aria-hidden="true" />
-          <span className="text-muted" aria-current="page">Kit Sensorial</span>
+        <nav aria-label="Ruta de navegación" className="relative mb-4 text-sm text-faint">
+          <ol className="flex items-center gap-2 list-none p-0 m-0">
+            <li><Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link></li>
+            <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
+            <li><span className="text-muted" aria-current="page">Kit Sensorial</span></li>
+          </ol>
         </nav>
         <h1 className="relative text-2xl font-bold text-text mb-1">Kit Sensorial</h1>
         <p className="relative text-sm text-muted">

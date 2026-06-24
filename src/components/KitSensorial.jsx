@@ -85,6 +85,8 @@ function EstadoCard({ estado, prefersReduced, index }) {
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-controls={`estado-${estado.id}-detalles`}
+        aria-label={`${open ? 'Cerrar' : 'Abrir'} detalles de ${estado.titulo}`}
         className="relative w-full flex items-center gap-4 px-6 pt-6 pb-3 text-left"
       >
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-lg shrink-0 ${estado.iconBg} ${estado.iconColor}`}>
@@ -124,6 +126,7 @@ function EstadoCard({ estado, prefersReduced, index }) {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={`estado-${estado.id}-detalles`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -322,6 +325,7 @@ function KitSelectorCard({ kit, selected, onClick }) {
     <button
       onClick={onClick}
       aria-pressed={selected}
+      aria-label={`${kit.label} — ${kit.sublabel}`}
       className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pri focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-2xl"
     >
       <GlowCard
@@ -529,9 +533,9 @@ export default function KitSensorial() {
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-2.5">
+              <ul className="grid sm:grid-cols-2 gap-2.5 list-none p-0 m-0">
                 {activeKit.items.map(item => (
-                  <div key={item.label} className="flex items-start gap-3">
+                  <li key={item.label} className="flex items-start gap-3">
                     <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs shrink-0 ${activeKit.bgColor} ${activeKit.color} border ${activeKit.borderColor}`}>
                       <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
                     </div>
@@ -539,9 +543,9 @@ export default function KitSensorial() {
                       <p className="text-sm font-medium text-text leading-snug">{item.label}</p>
                       <p className="text-xs text-muted">{item.nota}</p>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </motion.div>
         </AnimatePresence>

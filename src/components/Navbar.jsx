@@ -22,6 +22,7 @@ const links = [
 function DesktopDropdown({ link, pathname }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
+  const triggerRef = useRef(null)
   const active = pathname.startsWith(link.basePath)
 
   useEffect(() => {
@@ -37,14 +38,25 @@ function DesktopDropdown({ link, pathname }) {
     }
   }, [])
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      setOpen(false)
+      triggerRef.current?.focus()
+    }
+  }
+
   return (
     <div
       ref={ref}
       className="relative z-[200]"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget)) setOpen(false) }}
+      onKeyDown={handleKeyDown}
     >
       <Link
+        ref={triggerRef}
         to={link.basePath}
         aria-haspopup="true"
         aria-expanded={open}
@@ -67,7 +79,6 @@ function DesktopDropdown({ link, pathname }) {
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.14 }}
             className="absolute top-full left-0 mt-1.5 w-52 rounded-xl border border-borderH bg-[#0C0E1E] shadow-2xl shadow-black/60 overflow-hidden z-[200] py-1"
-            role="menu"
           >
             {link.children.map((child) => {
               const childActive = pathname === child.to
@@ -75,9 +86,9 @@ function DesktopDropdown({ link, pathname }) {
                 <Link
                   key={child.to}
                   to={child.to}
-                  role="menuitem"
                   onClick={() => setOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 hover:bg-white/5 ${
+                  aria-current={childActive ? 'page' : undefined}
+                  className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 hover:bg-white/5 focus-visible:outline-none focus-visible:bg-white/5 ${
                     childActive ? 'text-text font-semibold' : 'text-muted'
                   }`}
                 >
@@ -104,6 +115,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [expandedMobile, setExpandedMobile] = useState(null)
+  const menuButtonRef = useRef(null)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
@@ -186,6 +198,7 @@ export default function Navbar() {
             Ayuda
           </Link>
           <button
+            ref={menuButtonRef}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
@@ -208,6 +221,12 @@ export default function Navbar() {
             transition={{ duration: 0.18 }}
             className="md:hidden border-t border-border bg-bg/98 backdrop-blur-md px-5 pb-4 pt-3 flex flex-col gap-0.5"
             aria-label="Menú móvil"
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setMenuOpen(false)
+                menuButtonRef.current?.focus()
+              }
+            }}
           >
             {links.map((link) => {
               if (link.children) {

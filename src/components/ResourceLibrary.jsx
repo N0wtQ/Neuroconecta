@@ -123,6 +123,7 @@ function ToolCard({ h, index, prefersReduced }) {
 function PerfilDropdown({ value, onChange }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
+  const triggerRef = useRef(null)
 
   useEffect(() => {
     const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
@@ -130,12 +131,44 @@ function PerfilDropdown({ value, onChange }) {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
+  // Focus first option when dropdown opens
+  useEffect(() => {
+    if (open) {
+      const first = ref.current?.querySelector('[role="option"]')
+      first?.focus()
+    }
+  }, [open])
+
+  const handleKeyDown = (e) => {
+    if (!open) return
+    const options = [...(ref.current?.querySelectorAll('[role="option"]') ?? [])]
+    const idx = options.indexOf(document.activeElement)
+    if (e.key === 'Escape') {
+      setOpen(false)
+      triggerRef.current?.focus()
+      e.preventDefault()
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      options[idx < options.length - 1 ? idx + 1 : 0]?.focus()
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      options[idx > 0 ? idx - 1 : options.length - 1]?.focus()
+    } else if (e.key === 'Home') {
+      e.preventDefault()
+      options[0]?.focus()
+    } else if (e.key === 'End') {
+      e.preventDefault()
+      options[options.length - 1]?.focus()
+    }
+  }
+
   const isFiltered = value !== 'todos'
   const label = isFiltered ? `${value} (${PERFIL_COUNTS[value]})` : 'Todos'
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative" onKeyDown={handleKeyDown}>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
@@ -293,9 +326,9 @@ export default function ResourceLibrary() {
               else next.set('categoria', cat)
               setSearchParams(next, { replace: true })
             }}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
+            className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors duration-200 ${
               catFilter === cat
-                ? 'bg-sec/15 text-sec border-sec/30'
+                ? 'bg-sec/15 text-sec border-sec/30 ring-1 ring-sec/40 ring-inset'
                 : 'bg-surface text-muted border-border hover:text-text hover:border-border/80'
             }`}
             aria-pressed={catFilter === cat}
