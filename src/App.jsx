@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation, Link } from 'react-router-dom'
 import { useEffect, Component, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
+import CrisisBar from './components/CrisisBar'
 
 const CanvasBg = lazy(() =>
   import('./components/CanvasBg').catch(() => ({ default: () => null }))
@@ -10,12 +11,16 @@ import Home from './pages/Home'
 import MapPage from './pages/MapPage'
 import LibraryPage from './pages/LibraryPage'
 import AyudaPage from './pages/AyudaPage'
-import KitPage from './pages/KitPage'
 import RecursosPage from './pages/RecursosPage'
 import SenalesPage from './pages/SenalesPage'
 import AccesibilidadPage from './pages/AccesibilidadPage'
 import NotFoundPage from './pages/NotFoundPage'
+import EntenderPrepararsePage from './pages/EntenderPrepararsePage'
+import EstadosPage from './pages/EstadosPage'
+import TecnicasPage from './pages/TecnicasPage'
+import KitBolsoPage from './pages/KitBolsoPage'
 import { useReducedMotion } from './hooks/useReducedMotion'
+
 // Global error boundary — catches any React crash and shows a calm fallback
 class AppErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { error: null } }
@@ -73,21 +78,35 @@ function ScrollToTop() {
   return null
 }
 
-// Routes — no AnimatePresence wrapping Routes (can conflict with HashRouter)
+// Routes
 function AppRoutes() {
   return (
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/"          element={<PageTransition><Home /></PageTransition>} />
-        <Route path="/mapa"      element={<PageTransition><MapPage /></PageTransition>} />
-        <Route path="/biblioteca" element={<PageTransition><LibraryPage /></PageTransition>} />
-        <Route path="/ayuda"     element={<PageTransition><AyudaPage /></PageTransition>} />
-        <Route path="/kit"           element={<PageTransition><KitPage /></PageTransition>} />
-        <Route path="/kit/recursos"  element={<PageTransition><RecursosPage /></PageTransition>} />
-        <Route path="/kit/senales"    element={<PageTransition><SenalesPage /></PageTransition>} />
+        {/* Main routes */}
+        <Route path="/"           element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/espacios"   element={<PageTransition><MapPage /></PageTransition>} />
+        <Route path="/herramientas" element={<PageTransition><LibraryPage /></PageTransition>} />
+        <Route path="/ayuda"      element={<PageTransition><AyudaPage /></PageTransition>} />
         <Route path="/accesibilidad" element={<PageTransition><AccesibilidadPage /></PageTransition>} />
-        <Route path="*"              element={<PageTransition><NotFoundPage /></PageTransition>} />
+
+        {/* Entender y prepararse hub + sub-pages */}
+        <Route path="/entender-y-prepararse"              element={<PageTransition><EntenderPrepararsePage /></PageTransition>} />
+        <Route path="/entender-y-prepararse/estados"      element={<PageTransition><EstadosPage /></PageTransition>} />
+        <Route path="/entender-y-prepararse/senales"      element={<PageTransition><SenalesPage /></PageTransition>} />
+        <Route path="/entender-y-prepararse/tecnicas"     element={<PageTransition><TecnicasPage /></PageTransition>} />
+        <Route path="/entender-y-prepararse/kit-de-bolso" element={<PageTransition><KitBolsoPage /></PageTransition>} />
+        <Route path="/entender-y-prepararse/guias"        element={<PageTransition><RecursosPage /></PageTransition>} />
+
+        {/* Redirects from old URLs */}
+        <Route path="/mapa"         element={<Navigate to="/espacios" replace />} />
+        <Route path="/biblioteca"   element={<Navigate to="/herramientas" replace />} />
+        <Route path="/kit"          element={<Navigate to="/entender-y-prepararse" replace />} />
+        <Route path="/kit/senales"  element={<Navigate to="/entender-y-prepararse/senales" replace />} />
+        <Route path="/kit/recursos" element={<Navigate to="/entender-y-prepararse/guias" replace />} />
+
+        <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
       </Routes>
     </>
   )
@@ -111,12 +130,13 @@ export default function App() {
         </a>
         <AppErrorBoundary>
           <Navbar />
-          <main id="main-content" className="flex-1" tabIndex="-1">
+          <main id="main-content" className="flex-1 pb-16 md:pb-0" tabIndex="-1">
             <AppErrorBoundary>
               <AppRoutes />
             </AppErrorBoundary>
           </main>
           <Footer />
+          <CrisisBar />
         </AppErrorBoundary>
       </div>
     </BrowserRouter>
