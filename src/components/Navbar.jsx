@@ -146,7 +146,7 @@ function DesktopDropdown({ link, pathname }) {
 
 // ── Main Navbar ────────────────────────────────────────────────────────────────
 
-export default function Navbar() {
+export default function Navbar({ onOpenSearch }) {
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
@@ -213,6 +213,15 @@ export default function Navbar() {
             )
           })}
 
+          <button
+            type="button"
+            onClick={onOpenSearch}
+            aria-label="Buscar en Refugio Sensorial (Ctrl+K)"
+            title="Buscar (Ctrl+K)"
+            className="ml-1 p-2 rounded-lg text-faint hover:text-text hover:bg-white/5 transition-colors duration-200"
+          >
+            <i className="fa-solid fa-magnifying-glass text-sm" aria-hidden="true" />
+          </button>
           <Link
             to="/ayuda"
             className="ml-1 flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-semibold text-coral border border-coral/25 bg-coral/5 hover:bg-coral/12 hover:border-coral/40 transition-all duration-200"
@@ -225,6 +234,14 @@ export default function Navbar() {
 
         {/* Mobile right side */}
         <div className="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            onClick={onOpenSearch}
+            aria-label="Buscar"
+            className="p-2 rounded-lg text-faint hover:text-text hover:bg-white/5 transition-colors duration-200"
+          >
+            <i className="fa-solid fa-magnifying-glass text-sm" aria-hidden="true" />
+          </button>
           <Link
             to="/ayuda"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-coral border border-coral/25 bg-coral/5"

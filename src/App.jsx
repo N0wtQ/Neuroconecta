@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation, Link } from 'react-router-dom'
-import { useEffect, Component, lazy, Suspense } from 'react'
+import { useEffect, useState, Component, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import CrisisBar from './components/CrisisBar'
@@ -7,6 +7,11 @@ import CrisisBar from './components/CrisisBar'
 const CanvasBg = lazy(() =>
   import('./components/CanvasBg').catch(() => ({ default: () => null }))
 )
+const GlobalSearch = lazy(() => import('./components/search/GlobalSearch'))
+const HerramientasLandingPage = lazy(() => import('./pages/herramientas/LandingPage'))
+const CiudadPage = lazy(() => import('./pages/espacios/CiudadPage'))
+const EntenderEstadoPage = lazy(() => import('./pages/EntenderEstadoPage'))
+
 import Home from './pages/Home'
 import MapPage from './pages/MapPage'
 import LibraryPage from './pages/LibraryPage'
@@ -79,13 +84,13 @@ function ScrollToTop() {
 }
 
 // Routes
-function AppRoutes() {
+function AppRoutes({ onOpenSearch }) {
   return (
     <>
       <ScrollToTop />
       <Routes>
         {/* Main routes */}
-        <Route path="/"           element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/"           element={<PageTransition><Home onOpenSearch={onOpenSearch} /></PageTransition>} />
         <Route path="/espacios"   element={<PageTransition><MapPage /></PageTransition>} />
         <Route path="/herramientas" element={<PageTransition><LibraryPage /></PageTransition>} />
         <Route path="/ayuda"      element={<PageTransition><AyudaPage /></PageTransition>} />
@@ -94,10 +99,18 @@ function AppRoutes() {
         {/* Entender y prepararse hub + sub-pages */}
         <Route path="/entender-y-prepararse"              element={<PageTransition><EntenderPrepararsePage /></PageTransition>} />
         <Route path="/entender-y-prepararse/estados"      element={<PageTransition><EstadosPage /></PageTransition>} />
+        <Route path="/entender-y-prepararse/estados/:slug" element={<PageTransition><Suspense fallback={null}><EntenderEstadoPage /></Suspense></PageTransition>} />
         <Route path="/entender-y-prepararse/senales"      element={<PageTransition><SenalesPage /></PageTransition>} />
         <Route path="/entender-y-prepararse/tecnicas"     element={<PageTransition><TecnicasPage /></PageTransition>} />
         <Route path="/entender-y-prepararse/kit-de-bolso" element={<PageTransition><KitBolsoPage /></PageTransition>} />
         <Route path="/entender-y-prepararse/guias"        element={<PageTransition><RecursosPage /></PageTransition>} />
+
+        {/* Dynamic herramientas landings */}
+        <Route path="/herramientas/:slug"           element={<PageTransition><Suspense fallback={null}><HerramientasLandingPage /></Suspense></PageTransition>} />
+        <Route path="/herramientas/categoria/:slug" element={<PageTransition><Suspense fallback={null}><HerramientasLandingPage /></Suspense></PageTransition>} />
+
+        {/* Dynamic ciudad page */}
+        <Route path="/espacios/:ciudad" element={<PageTransition><Suspense fallback={null}><CiudadPage /></Suspense></PageTransition>} />
 
         {/* Redirects from old URLs */}
         <Route path="/mapa"         element={<Navigate to="/espacios" replace />} />
@@ -113,6 +126,20 @@ function AppRoutes() {
 }
 
 export default function App() {
+  const [searchOpen, setSearchOpen] = useState(false)
+
+  // Global Ctrl/Cmd+K to open search
+  useEffect(() => {
+    function handler(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        setSearchOpen(v => !v)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
+
   return (
     <BrowserRouter basename="/refugio-sensorial">
       <CanvasSilentBoundary>
@@ -129,14 +156,17 @@ export default function App() {
           Saltar al contenido principal
         </a>
         <AppErrorBoundary>
-          <Navbar />
+          <Navbar onOpenSearch={() => setSearchOpen(true)} />
           <main id="main-content" className="flex-1 pb-16 md:pb-0" tabIndex="-1">
             <AppErrorBoundary>
-              <AppRoutes />
+              <AppRoutes onOpenSearch={() => setSearchOpen(true)} />
             </AppErrorBoundary>
           </main>
           <Footer />
           <CrisisBar />
+          <Suspense fallback={null}>
+            <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
+          </Suspense>
         </AppErrorBoundary>
       </div>
     </BrowserRouter>

@@ -1,38 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
   <url>
     <loc>https://n0wtq.github.io/refugio-sensorial/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://n0wtq.github.io/refugio-sensorial/mapa</loc>
+    <loc>https://n0wtq.github.io/refugio-sensorial/espacios</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://n0wtq.github.io/refugio-sensorial/biblioteca</loc>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://n0wtq.github.io/refugio-sensorial/kit</loc>
+    <loc>https://n0wtq.github.io/refugio-sensorial/ayuda</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://n0wtq.github.io/refugio-sensorial/kit/senales</loc>
+    <loc>https://n0wtq.github.io/refugio-sensorial/accesibilidad</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Entender y prepararse hub -->
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://n0wtq.github.io/refugio-sensorial/kit/recursos</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://n0wtq.github.io/refugio-sensorial/ayuda</loc>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/estados</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/estados/meltdown</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/estados/shutdown</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/estados/burnout-autista</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/senales</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/tecnicas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/kit-de-bolso</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/entender-y-prepararse/guias</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Herramientas por perfil -->
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/autismo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/tdah</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/dislexia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/toc</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Herramientas por categoría -->
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/concentracion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/regulacion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/comunicacion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/accesibilidad</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/productividad</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/bienestar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/autonomia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/herramientas/categoria/aprendizaje</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Redirects kept for crawl coverage -->
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/mapa</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://n0wtq.github.io/refugio-sensorial/biblioteca</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
