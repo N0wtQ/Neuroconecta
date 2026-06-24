@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation, Link } from 'react
 import { useEffect, useState, Component, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
-import CrisisBar from './components/CrisisBar'
 
 const CanvasBg = lazy(() =>
   import('./components/CanvasBg').catch(() => ({ default: () => null }))
@@ -157,13 +156,12 @@ export default function App() {
         </a>
         <AppErrorBoundary>
           <Navbar onOpenSearch={() => setSearchOpen(true)} />
-          <main id="main-content" className="flex-1 pb-20 md:pb-0" tabIndex="-1">
+          <main id="main-content" className="flex-1" tabIndex="-1">
             <AppErrorBoundary>
               <AppRoutes onOpenSearch={() => setSearchOpen(true)} />
             </AppErrorBoundary>
           </main>
           <Footer />
-          <CrisisBar />
           <Suspense fallback={null}>
             <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
           </Suspense>
