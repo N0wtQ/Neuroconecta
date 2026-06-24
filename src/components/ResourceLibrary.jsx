@@ -109,7 +109,7 @@ function ToolCard({ h, index, prefersReduced }) {
           <StarRating label={h.valoracion} />
         </div>
         {/* Visual "open" cue — reinforces that the whole card is clickable */}
-        <span className="flex items-center gap-1 text-[11px] font-semibold text-pri opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <span className="flex items-center gap-1 text-[11px] font-semibold text-pri opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200">
           Abrir
           <i className="fa-solid fa-arrow-up-right-from-square text-[9px]" aria-hidden="true" />
         </span>

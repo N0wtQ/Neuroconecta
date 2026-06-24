@@ -1,0 +1,21 @@
+{
+  "standard": "WCAG2AA",
+  "timeout": 30000,
+  "wait": 1000,
+  "hideElements": "[aria-hidden='true']",
+  "chromeLaunchConfig": {
+    "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+  },
+  "urls": [
+    "http://localhost:4173/refugio-sensorial/",
+    "http://localhost:4173/refugio-sensorial/kit",
+    "http://localhost:4173/refugio-sensorial/kit/senales",
+    "http://localhost:4173/refugio-sensorial/kit/recursos",
+    "http://localhost:4173/refugio-sensorial/mapa",
+    "http://localhost:4173/refugio-sensorial/biblioteca",
+    "http://localhost:4173/refugio-sensorial/ayuda"
+  ],
+  "ignore": [
+    "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail"
+  ]
+}

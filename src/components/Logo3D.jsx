@@ -83,8 +83,36 @@ class SafeBoundary extends Component {
   render() { return this.state.err ? null : this.props.children }
 }
 
+function LogoFallback({ style }) {
+  return (
+    <div
+      role="img"
+      aria-label="Refugio Sensorial — símbolo del infinito"
+      style={style}
+      className="flex items-center justify-center"
+    >
+      <svg viewBox="0 0 120 60" width="100%" height="100%" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="lgfallback" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#3A82CA" />
+            <stop offset="50%" stopColor="#816AB7" />
+            <stop offset="100%" stopColor="#48B0A1" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M60 30 C60 18 48 10 36 10 C24 10 12 18 12 30 C12 42 24 50 36 50 C48 50 60 42 60 30 C60 18 72 10 84 10 C96 10 108 18 108 30 C108 42 96 50 84 50 C72 50 60 42 60 30 Z"
+          fill="none"
+          stroke="url(#lgfallback)"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
+  )
+}
+
 export default function Logo3D({ paused = false, style }) {
-  if (!WEBGL_OK) return null
+  if (!WEBGL_OK) return <LogoFallback style={style} />
 
   return (
     <SafeBoundary>

@@ -171,6 +171,8 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
+        aria-busy={status === 'sending'}
+        aria-label={status === 'sending' ? 'Enviando mensaje, por favor espera' : 'Enviar mensaje'}
         className="self-start px-7 py-3.5 rounded-xl bg-pri text-white text-sm font-semibold tracking-wide hover:bg-pri/85 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed min-w-[160px]"
       >
         {status === 'sending' ? (

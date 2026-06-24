@@ -108,9 +108,14 @@ export default function SoundPlayer() {
         <i className="fa-solid fa-volume-high text-faint text-xs shrink-0" aria-hidden="true" />
       </div>
 
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {active ? `Reproduciendo: ${SOUNDS.find(s => s.id === active)?.label ?? active}` : ''}
+      </div>
+
       {active && (
         <button
           onClick={stopCurrent}
+          aria-label="Detener sonido ambiental"
           className="self-center flex items-center gap-1.5 text-xs text-faint hover:text-text transition-colors duration-200"
         >
           <i className="fa-solid fa-stop text-[9px]" aria-hidden="true" />

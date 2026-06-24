@@ -13,6 +13,7 @@ import AyudaPage from './pages/AyudaPage'
 import KitPage from './pages/KitPage'
 import RecursosPage from './pages/RecursosPage'
 import SenalesPage from './pages/SenalesPage'
+import AccesibilidadPage from './pages/AccesibilidadPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useReducedMotion } from './hooks/useReducedMotion'
 // Global error boundary — catches any React crash and shows a calm fallback
@@ -84,7 +85,8 @@ function AppRoutes() {
         <Route path="/ayuda"     element={<PageTransition><AyudaPage /></PageTransition>} />
         <Route path="/kit"           element={<PageTransition><KitPage /></PageTransition>} />
         <Route path="/kit/recursos"  element={<PageTransition><RecursosPage /></PageTransition>} />
-        <Route path="/kit/senales"   element={<PageTransition><SenalesPage /></PageTransition>} />
+        <Route path="/kit/senales"    element={<PageTransition><SenalesPage /></PageTransition>} />
+        <Route path="/accesibilidad" element={<PageTransition><AccesibilidadPage /></PageTransition>} />
         <Route path="*"              element={<PageTransition><NotFoundPage /></PageTransition>} />
       </Routes>
     </>
@@ -131,10 +133,18 @@ function Footer() {
             href="https://autismo.org.es"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Autismo España (se abre en nueva pestaña)"
             className="hover:text-text transition-colors duration-200"
           >
             Autismo España
           </a>
+          <span aria-hidden="true">·</span>
+          <Link
+            to="/accesibilidad"
+            className="hover:text-text transition-colors duration-200"
+          >
+            Accesibilidad
+          </Link>
           <span aria-hidden="true">·</span>
           <Link
             to="/ayuda"

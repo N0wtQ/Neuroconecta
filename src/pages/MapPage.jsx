@@ -50,9 +50,11 @@ export default function MapPage() {
       <Suspense
         fallback={
           <div
+            role="status"
+            aria-live="polite"
+            aria-label="Cargando mapa..."
             className="flex items-center justify-center rounded-card border border-border bg-surface"
             style={{ height: '520px' }}
-            aria-label="Cargando mapa..."
           >
             <div className="text-center">
               <i className="fa-solid fa-spinner fa-spin text-2xl text-muted mb-3 block" aria-hidden="true" />
