@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import ResourceLibrary from '../components/ResourceLibrary'
 import { usePageMeta } from '../hooks/usePageMeta'
+import Breadcrumb from '../components/ui/Breadcrumb'
 
 export default function LibraryPage() {
   usePageMeta({
@@ -9,14 +9,10 @@ export default function LibraryPage() {
   })
   return (
     <div className="max-w-5xl mx-auto px-4 pb-20 pt-8">
-      {/* Breadcrumb */}
-      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint">
-        <ol className="flex items-center gap-2 list-none p-0 m-0">
-          <li><Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link></li>
-          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
-          <li><span className="text-muted" aria-current="page">Herramientas</span></li>
-        </ol>
-      </nav>
+      <Breadcrumb items={[
+        { href: '/', label: 'Inicio' },
+        { label: 'Herramientas' },
+      ]} />
 
       {/* Header */}
       <header className="mb-8">

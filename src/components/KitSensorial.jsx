@@ -7,7 +7,7 @@ import TTSButton from '@/components/ui/TTSButton'
 
 // ── MELTDOWN / SHUTDOWN / BURNOUT ─────────────────────────────────────────────
 
-const ESTADOS = [
+export const ESTADOS = [
   {
     id: 'meltdown',
     titulo: 'Meltdown',
@@ -64,7 +64,7 @@ const ESTADOS = [
   },
 ]
 
-function EstadoCard({ estado, prefersReduced, index }) {
+export function EstadoCard({ estado, prefersReduced, index }) {
   const [open, setOpen] = useState(false)
   const BASE = import.meta.env.BASE_URL
 
@@ -172,7 +172,7 @@ function EstadoCard({ estado, prefersReduced, index }) {
 
 // ── REGULACIÓN ────────────────────────────────────────────────────────────────
 
-const REGULACION = [
+export const REGULACION = [
   {
     icon: 'fa-snowflake', color: 'text-pri', bg: 'bg-pri/8',
     titulo: 'Frío',
@@ -231,7 +231,7 @@ const REGULACION = [
 
 // ── KIT DE BOLSO ─────────────────────────────────────────────────────────────
 
-const KITS = [
+export const KITS = [
   {
     id: 'pequeno',
     label: 'Bolso pequeño',
@@ -318,7 +318,7 @@ const KITS = [
   },
 ]
 
-function KitSelectorCard({ kit, selected, onClick }) {
+export function KitSelectorCard({ kit, selected, onClick }) {
   const dotCount = kit.id === 'pequeno' ? 1 : kit.id === 'grande' ? 2 : 3
 
   return (
@@ -358,7 +358,7 @@ function KitSelectorCard({ kit, selected, onClick }) {
 
 const NAV_CARDS = [
   {
-    to: '/kit/senales',
+    to: '/entender-y-prepararse/senales',
     icon: 'fa-triangle-exclamation',
     color: 'text-coral',
     bg: 'bg-coral/10',
@@ -369,7 +369,7 @@ const NAV_CARDS = [
     desc: 'Aprende a reconocer las señales de que tu sistema nervioso está llegando al límite antes de que ocurra.',
   },
   {
-    to: '/kit/recursos',
+    to: '/entender-y-prepararse/guias',
     icon: 'fa-folder-open',
     color: 'text-pri',
     bg: 'bg-pri/10',

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import TTSButton from '../components/ui/TTSButton'
 import { usePageMeta } from '../hooks/usePageMeta'
+import Breadcrumb from '../components/ui/Breadcrumb'
 
 const SENALES = [
   {
@@ -151,15 +152,11 @@ export default function SenalesPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 pb-20 pt-8">
-      <nav aria-label="Ruta de navegación" className="mb-6 text-sm text-faint">
-        <ol className="flex items-center gap-2 list-none p-0 m-0">
-          <li><Link to="/" className="hover:text-text transition-colors duration-200">Inicio</Link></li>
-          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
-          <li><Link to="/kit" className="hover:text-text transition-colors duration-200">Kit Sensorial</Link></li>
-          <li aria-hidden="true"><i className="fa-solid fa-chevron-right text-[10px]" /></li>
-          <li><span className="text-muted" aria-current="page">Señales previas</span></li>
-        </ol>
-      </nav>
+      <Breadcrumb items={[
+        { href: '/', label: 'Inicio' },
+        { href: '/entender-y-prepararse', label: 'Entender y prepararse' },
+        { label: 'Señales de aviso' },
+      ]} />
 
       <motion.div
         initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
@@ -172,7 +169,7 @@ export default function SenalesPage() {
             <i className="fa-solid fa-triangle-exclamation" aria-hidden="true" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-text leading-tight">Señales previas a la crisis</h1>
+            <h1 className="text-2xl font-bold text-text leading-tight">Señales de aviso</h1>
             <p className="text-sm text-muted">Cómo reconocer que se acerca una crisis antes de llegar al límite</p>
           </div>
         </div>
@@ -222,6 +219,45 @@ export default function SenalesPage() {
           </ul>
         </div>
       </motion.div>
+
+      <nav aria-label="Continúa aprendiendo" className="grid sm:grid-cols-2 gap-3 mt-8">
+        {[
+          {
+            to: '/entender-y-prepararse/tecnicas',
+            icon: 'fa-heart-pulse',
+            color: 'text-acc',
+            bg: 'bg-acc/10',
+            border: 'border-acc/25',
+            bgCard: 'bg-acc/5',
+            label: 'Técnicas de regulación',
+            desc: '9 técnicas para aplicar cuando las detectas',
+          },
+          {
+            to: '/entender-y-prepararse/kit-de-bolso',
+            icon: 'fa-kit-medical',
+            color: 'text-pri',
+            bg: 'bg-pri/10',
+            border: 'border-pri/25',
+            bgCard: 'bg-pri/5',
+            label: 'Kit de bolso',
+            desc: 'Qué llevar preparado para salir de casa',
+          },
+        ].map(link => (
+          <Link
+            key={link.to}
+            to={link.to}
+            className={`group flex items-start gap-3 p-4 rounded-card border ${link.border} ${link.bgCard} hover:shadow-md hover:shadow-black/20 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pri focus-visible:ring-offset-2 focus-visible:ring-offset-bg`}
+          >
+            <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${link.bg} ${link.color}`}>
+              <i className={`fa-solid ${link.icon} text-sm`} aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <p className={`text-sm font-semibold ${link.color} leading-snug mb-0.5`}>{link.label}</p>
+              <p className="text-xs text-muted leading-relaxed">{link.desc}</p>
+            </div>
+          </Link>
+        ))}
+      </nav>
     </div>
   )
 }
