@@ -2,11 +2,22 @@
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" href="/fav.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/refugio-sensorial/favicon.svg" />
+  <link rel="icon" type="image/png" href="/refugio-sensorial/fav.png" />
+  <link rel="apple-touch-icon" href="/refugio-sensorial/fav.png" />
+  <link rel="manifest" href="/refugio-sensorial/manifest.json" />
+
+  <!-- Theme -->
   <meta name="theme-color" content="#0C0E1E" />
-  <meta name="description" content="Mapa de sitios silenciosos y biblioteca de herramientas digitales para personas neurodivergentes en España." />
+
+  <!-- Primary meta -->
+  <title>Refugio Sensorial — Recursos para personas neurodivergentes</title>
+  <meta name="description" content="Mapa de sitios silenciosos y herramientas digitales para personas neurodivergentes en España. TEA, TDAH, Dislexia, TOC." />
+  <meta name="author" content="Almudena Bedoya" />
+  <meta name="robots" content="index, follow" />
 
   <!-- CSP parcial via meta (frame-ancestors y HSTS requieren Cloudflare para funcionar) -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -14,7 +25,7 @@
     script-src 'self' 'unsafe-inline';
     style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline';
     font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
-    img-src 'self' data: blob: https://*.tile.openstreetmap.org https://*.cartocdn.com https://*.basemaps.cartocdn.com https://n0wtq.github.io;
+    img-src 'self' data: blob: https://*.tile.openstreetmap.org https://*.cartocdn.com https://*.basemaps.cartocdn.com https://n0wtq.github.io https://media1.giphy.com;
     media-src 'self';
     connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
     worker-src 'self' blob:;
@@ -24,41 +35,62 @@
   " />
 
   <!-- Open Graph / WhatsApp / redes sociales -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://n0wtq.github.io/refugio-sensorial/" />
-  <meta property="og:title"       content="Refugio Sensorial — Recursos para personas neurodivergentes" />
-  <meta property="og:description" content="Mapa de sitios silenciosos, kit sensorial, herramientas digitales y apoyo en crisis para personas neurodivergentes." />
-  <meta property="og:image"       content="https://n0wtq.github.io/refugio-sensorial/logo-icon.png" />
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="https://n0wtq.github.io/refugio-sensorial/" />
+  <meta property="og:title"        content="Refugio Sensorial — Recursos para personas neurodivergentes" />
+  <meta property="og:description"  content="Mapa de sitios silenciosos, herramientas digitales y apoyo en crisis para personas neurodivergentes en España." />
+  <meta property="og:image"        content="https://n0wtq.github.io/refugio-sensorial/logo-icon.png" />
+  <meta property="og:image:alt"    content="Logotipo de Refugio Sensorial" />
   <meta property="og:image:width"  content="512" />
   <meta property="og:image:height" content="512" />
-  <meta property="og:locale"      content="es_ES" />
+  <meta property="og:locale"       content="es_ES" />
+  <meta property="og:site_name"    content="Refugio Sensorial" />
 
   <!-- Twitter / X -->
-  <meta name="twitter:card"        content="summary" />
-  <meta name="twitter:title"       content="Refugio Sensorial" />
-  <meta name="twitter:description" content="Recursos digitales para personas neurodivergentes." />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Refugio Sensorial — Recursos para personas neurodivergentes" />
+  <meta name="twitter:description" content="Mapa de sitios silenciosos, herramientas digitales y apoyo en crisis para personas neurodivergentes en España." />
   <meta name="twitter:image"       content="https://n0wtq.github.io/refugio-sensorial/logo-icon.png" />
-
-  <title>Refugio Sensorial — Recursos para personas neurodivergentes</title>
+  <meta name="twitter:image:alt"   content="Logotipo de Refugio Sensorial" />
 
   <!-- Datos estructurados Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Refugio Sensorial",
-    "url": "https://n0wtq.github.io/refugio-sensorial/",
-    "description": "Recursos digitales para personas neurodivergentes en España: mapa de lugares silenciosos, herramientas digitales para TEA y TDAH, kit sensorial y apoyo en crisis.",
-    "inLanguage": "es-ES",
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Personas con TEA, TDAH, TDA, TOC y otras neurodivergencias"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://n0wtq.github.io/refugio-sensorial/biblioteca?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://n0wtq.github.io/refugio-sensorial/#website",
+        "name": "Refugio Sensorial",
+        "url": "https://n0wtq.github.io/refugio-sensorial/",
+        "description": "Recursos digitales para personas neurodivergentes en España: mapa de lugares silenciosos, herramientas para TEA y TDAH, y apoyo en crisis.",
+        "inLanguage": "es-ES",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://n0wtq.github.io/refugio-sensorial/herramientas?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://n0wtq.github.io/refugio-sensorial/#organization",
+        "name": "Refugio Sensorial",
+        "url": "https://n0wtq.github.io/refugio-sensorial/",
+        "description": "Proyecto independiente de recursos digitales para personas neurodivergentes en España.",
+        "inLanguage": "es-ES",
+        "founder": {
+          "@type": "Person",
+          "name": "Almudena Bedoya"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Personas con TEA, TDAH, TOC, Dislexia y otras neurodivergencias"
+        }
+      }
+    ]
   }
   </script>
 

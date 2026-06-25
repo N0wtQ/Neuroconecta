@@ -3,7 +3,9 @@
  * Open Graph and Twitter Card tags on mount.
  *
  * @param {{ title: string, description: string, canonical?: string,
- *           ogImage?: string, ogType?: string, section?: string }} opts
+ *           ogImage?: string, ogImageAlt?: string,
+ *           ogType?: string, section?: string,
+ *           noIndex?: boolean }} opts
  */
 
 import { useEffect } from 'react'
@@ -16,8 +18,10 @@ export function usePageMeta({
   description,
   canonical,
   ogImage,
+  ogImageAlt,
   ogType = 'website',
   section,
+  noIndex = false,
 }) {
   useEffect(() => {
     // ── title ──────────────────────────────────────────────────────────────
@@ -42,13 +46,28 @@ export function usePageMeta({
     const prevCanonical = canonicalEl.getAttribute('href') ?? ''
     canonicalEl.setAttribute('href', canonicalUrl)
 
+    // ── robots meta (noindex for 404, search result pages, etc.) ──────────
+    let robotsEl = document.querySelector('meta[name="robots"]')
+    const prevRobots = robotsEl?.getAttribute('content') ?? ''
+    if (noIndex) {
+      if (!robotsEl) {
+        robotsEl = document.createElement('meta')
+        robotsEl.setAttribute('name', 'robots')
+        document.head.appendChild(robotsEl)
+      }
+      robotsEl.setAttribute('content', 'noindex, nofollow')
+    }
+
     // ── Open Graph ────────────────────────────────────────────────────────
+    const resolvedOgImage = ogImage ?? getOgImage(section)
+    const resolvedOgImageAlt = ogImageAlt ?? title
     const ogData = {
       'og:title':       title,
       'og:description': description,
       'og:type':        ogType,
       'og:url':         canonicalUrl,
-      'og:image':       ogImage ?? getOgImage(section),
+      'og:image':       resolvedOgImage,
+      'og:image:alt':   resolvedOgImageAlt,
       'og:locale':      'es_ES',
       'og:site_name':   'Refugio Sensorial',
     }
@@ -69,7 +88,8 @@ export function usePageMeta({
       'twitter:card':        'summary_large_image',
       'twitter:title':       title,
       'twitter:description': description,
-      'twitter:image':       ogImage ?? getOgImage(section),
+      'twitter:image':       resolvedOgImage,
+      'twitter:image:alt':   resolvedOgImageAlt,
     }
     const prevTwitter = {}
     for (const [name, content] of Object.entries(twitterData)) {
@@ -87,6 +107,7 @@ export function usePageMeta({
       document.title = prevTitle
       metaDesc?.setAttribute('content', prevDesc)
       canonicalEl.setAttribute('href', prevCanonical)
+      if (noIndex && robotsEl) robotsEl.setAttribute('content', prevRobots)
       for (const [prop, prev] of Object.entries(prevOg)) {
         document.querySelector(`meta[property="${prop}"]`)?.setAttribute('content', prev)
       }
@@ -94,5 +115,5 @@ export function usePageMeta({
         document.querySelector(`meta[name="${name}"]`)?.setAttribute('content', prev)
       }
     }
-  }, [title, description, canonical, ogImage, ogType, section])
+  }, [title, description, canonical, ogImage, ogImageAlt, ogType, section, noIndex])
 }

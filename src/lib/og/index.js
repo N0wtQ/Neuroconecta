@@ -10,7 +10,10 @@
 
 const BASE = import.meta.env.BASE_URL
 const OG_PATH = `${BASE}og/`
-const DEFAULT_OG = `${OG_PATH}default.png`
+// NOTE: Section-specific OG images in /public/og/ are not yet created.
+// Add 1200×630 PNG files named per SECTION_IMAGES below to activate them.
+// Until then all pages fall back to the logo as their OG image.
+const DEFAULT_OG = `${BASE}logo-icon.png`
 
 /**
  * Section → filename map. Add a PNG to /public/og/ to activate.
@@ -41,8 +44,8 @@ const SECTION_IMAGES = {
  * @returns {string} Absolute-path image URL
  */
 export function getOgImage(section) {
-  const file = section ? SECTION_IMAGES[section] ?? SECTION_IMAGES.default : SECTION_IMAGES.default
-  return `${OG_PATH}${file}`
+  const file = section ? SECTION_IMAGES[section] : null
+  return file ? `${OG_PATH}${file}` : DEFAULT_OG
 }
 
 /**
