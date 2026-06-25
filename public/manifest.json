@@ -1,0 +1,28 @@
+{
+  "name": "Refugio Sensorial",
+  "short_name": "Refugio",
+  "description": "Recursos para personas neurodivergentes: mapa de espacios silenciosos, herramientas digitales para TEA y TDAH, y apoyo en crisis.",
+  "start_url": "/refugio-sensorial/",
+  "scope": "/refugio-sensorial/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0C0E1E",
+  "background_color": "#0C0E1E",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["health", "education", "lifestyle"],
+  "icons": [
+    {
+      "src": "/refugio-sensorial/fav.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/refugio-sensorial/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

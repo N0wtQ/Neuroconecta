@@ -329,6 +329,7 @@ export default function Navbar({ onOpenSearch }) {
                                 <Link
                                   key={child.to}
                                   to={child.to}
+                                  aria-current={childActive ? 'page' : undefined}
                                   className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors duration-200 ${
                                     childActive
                                       ? 'text-text font-semibold bg-white/5'
@@ -348,12 +349,16 @@ export default function Navbar({ onOpenSearch }) {
                 )
               }
 
+              const isActive = pathname === link.to
               return (
                 <Link
                   key={link.to}
                   to={link.to}
+                  aria-current={isActive ? 'page' : undefined}
                   onClick={(e) => link.scroll && handleScrollLink(e, link.to)}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-white/5 transition-colors duration-200"
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                    isActive ? 'text-text bg-white/5' : 'text-muted hover:text-text hover:bg-white/5'
+                  }`}
                 >
                   {link.label}
                 </Link>

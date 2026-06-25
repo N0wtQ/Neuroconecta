@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function NotFoundPage() {
   const reduced = useReducedMotion()
+
+  usePageMeta({
+    title: 'Página no encontrada — Refugio Sensorial',
+    description: 'Esta página no existe. Visita Refugio Sensorial para encontrar recursos para personas neurodivergentes en España.',
+    noIndex: true,
+  })
 
   return (
     <div className="min-h-[80dvh] flex flex-col items-center justify-center px-6 py-10">

@@ -2,8 +2,10 @@ User-agent: *
 Allow: /
 
 # Excluye assets técnicos del índice
+# GitHub Pages (subpath): /refugio-sensorial/assets/
+# Dominio propio (base '/'): cambiar a /assets/
 Disallow: /refugio-sensorial/assets/
 
 Sitemap: https://n0wtq.github.io/refugio-sensorial/sitemap.xml
 
-# Nota: actualiza ambas URLs cuando uses dominio propio con Cloudflare
+# Actualiza la URL del Sitemap cuando uses dominio propio
