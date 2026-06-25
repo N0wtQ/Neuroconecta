@@ -16,6 +16,9 @@ const TTS_POR_PDF = {
   4: 'Esta guía de la Universidad Autónoma de Chile está pensada para la comunidad universitaria. Responde al qué hago cuando pasa esto en situaciones académicas y de convivencia con estudiantes autistas. Tiene un enfoque práctico e interdisciplinario.',
   5: 'Este documento de doscientas diez páginas cubre la educación de personas adultas con autismo. Incluye modelos teóricos, orientaciones pedagógicas y estrategias para la transición a la vida adulta. Es una guía completa para familias, profesores y terapeutas.',
   6: 'Este artículo de Mujeres y Autismo da estrategias prácticas para recuperarse del burnout siendo autista: cómo descansar de verdad, reducir el enmascaramiento, encontrar apoyos y crear ritmos sostenibles.',
+  7: 'Esta guía del IACS está pensada para personas con TDAH. Explica qué es el trastorno, cómo se diagnostica, qué tratamientos existen y da orientaciones concretas para el día a día. Es un documento oficial del Sistema Nacional de Salud.',
+  8: 'Esta guía breve de la Universidad Complutense explica cómo se observa la dislexia en el aula: en la lectura, la escritura y la comunicación oral. Incluye recomendaciones prácticas para docentes y adaptaciones para exámenes y trabajos.',
+  9: 'Este manual de la Fundación FIPP explica el Trastorno Obsesivo Compulsivo desde dentro: qué tipos de obsesiones y compulsiones existen, cómo registrarlas y qué técnicas cognitivo-conductuales ayudan a manejarlas, como posponer el ritual o cambiar el modo de obsesionarse.',
 }
 
 // Unique categories preserving first-seen order
