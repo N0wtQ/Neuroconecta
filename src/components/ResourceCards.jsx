@@ -11,20 +11,20 @@ const toolCount = herramientas.length
 
 const cards = [
   {
-    to: '/mapa',
+    to: '/espacios',
     icon: 'fa-location-dot',
     iconBg: 'bg-pri/10 text-pri',
-    label: 'Sitios silenciosos',
+    label: 'Espacios',
     description: 'Mapa de lugares con hora silenciosa, salas sensoriales y distintivo Sunflower en España.',
     linkText: 'Abrir el mapa',
     linkColor: 'text-pri',
     badge: `${mapCount} espacios`,
     badgeColor: 'text-pri bg-pri/8 border-pri/15',
     glow: 'rgba(58,130,202,0.08)',
-    hueBase: 210, hueSpread: 40,   // stays blue
+    hueBase: 210, hueSpread: 40,
   },
   {
-    to: '/biblioteca',
+    to: '/herramientas',
     icon: 'fa-toolbox',
     iconBg: 'bg-sec/10 text-sec',
     label: 'Herramientas',
@@ -34,7 +34,7 @@ const cards = [
     badge: `${toolCount}+ herramientas`,
     badgeColor: 'text-sec bg-sec/8 border-sec/15',
     glow: 'rgba(129,106,183,0.08)',
-    hueBase: 260, hueSpread: 50,   // stays purple
+    hueBase: 260, hueSpread: 50,
   },
   {
     href: 'https://www.youtube.com/@LilPenguinStudios',
@@ -47,20 +47,20 @@ const cards = [
     badge: 'YouTube',
     badgeColor: 'text-coral bg-coral/8 border-coral/15',
     glow: 'rgba(240,100,80,0.08)',
-    hueBase: 345, hueSpread: 30,   // stays red/coral
+    hueBase: 345, hueSpread: 30,
   },
   {
-    to: '/kit',
-    icon: 'fa-kit-medical',
+    to: '/entender-y-prepararse',
+    icon: 'fa-brain',
     iconBg: 'bg-acc/10 text-acc',
-    label: 'Kit Sensorial',
+    label: 'Entender y prepararse',
     description: 'Meltdown, Shutdown, Burnout — qué son, cómo regularte y qué meter en tu bolso.',
-    linkText: 'Ver el kit',
+    linkText: 'Ver la guía',
     linkColor: 'text-acc',
     badge: 'Guía',
     badgeColor: 'text-acc bg-acc/8 border-acc/15',
     glow: 'rgba(72,176,161,0.08)',
-    hueBase: 172, hueSpread: 40,   // stays teal
+    hueBase: 172, hueSpread: 40,
   },
 ]
 
