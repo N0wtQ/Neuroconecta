@@ -164,7 +164,15 @@ export default function ContactForm() {
       {status === 'error' && (
         <p role="alert" className="text-sm text-warm bg-warm/8 border border-warm/20 rounded-xl px-4 py-3">
           <i className="fa-solid fa-triangle-exclamation mr-2" aria-hidden="true" />
-          Hubo un problema al enviar. Por favor, inténtalo de nuevo o escríbeme directamente por Instagram.
+          Hubo un problema al enviar. Por favor, inténtalo de nuevo o escríbeme directamente por{' '}
+          <a
+            href="https://www.instagram.com/refugio.sensorial.oficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-warm/75 transition-colors"
+          >
+            Instagram
+          </a>.
         </p>
       )}
 
