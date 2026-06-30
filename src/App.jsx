@@ -194,6 +194,17 @@ function Footer() {
             Instagram
           </a>
           <span aria-hidden="true">·</span>
+          <a
+            href="https://whatsapp.com/channel/0029Vb7weJlDZ4Le5l3tMK3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Canal de WhatsApp de Refugio Sensorial"
+            className="flex items-center gap-1 hover:text-text transition-colors duration-200"
+          >
+            <i className="fa-brands fa-whatsapp text-sm" aria-hidden="true" />
+            WhatsApp
+          </a>
+          <span aria-hidden="true">·</span>
           <Link
             to="/accesibilidad"
             className="hover:text-text transition-colors duration-200"
